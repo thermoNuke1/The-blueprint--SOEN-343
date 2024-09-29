@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "setdep": "npm install axios && npm install express && npm install --save-dev nodemon && npm install cors && npm install --save-dev supertest && npm install dotenv && npm install mongodb"
+    "setdep": "npm install axios && npm install express && npm install --save-dev nodemon && npm install cors && npm install --save-dev supertest && npm install dotenv && npm install mongodb && npm install mongoose"
   },
   "author": "Carlo Aldabi",
   "license": "ISC",
