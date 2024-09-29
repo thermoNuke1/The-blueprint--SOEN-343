@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "setdep": "npm install axios && npm install express && npm install --save-dev nodemon && npm install cors && npm install --save-dev supertest && npm install dotenv"
+    "setdep": "npm install axios && npm install express && npm install --save-dev nodemon && npm install cors && npm install --save-dev supertest && npm install dotenv && npm install mongodb"
   },
   "author": "Carlo Aldabi",
   "license": "ISC",
@@ -14,7 +14,11 @@
     "axios": "^1.7.7",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
-    "express": "^4.21.0"
+    "express": "^4.21.0",
+    "mongodb": "^6.9.0",
+    "mongoose": "^8.7.0",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.11.3"
   },
   "devDependencies": {
     "nodemon": "^3.1.7",
