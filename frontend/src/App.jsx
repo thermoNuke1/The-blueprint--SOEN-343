@@ -1,14 +1,14 @@
-import { useState } from 'react'
+import { useState } from "react";
+import Navbar from "./Navbar";
 
 const App = () => {
+	return (
+		<div>
+			<Navbar />
 
-    return ( 
-    <div>
-      <h1>GOATS</h1>
- 
-    </div>
-    )
-  }
-  
-  export default App
-  
+			<h1>GOATS</h1>
+		</div>
+	);
+};
+
+export default App;
