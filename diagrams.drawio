@@ -85,10 +85,10 @@
         <mxCell id="ajyNIhzUGbpYRZz88VfT-19" value="Proposal of quotation for delivery service" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="1410" y="120" width="280" height="430" as="geometry" />
         </mxCell>
-        <mxCell id="ajyNIhzUGbpYRZz88VfT-20" value="Enter Delivery details for Quotation" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="ajyNIhzUGbpYRZz88VfT-19">
+        <mxCell id="ajyNIhzUGbpYRZz88VfT-20" value="Initiate Tracking ID" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="ajyNIhzUGbpYRZz88VfT-19">
           <mxGeometry x="60" y="80" width="140" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="ajyNIhzUGbpYRZz88VfT-21" value="Receive Quotation" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="ajyNIhzUGbpYRZz88VfT-19">
+        <mxCell id="ajyNIhzUGbpYRZz88VfT-21" value="Get Delivery" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="ajyNIhzUGbpYRZz88VfT-19">
           <mxGeometry x="60" y="280" width="140" height="70" as="geometry" />
         </mxCell>
         <mxCell id="ajyNIhzUGbpYRZz88VfT-22" value="" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="ajyNIhzUGbpYRZz88VfT-19">
