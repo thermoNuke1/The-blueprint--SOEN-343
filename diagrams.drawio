@@ -127,26 +127,20 @@
         <mxCell id="fZCNqDVNTXnF4iTmZyPd-21" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;endArrow=none;endFill=0;" parent="1" source="fZCNqDVNTXnF4iTmZyPd-26" target="fZCNqDVNTXnF4iTmZyPd-27" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="fZCNqDVNTXnF4iTmZyPd-22" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;endArrow=none;endFill=0;" parent="1" source="fZCNqDVNTXnF4iTmZyPd-26" target="fZCNqDVNTXnF4iTmZyPd-28" edge="1">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
         <mxCell id="fZCNqDVNTXnF4iTmZyPd-23" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;endArrow=none;endFill=0;" parent="1" source="fZCNqDVNTXnF4iTmZyPd-26" target="fZCNqDVNTXnF4iTmZyPd-29" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="fZCNqDVNTXnF4iTmZyPd-26" value="Customer" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
           <mxGeometry x="1320" y="930" width="30" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="fZCNqDVNTXnF4iTmZyPd-27" value="Order History" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="fZCNqDVNTXnF4iTmZyPd-27" value="Initialize request" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="1500" y="790" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="fZCNqDVNTXnF4iTmZyPd-28" value="Order Details" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="fZCNqDVNTXnF4iTmZyPd-28" value="provide solutions" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="1500" y="880" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="fZCNqDVNTXnF4iTmZyPd-29" value="Offered Services" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="fZCNqDVNTXnF4iTmZyPd-29" value="Escalate to Agent" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="1500" y="970" width="120" height="80" as="geometry" />
-        </mxCell>
-        <mxCell id="fZCNqDVNTXnF4iTmZyPd-30" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;endArrow=none;endFill=0;" parent="1" source="fZCNqDVNTXnF4iTmZyPd-38" target="fZCNqDVNTXnF4iTmZyPd-27" edge="1">
-          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="fZCNqDVNTXnF4iTmZyPd-31" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;endArrow=none;endFill=0;" parent="1" source="fZCNqDVNTXnF4iTmZyPd-38" target="fZCNqDVNTXnF4iTmZyPd-28" edge="1">
           <mxGeometry relative="1" as="geometry" />
