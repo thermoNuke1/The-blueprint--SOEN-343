@@ -124,7 +124,7 @@
         <mxCell id="fZCNqDVNTXnF4iTmZyPd-20" value="Review of Service" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="790" y="750" width="200" height="300" as="geometry" />
         </mxCell>
-        <mxCell id="fZCNqDVNTXnF4iTmZyPd-21" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;endArrow=none;endFill=0;" parent="1" source="fZCNqDVNTXnF4iTmZyPd-26" target="fZCNqDVNTXnF4iTmZyPd-27" edge="1">
+        <mxCell id="fZCNqDVNTXnF4iTmZyPd-21" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;endArrow=none;endFill=0;" parent="1" source="fZCNqDVNTXnF4iTmZyPd-26" target="fZCNqDVNTXnF4iTmZyPd-27" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="fZCNqDVNTXnF4iTmZyPd-26" value="Customer" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
@@ -155,6 +155,12 @@
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="1250" y="60" as="sourcePoint" />
             <mxPoint x="1390" y="180" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jvC_w-jPG28pTviG4znS-7" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;exitX=1;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="fZCNqDVNTXnF4iTmZyPd-26">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1320" y="1114" as="sourcePoint" />
+            <mxPoint x="1500" y="1010" as="targetPoint" />
           </mxGeometry>
         </mxCell>
       </root>
