@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:131.0) Gecko/20100101 Firefox/131.0" version="24.7.17">
   <diagram name="Page-1" id="E9uBEYS8e_-sD6PRWr0S">
-    <mxGraphModel dx="1434" dy="774" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1400" pageHeight="1000" math="0" shadow="0">
+    <mxGraphModel dx="1793" dy="968" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1400" pageHeight="1000" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -396,6 +396,122 @@
         </mxCell>
         <mxCell id="o7OOsQI0i-CVaTe_SLPI-98" value="U:customer" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="70" y="1350" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="o7OOsQI0i-CVaTe_SLPI-99" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="185" y="2780" as="sourcePoint" />
+            <mxPoint x="184.9" y="2450" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="o7OOsQI0i-CVaTe_SLPI-100" value="U:customer" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="130" y="2390" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="o7OOsQI0i-CVaTe_SLPI-101" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="465" y="2790" as="sourcePoint" />
+            <mxPoint x="464.9" y="2450" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="o7OOsQI0i-CVaTe_SLPI-102" value=":ReviewService" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="410" y="2390" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="o7OOsQI0i-CVaTe_SLPI-103" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;entryX=0.467;entryY=1.015;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="o7OOsQI0i-CVaTe_SLPI-104">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="746" y="2790" as="sourcePoint" />
+            <mxPoint x="744.9" y="2450" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="o7OOsQI0i-CVaTe_SLPI-104" value="R:Review" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="690" y="2520" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="o7OOsQI0i-CVaTe_SLPI-105" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1025" y="2780" as="sourcePoint" />
+            <mxPoint x="1024.9" y="2450" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="o7OOsQI0i-CVaTe_SLPI-106" value=":Review" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="970" y="2390" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="o7OOsQI0i-CVaTe_SLPI-107" value=":Reviews" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="980" y="2400" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="o7OOsQI0i-CVaTe_SLPI-108" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="190" y="2490" as="sourcePoint" />
+            <mxPoint x="460" y="2490" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="o7OOsQI0i-CVaTe_SLPI-109" value="StartReview()" style="edgeLabel;resizable=0;html=1;;align=center;verticalAlign=middle;" connectable="0" vertex="1" parent="o7OOsQI0i-CVaTe_SLPI-108">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="o7OOsQI0i-CVaTe_SLPI-110" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="o7OOsQI0i-CVaTe_SLPI-104">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="466" y="2548" as="sourcePoint" />
+            <mxPoint x="736" y="2548" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="o7OOsQI0i-CVaTe_SLPI-111" value="Create()" style="edgeLabel;resizable=0;html=1;;align=center;verticalAlign=middle;" connectable="0" vertex="1" parent="o7OOsQI0i-CVaTe_SLPI-110">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="o7OOsQI0i-CVaTe_SLPI-112" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="460" y="2590" as="sourcePoint" />
+            <mxPoint x="190" y="2590" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="o7OOsQI0i-CVaTe_SLPI-113" value="FillOutreview()" style="edgeLabel;resizable=0;html=1;;align=center;verticalAlign=middle;" connectable="0" vertex="1" parent="o7OOsQI0i-CVaTe_SLPI-112">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="o7OOsQI0i-CVaTe_SLPI-114" value="" style="endArrow=classic;html=1;rounded=0;dashed=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="190" y="2630" as="sourcePoint" />
+            <mxPoint x="460" y="2630" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="o7OOsQI0i-CVaTe_SLPI-115" value="info" style="edgeLabel;resizable=0;html=1;;align=center;verticalAlign=middle;" connectable="0" vertex="1" parent="o7OOsQI0i-CVaTe_SLPI-114">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="o7OOsQI0i-CVaTe_SLPI-117" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="470" y="2660" as="sourcePoint" />
+            <mxPoint x="740" y="2660" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="o7OOsQI0i-CVaTe_SLPI-118" value="Setratings(info)" style="edgeLabel;resizable=0;html=1;;align=center;verticalAlign=middle;" connectable="0" vertex="1" parent="o7OOsQI0i-CVaTe_SLPI-117">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="o7OOsQI0i-CVaTe_SLPI-119" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="470" y="2710" as="sourcePoint" />
+            <mxPoint x="1020" y="2710" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="o7OOsQI0i-CVaTe_SLPI-120" value="add(R)" style="edgeLabel;resizable=0;html=1;;align=center;verticalAlign=middle;" connectable="0" vertex="1" parent="o7OOsQI0i-CVaTe_SLPI-119">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="o7OOsQI0i-CVaTe_SLPI-121" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="460" y="2740" as="sourcePoint" />
+            <mxPoint x="190" y="2740" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="o7OOsQI0i-CVaTe_SLPI-122" value="endreview()" style="edgeLabel;resizable=0;html=1;;align=center;verticalAlign=middle;" connectable="0" vertex="1" parent="o7OOsQI0i-CVaTe_SLPI-121">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
