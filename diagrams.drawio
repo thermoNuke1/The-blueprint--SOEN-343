@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:131.0) Gecko/20100101 Firefox/131.0" version="24.7.17">
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:131.0) Gecko/20100101 Firefox/131.0" version="24.8.0">
   <diagram name="Page-1" id="E9uBEYS8e_-sD6PRWr0S">
-    <mxGraphModel dx="830" dy="468" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1400" pageHeight="1000" math="0" shadow="0">
+    <mxGraphModel dx="1050" dy="654" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1400" pageHeight="1000" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -80,13 +80,13 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="fZCNqDVNTXnF4iTmZyPd-4" value="Customer" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" parent="1" vertex="1">
-          <mxGeometry x="165" y="890" width="30" height="60" as="geometry" />
+          <mxGeometry x="170" y="790" width="30" height="60" as="geometry" />
         </mxCell>
         <mxCell id="fZCNqDVNTXnF4iTmZyPd-6" value="create invoice" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="275" y="970" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="fZCNqDVNTXnF4iTmZyPd-8" value="Credit Payment Service" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" parent="1" vertex="1">
-          <mxGeometry x="485" y="890" width="30" height="60" as="geometry" />
+          <mxGeometry x="485" y="920" width="30" height="60" as="geometry" />
         </mxCell>
         <mxCell id="fZCNqDVNTXnF4iTmZyPd-10" value="Payment" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="235" y="750" width="200" height="330" as="geometry" />
@@ -107,7 +107,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="fZCNqDVNTXnF4iTmZyPd-15" value="Customer" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" parent="1" vertex="1">
-          <mxGeometry x="720" y="910" width="30" height="60" as="geometry" />
+          <mxGeometry x="710" y="880" width="30" height="60" as="geometry" />
         </mxCell>
         <mxCell id="fZCNqDVNTXnF4iTmZyPd-16" value="Review Service" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="830" y="780" width="120" height="80" as="geometry" />
@@ -125,7 +125,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="fZCNqDVNTXnF4iTmZyPd-26" value="Customer" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
-          <mxGeometry x="1320" y="930" width="30" height="60" as="geometry" />
+          <mxGeometry x="1370" y="910" width="30" height="60" as="geometry" />
         </mxCell>
         <mxCell id="fZCNqDVNTXnF4iTmZyPd-27" value="Initialize request" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="1500" y="790" width="120" height="80" as="geometry" />
@@ -143,7 +143,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="fZCNqDVNTXnF4iTmZyPd-38" value="AI Chat Service" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
-          <mxGeometry x="1850" y="930" width="30" height="60" as="geometry" />
+          <mxGeometry x="1720" y="930" width="30" height="60" as="geometry" />
         </mxCell>
         <mxCell id="fZCNqDVNTXnF4iTmZyPd-39" value="Customer Support" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="1460" y="750" width="200" height="340" as="geometry" />
