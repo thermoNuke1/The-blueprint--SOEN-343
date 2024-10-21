@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:131.0) Gecko/20100101 Firefox/131.0" version="24.8.0">
   <diagram name="Page-1" id="E9uBEYS8e_-sD6PRWr0S">
-    <mxGraphModel dx="1509" dy="815" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1400" pageHeight="1000" math="0" shadow="0">
+    <mxGraphModel dx="1024" dy="553" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1400" pageHeight="1000" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -112,7 +112,10 @@
         <mxCell id="fZCNqDVNTXnF4iTmZyPd-20" value="Review of Service" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="810" y="460" width="200" height="300" as="geometry" />
         </mxCell>
-        <mxCell id="fZCNqDVNTXnF4iTmZyPd-21" value="+" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;endArrow=none;endFill=0;" parent="1" source="fZCNqDVNTXnF4iTmZyPd-26" target="fZCNqDVNTXnF4iTmZyPd-27" edge="1">
+        <mxCell id="tm-aANwUoJgB9_Mllnvm-8" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;endArrow=none;endFill=0;" edge="1" parent="1" source="fZCNqDVNTXnF4iTmZyPd-26" target="fZCNqDVNTXnF4iTmZyPd-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tm-aANwUoJgB9_Mllnvm-9" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;endArrow=none;endFill=0;" edge="1" parent="1" source="fZCNqDVNTXnF4iTmZyPd-26" target="fZCNqDVNTXnF4iTmZyPd-29">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="fZCNqDVNTXnF4iTmZyPd-26" value="Customer" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
@@ -138,12 +141,6 @@
         </mxCell>
         <mxCell id="fZCNqDVNTXnF4iTmZyPd-39" value="Customer Support" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="1480" y="460" width="200" height="340" as="geometry" />
-        </mxCell>
-        <mxCell id="jvC_w-jPG28pTviG4znS-7" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;exitX=1;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="fZCNqDVNTXnF4iTmZyPd-26" edge="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1340" y="824" as="sourcePoint" />
-            <mxPoint x="1520" y="720" as="targetPoint" />
-          </mxGeometry>
         </mxCell>
         <mxCell id="o7OOsQI0i-CVaTe_SLPI-4" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;" parent="1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
