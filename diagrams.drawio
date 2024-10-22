@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36" version="24.8.0">
   <diagram name="Page-1" id="E9uBEYS8e_-sD6PRWr0S">
-    <mxGraphModel dx="4200" dy="2088" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1400" pageHeight="1000" math="0" shadow="0">
+    <mxGraphModel dx="276" dy="137" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1400" pageHeight="1000" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1052,7 +1052,7 @@
             <mxPoint x="1360" y="3030" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="8ZHjPrO8cjTIPRrQu_vb-7" value="requestShipmentID(dimensions, destination)" style="edgeLabel;resizable=0;html=1;;align=center;verticalAlign=middle;" connectable="0" vertex="1" parent="8ZHjPrO8cjTIPRrQu_vb-6">
+        <mxCell id="8ZHjPrO8cjTIPRrQu_vb-7" value="requestShipmentID(size, weight, destination)" style="edgeLabel;resizable=0;html=1;;align=center;verticalAlign=middle;" connectable="0" vertex="1" parent="8ZHjPrO8cjTIPRrQu_vb-6">
           <mxGeometry relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
@@ -1072,7 +1072,7 @@
             <mxPoint x="1620" y="3060" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="8ZHjPrO8cjTIPRrQu_vb-12" value="findShipment(dimensions, destination)" style="edgeLabel;resizable=0;html=1;;align=center;verticalAlign=middle;" connectable="0" vertex="1" parent="8ZHjPrO8cjTIPRrQu_vb-11">
+        <mxCell id="8ZHjPrO8cjTIPRrQu_vb-12" value="findShipment(size, weight, destination)" style="edgeLabel;resizable=0;html=1;;align=center;verticalAlign=middle;" connectable="0" vertex="1" parent="8ZHjPrO8cjTIPRrQu_vb-11">
           <mxGeometry relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
