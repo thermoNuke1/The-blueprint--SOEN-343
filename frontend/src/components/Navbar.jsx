@@ -1,6 +1,4 @@
-import React from "react";
 import "./Navbar.css";
-import "@fontsource/red-hat-display/400-italic.css";
 
 const Navbar = () => {
 	return (
