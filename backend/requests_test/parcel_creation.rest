@@ -1,0 +1,12 @@
+post http://localhost:3001/api/parcel
+Content-Type: application/json
+
+{
+
+    "width_dimension": 10.0, 
+    "length_dimension": 10.0, 
+    "height_dimension": 10.0, 
+    "weight": 10.0, 
+    "serialNumber":10
+
+}
