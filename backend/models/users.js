@@ -9,6 +9,13 @@ const userSchema = new mongoose.Schema({
         },
     name: String,
     passwordHash: String,
+    type: String,
+    parcels: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Parcel'
+      }
+    ],
    
   })
   
