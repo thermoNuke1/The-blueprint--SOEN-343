@@ -1,12 +1,12 @@
 import { useState } from "react";
-import Navbar from "./Navbar";
+import Homepage from "./pages/Homepage";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 const App = () => {
 	return (
 		<div>
-			<Navbar />
-
-			<h1>GOATS</h1>
+			<Homepage></Homepage>
 		</div>
 	);
 };
