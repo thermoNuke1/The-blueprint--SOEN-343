@@ -1,19 +1,14 @@
 import { useState } from "react";
-import Navbar from "./components/Navbar.jsx";
-import Login from "./components/login.jsx";
-import Notification from "./components/notifications.jsx";
-import loginService from './services/login.js';
+import Homepage from "./pages/Homepage";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 const App = () => {
 	const [errorMessage, setErrorMessage] = useState(null);
 	const [user, setUser] = useState(null);
 	return (
 		<div>
-			{/* <Navbar/> */}
-			<Notification message={errorMessage} />
-			<Login setErrorMessage={setErrorMessage} user={user} setUser={setUser} />
-
-			
+			<Homepage></Homepage>
 		</div>
 	);
 };
