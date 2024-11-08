@@ -14,7 +14,6 @@ const CheckoutForm = () => {
       return;
     }
 
-    // Create a Payment Method using the card details from CardElement
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: 'card',
       card: elements.getElement(CardElement),
@@ -23,13 +22,11 @@ const CheckoutForm = () => {
     if (error) {
       console.log(error.message);
     } else {
-      // Send paymentMethod.id to the backend to create a payment intent
       const clientSecret = await createPaymentIntent(amount, paymentMethod.id);
       await confirmPayment(clientSecret);
     }
   };
 
-  // Function to confirm the payment using the clientSecret from backend
   const confirmPayment = async (clientSecret) => {
     const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret);
 
