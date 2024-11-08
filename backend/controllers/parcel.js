@@ -4,8 +4,6 @@ const Parcel = require('../models/parcel')
 parcelRouter.post('/', async (request, response) => {
   const { width_dimension, length_dimension, height_dimension, weight, serialNumber} = request.body
 
-
-
   const parcel = new Parcel({
     width_dimension,
     length_dimension,
