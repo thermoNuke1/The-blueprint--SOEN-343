@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
 const shipmentSchema = new mongoose.Schema({
-    
   shipment_id: Number,
   shipment_status: String,
   location: String,
