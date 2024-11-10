@@ -27,6 +27,9 @@ function CustomNavBar() {
         <li class="nav-item">
           <a class="nav-link" href="#">Contact</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Tracking</a>
+        </li>
       </ul>
 
       <div class="ms-auto">
