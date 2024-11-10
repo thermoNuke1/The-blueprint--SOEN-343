@@ -1,11 +1,12 @@
 import React from 'react';
+import './featuresoverview.css';
 
 function FeaturesOverview() {
     return(
      <div class="container">
   <div class="row g-4 py-5 row-cols-1 row-cols-lg-3 justify-content-center mx-auto">
-    <div class="feature col text-center">
-      <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+      <div class="feature col text-center">
+      <div class="feature-icon d-inline-flex align-items-center justify-content-center bg-gradient fs-2 mb-3">
         <svg class="bi" width="1em" height="1em">
             <image href="../../assets/calculator.png" width="1em" height="1em" />
         </svg>
@@ -17,9 +18,11 @@ function FeaturesOverview() {
         <svg class="bi"><use xlink:href="#chevron-right"></use></svg>
       </a>
     </div>
-    <div class="feature col text-center">
-      <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
-        <svg class="bi" width="1em" height="1em"><use xlink:href="#people-circle"></use></svg>
+      <div class="feature col text-center">
+      <div class="feature-icon d-inline-flex align-items-center justify-content-center bg-gradient fs-2 mb-3">
+        <svg class="bi" width="1em" height="1em">
+          <image href="../../assets/delivery.png" width="1em" height="1em" />
+        </svg>
       </div>
       <h3 class="fs-2 text-body-emphasis">Send Shipment</h3>
       <p>Sending packages is easy!</p>
@@ -28,9 +31,11 @@ function FeaturesOverview() {
         <svg class="bi"><use xlink:href="#chevron-right"></use></svg>
       </a>
     </div>
-    <div class="feature col text-center">
-      <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
-        <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2"></use></svg>
+      <div class="feature col text-center">
+      <div class="feature-icon d-inline-flex align-items-center justify-content-center bg-gradient fs-2 mb-3">
+        <svg class="bi" width="1em" height="1em">
+          <image href="../../assets/support.png" width="1em" height="1em" />
+        </svg>
       </div>
       <h3 class="fs-2 text-body-emphasis">Help and Support</h3>
       <p>Let's get you the right help!</p>

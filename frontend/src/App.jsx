@@ -1,12 +1,7 @@
 import { useState } from "react";
-import Homepage from "./pages/Homepage";
+import Homepage from "./pages/Homepage/Homepage.jsx";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-// import { useState } from "react";
-// import Navbar from "./components/Navbar.jsx";
-// import Login from "./components/login.jsx";
-// import Notification from "./components/notifications.jsx";
-// import loginService from './services/login.js';
 import CheckoutForm from "./components/checkoutForm.jsx";
 import { Elements} from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
