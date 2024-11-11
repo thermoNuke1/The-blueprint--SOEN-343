@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Homepage from "./pages/Homepage/Homepage.jsx";
-// import 'bootstrap/dist/css/bootstrap.min.css';
-// import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 // import CheckoutForm from "./components/checkoutForm.jsx";
 // import { Elements} from '@stripe/react-stripe-js';
 // import { loadStripe } from '@stripe/stripe-js';
