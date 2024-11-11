@@ -1,5 +1,6 @@
 import { useState } from "react";
 import loginService from '/src/services/login.js';
+import PropTypes from 'prop-types';
 
 
 const Login = ({setErrorMessage, setUser}) => {
@@ -12,6 +13,7 @@ const Login = ({setErrorMessage, setUser}) => {
         event.preventDefault();
 
         try {
+            console.log(user)
             const user = await loginService.login({
                 username,
                 password,
@@ -21,6 +23,7 @@ const Login = ({setErrorMessage, setUser}) => {
             setPassword('');
         } catch (exception) {
             setErrorMessage('Wrong credentials');
+            setUser(null);
             setTimeout(() => {
                 setErrorMessage(null);
             }, 5000);
@@ -54,5 +57,10 @@ const Login = ({setErrorMessage, setUser}) => {
         </div>
     );
 };
+
+Login.propTypes = {
+    setErrorMessage: PropTypes.func.isRequired,
+    setUser: PropTypes.func.isRequired,
+}
 
 export default Login;

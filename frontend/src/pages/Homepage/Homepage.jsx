@@ -1,4 +1,3 @@
-import React from 'react';
 import CustomNavBar from '../../components/Navbar/navbar';
 import Hero from '../../components/Hero/hero';
 import FeaturesOverview from '../../components/FeaturesOverview/featuresoverview';
