@@ -13,7 +13,7 @@ const Login = ({setErrorMessage, setUser}) => {
         event.preventDefault();
 
         try {
-            console.log(user)
+            
             const user = await loginService.login({
                 username,
                 password,

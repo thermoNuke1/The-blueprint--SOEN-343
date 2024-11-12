@@ -1,6 +1,16 @@
 import PropTypes from 'prop-types';
+import { useNavigate, useLocation } from "react-router-dom";
 
-const CustomNavBar = ({setShowLogin}) => {
+const CustomNavBar = ({setShowLogin, showLogin}) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleClick = () => {
+    setShowLogin(false);
+    navigate("/login");
+  }
+
+  const isLoginPage = location.pathname === '/login';
 
     return (
 <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -33,7 +43,9 @@ const CustomNavBar = ({setShowLogin}) => {
       </ul>
 
       <div className="ms-auto">
-        <button className="btn btn-outline-primary me-2"  onClick={()=>{setShowLogin(true)}}>Login</button>
+            {!isLoginPage && showLogin ? (
+              <button className="btn btn-outline-primary me-2" onClick={handleClick}>Login</button>
+            ) : null}
       </div>
     </div>
   </div>
@@ -42,6 +54,7 @@ const CustomNavBar = ({setShowLogin}) => {
 }
 
 CustomNavBar.propTypes = {
-  setShowLogin: PropTypes.func.isRequired, 
+  setShowLogin: PropTypes.func.isRequired,
+  showLogin: PropTypes.bool.isRequired, 
 };
 export default CustomNavBar;

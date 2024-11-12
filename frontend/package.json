@@ -17,11 +17,13 @@
     "@stripe/react-stripe-js": "^2.8.1",
     "@stripe/stripe-js": "^4.9.0",
     "axios": "^1.7.7",
+    "bootstrap": "^5.3.3",
     "mui": "^0.0.1",
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.5",
     "react-dom": "^18.3.1",
+    "react-router-dom": "^6.28.0",
     "stripe": "^17.3.1",
     "tailwindcss": "^3.4.14"
   },

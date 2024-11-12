@@ -1,5 +1,6 @@
 const config = require('./utils/config')
 const express = require('express')
+const path = require('path');
 const app = express()
 require('express-async-errors')
 const cors =  require('cors')
@@ -37,6 +38,9 @@ app.use('/api/parcel', parcelRouter)
 app.use('/api/payment', paymentRouter)
 app.use('/api/shipment', shipmentRouter)
 
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'dist', 'index.html'))
+  })
 
 app.use(middleware.unknownEndpoint)
 app.use(middleware.errorHandler)
