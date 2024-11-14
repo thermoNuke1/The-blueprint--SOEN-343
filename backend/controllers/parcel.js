@@ -1,8 +1,11 @@
 const parcelRouter = require('express').Router()
 const Parcel = require('../models/parcel')
+const jwt = require('jsonwebtoken')
+const { verifyToken } = require('./tokenVerification')
 
-parcelRouter.post('/', async (request, response) => {
+parcelRouter.post('/' ,verifyToken ,async (request, response) => {
   const { width_dimension, length_dimension, height_dimension, weight, serialNumber} = request.body
+  
 
   const parcel = new Parcel({
     width_dimension,
