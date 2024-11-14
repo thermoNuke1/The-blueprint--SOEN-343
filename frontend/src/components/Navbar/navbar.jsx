@@ -56,7 +56,7 @@ const CustomNavBar = ({setShowLogin, showLogin, user, setUser}) => {
           <a className="nav-link" href="#">Contact</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">Tracking</a>
+          <a className="nav-link" href="/tracking">Tracking</a>
         </li>
       </ul>
 

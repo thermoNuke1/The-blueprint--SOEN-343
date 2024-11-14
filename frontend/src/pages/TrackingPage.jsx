@@ -12,7 +12,6 @@ const Tracking = () => {
     const [shipmentId] = useState(101);
     return (
         <>
-            <CustomNavBar></CustomNavBar>
             <Container></Container>
             
             <ShipmentProgressBar shipmentId={shipmentId}></ShipmentProgressBar>
