@@ -1,5 +1,8 @@
 import { useState } from "react";
 import loginService from '/src/services/login.js';
+import userService from '/src/services/user.js'
+import parcelService from '/src/services/parcel.js'
+import PropTypes from 'prop-types';
 
 
 const Login = ({setErrorMessage, setUser}) => {
@@ -12,15 +15,22 @@ const Login = ({setErrorMessage, setUser}) => {
         event.preventDefault();
 
         try {
+            
             const user = await loginService.login({
                 username,
                 password,
             });
-            setUser(user);
-            setUsername('');
-            setPassword('');
+            window.localStorage.setItem(
+                'loggedappUser', JSON.stringify(user)      
+            )
+            parcelService.setToken(user.token)
+            userService.setToken(user.token)
+            setUser(user)
+            setUsername('')
+            setPassword('')
         } catch (exception) {
             setErrorMessage('Wrong credentials');
+            setUser(null);
             setTimeout(() => {
                 setErrorMessage(null);
             }, 5000);
@@ -54,5 +64,10 @@ const Login = ({setErrorMessage, setUser}) => {
         </div>
     );
 };
+
+Login.propTypes = {
+    setErrorMessage: PropTypes.func.isRequired,
+    setUser: PropTypes.func.isRequired,
+}
 
 export default Login;
