@@ -30,9 +30,8 @@ const App = () => {
 		if (loggedUserJSON) {
 			const user = JSON.parse(loggedUserJSON);
 			setUser(user);
-			parcelService.setToken(user.token);
 		}
-	}, []);
+	}, [user]);
 
 	return (
 		<>
@@ -40,6 +39,7 @@ const App = () => {
 				setShowLogin={setShowLogin}
 				showLogin={showLogin}
 				user={user}
+				setUser={setUser}
 			/>
 			<Notification message={errorMessage} />
 			<Routes>
@@ -55,7 +55,7 @@ const App = () => {
 
 				<Route
 					path="/signup"
-					element={<SignUp setErrorMessage={setErrorMessage} />}
+					element={<SignUp setErrorMessage={setErrorMessage} setUser={setUser}/>}
 				/>
 
 				<Route
@@ -70,7 +70,7 @@ const App = () => {
 				/>
 				<Route
 					path="/account"
-					element={<AccountPage user={user} />}
+					element={<AccountPage  />}
 				/>
 			  <Route path="/placeDelivary" element = {<CreateParcel/>}/>
 

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useNavigate, useLocation } from "react-router-dom";
 
-const CustomNavBar = ({setShowLogin, showLogin, user}) => {
+const CustomNavBar = ({setShowLogin, showLogin, user, setUser}) => {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -13,6 +13,19 @@ const CustomNavBar = ({setShowLogin, showLogin, user}) => {
   const handleAccount = () => {
     setShowLogin(false);
     navigate("/account");
+  }
+
+  const handleSignup = () => {
+    setShowLogin(false);
+    navigate("/signup");
+  }
+  const handleLogout = () => {
+    setShowLogin(true);
+    navigate("/");
+    window.localStorage.clear();
+    setUser(null);
+  
+
   }
 
   const isLoginPage = location.pathname === '/login';
@@ -48,11 +61,18 @@ const CustomNavBar = ({setShowLogin, showLogin, user}) => {
       </ul>
 
       <div className="ms-auto">
-     {!isLoginPage && showLogin && user ===null? (
+     {!isLoginPage && showLogin && user ===null? (<>
               <button className="btn btn-outline-primary me-2" onClick={handleLogin}>Login</button>
+              <button className="btn btn-outline-primary me-2" onClick={handleSignup}>Sign Up</button>
+              </>
             ) : null}
-      {!user?null:<button className="btn btn-outline-primary me-2" onClick={handleAccount}>My Account</button>}
+      {!user?null:<>
+      <button className="btn btn-outline-primary me-2" onClick={handleAccount}>My Account</button>
+      <button className="btn btn-outline-primary me-2" onClick={handleLogout}>Log out</button>
+      
+      </>}
       </div>
+      
     </div>
   </div>
 </nav>
@@ -63,5 +83,6 @@ CustomNavBar.propTypes = {
   setShowLogin: PropTypes.func.isRequired,
   showLogin: PropTypes.bool.isRequired,
   user: PropTypes.string.isRequired, 
+  setUser: PropTypes.func.isRequired,
 };
 export default CustomNavBar;

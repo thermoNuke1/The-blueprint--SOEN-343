@@ -2,9 +2,10 @@ import PropTypes from 'prop-types';
 import userService from '../services/user.js';
 import { useState, useEffect } from 'react';
 
-const AccountPage = ({ user }) => {
+const AccountPage = () => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
+    const user = JSON.parse(window.localStorage.getItem('loggedappUser'));
 
     const getUserInfo = async () => {
         try{
@@ -49,8 +50,8 @@ const AccountPage = ({ user }) => {
   );
 };
 
-AccountPage.propTypes = {
-  user: PropTypes.object.isRequired,
-};
+// AccountPage.propTypes = {
+//   user: PropTypes.object.isRequired,
+// };
 
 export default AccountPage;

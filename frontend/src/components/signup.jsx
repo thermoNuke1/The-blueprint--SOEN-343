@@ -1,12 +1,14 @@
 import { useState } from "react";
 import userService from "/src/services/user.js";
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 
-const SignUp = ({ setErrorMessage }) => {
+const SignUp = ({ setErrorMessage, setUser }) => {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const [firstname, setFirstname] = useState("");
 	const [lastname, setLastname] = useState("");
+	const navigate = useNavigate();
 
 	const handleSignUp = async (event) => {
 		event.preventDefault();
@@ -18,6 +20,8 @@ const SignUp = ({ setErrorMessage }) => {
 				firstname,
 				lastname,
 			});
+			setUser(user)
+			navigate('/')
 		} catch (exception) {
 			setErrorMessage("Something went wrong");
 			setUser(null);
@@ -76,6 +80,7 @@ const SignUp = ({ setErrorMessage }) => {
 
 SignUp.propTypes = {
 	setErrorMessage: PropTypes.func.isRequired,
+	setUser: PropTypes.func.isRequired,
 };
 
 export default SignUp;
