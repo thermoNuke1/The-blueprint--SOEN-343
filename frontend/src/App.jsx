@@ -12,7 +12,7 @@ import Footer from "./components/Footer/footer.jsx";
 import CustomNavBar from "./components/Navbar/navbar.jsx";
 import Notification from "./components/notifications.jsx";
 import Login from "./components/login.jsx";
-import parcelService from "./services/parcel.js";
+// import parcelService from "./services/parcel.js";
 import AccountPage from "./pages/accountPage.jsx";
 import SignUp from "./components/signup.jsx";
 import CreateParcel from "./pages/placeDelivary.jsx";
@@ -26,12 +26,13 @@ const App = () => {
 	const [user, setUser] = useState(null);
 
 	useEffect(() => {
+		setShowLogin(true)
 		const loggedUserJSON = window.localStorage.getItem("loggedappUser");
 		if (loggedUserJSON) {
 			const user = JSON.parse(loggedUserJSON);
 			setUser(user);
 		}
-	}, [user]);
+	}, [user, showLogin]);
 
 	return (
 		<>
@@ -72,7 +73,7 @@ const App = () => {
 					path="/account"
 					element={<AccountPage  />}
 				/>
-			  <Route path="/placeDelivary" element = {<CreateParcel/>}/>
+			  <Route path="/placeDelivary" element = {<CreateParcel setErrorMessage={setErrorMessage} />}/>
 
 			</Routes>
 			<Footer />

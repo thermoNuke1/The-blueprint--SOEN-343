@@ -1,50 +1,106 @@
-import { useState } from 'react'
-import parcelService from '../services/parcel'
+import { useState } from 'react';
+import parcelService from '../services/parcel';
+import PropTypes from 'prop-types';
+import calculatePrice from '../function/priceMaker';
+let total =0;
 
-const CreateParcel = () => {
-  const [width, setWidth] = useState('')
-  const [length, setLength] = useState('')
-  const [height, setHeight] = useState('')
-  const [weight, setWeight] = useState('')
-  const [serialNumber, setSerialNumber] = useState('')
-  const [message, setMessage] = useState('')
-  const [error, setError] = useState('')
+const CreateParcel = ({ setErrorMessage }) => {
+  const [width, setWidth] = useState('');
+  const [length, setLength] = useState('');
+  const [height, setHeight] = useState('');
+  const [weight, setWeight] = useState('');
+  const [serialNumber, setSerialNumber] = useState('');
+  const [message, setMessage] = useState('');
+  const [parcels, setParcels] = useState([]);
+  const [unit, setUnit] = useState('metric');
 
-  const handleSubmit = async (event) => {
-    event.preventDefault()
+  const handleAddParcel = () => {
+    if (isNaN(width) || isNaN(length) || isNaN(height) || isNaN(weight)) {
+      setErrorMessage('Please enter valid numbers for dimensions and weight.');
+      return;
+    }
+
+    let widthCm = parseFloat(width);
+    let lengthCm = parseFloat(length);
+    let heightCm = parseFloat(height);
+    let weightKg = parseFloat(weight);
+
+    if (unit === 'imperial') {
+      widthCm *= 2.54; // Convert inches to cm
+      lengthCm *= 2.54;
+      heightCm *= 2.54;
+      weightKg *= 0.453592; // Convert pounds to kg
+    }
+
+    const volume = widthCm * lengthCm * heightCm;
+    if (volume < 10) {
+      setErrorMessage('The minimum parcel volume is 10 cm³.');
+      return;
+    }
 
     const newParcel = {
-      width_dimension: width,
-      length_dimension: length,
-      height_dimension: height,
-      weight: weight,
+      width_dimension: widthCm,
+      length_dimension: lengthCm,
+      height_dimension: heightCm,
+      weight: weightKg,
       serialNumber: serialNumber,
-    }
+    };
+    
 
     try {
-      // Call create parcel service
-      const createdParcel = await parcelService.create(newParcel)
-      setMessage(`Parcel created successfully! Serial number: ${createdParcel.parcel.serialNumber}`)
-      setWidth('')
-      setLength('')
-      setHeight('')
-      setWeight('')
-      setSerialNumber('')
-      setError('')
-    } catch (err) {
-      setError('Failed to create parcel, please try again.')
-      setMessage('')
+      const price = calculatePrice(newParcel);
+      setParcels([...parcels, { ...newParcel, price }]);
+      setWidth('');
+      setLength('');
+      setHeight('');
+      setWeight('');
+      setSerialNumber('');
+      setMessage(`Parcel with serial number ${serialNumber} added!`);
+      total = Number(total) + Number(price);
+      console.log(total)
+    } catch (error) {
+      setErrorMessage(error.message);
+      setTimeout(() => {
+        setErrorMessage(null);
+      }, 5000);
     }
-  }
+    
+  };
+
+  const handleOrderSubmit = async () => {
+    try {
+      for (const parcel of parcels) {
+        await parcelService.create(parcel);
+      }
+      setMessage('Order created successfully with all parcels!');
+      setParcels([]);
+    } catch (exception) {
+      setErrorMessage('Failed to create order, please try again.');
+      setTimeout(() => {
+        setErrorMessage(null);
+      }, 5000);
+    }
+  };
+
+  const handleCancelOrder = () => {
+    setParcels([]);
+    setMessage('Order canceled.');
+  };
 
   return (
     <div>
       <h2>Create New Parcel</h2>
       {message && <p style={{ color: 'green' }}>{message}</p>}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={(e) => e.preventDefault()}>
         <div>
-          <label>Width</label>
+          <label>Units</label>
+          <select value={unit} onChange={({ target }) => setUnit(target.value)}>
+            <option value="metric">Metric (cm, kg)</option>
+            <option value="imperial">Imperial (in, lbs)</option>
+          </select>
+        </div>
+        <div>
+          <label>Width ({unit === 'metric' ? 'cm' : 'in'})</label>
           <input
             type="number"
             value={width}
@@ -53,7 +109,7 @@ const CreateParcel = () => {
           />
         </div>
         <div>
-          <label>Length</label>
+          <label>Length ({unit === 'metric' ? 'cm' : 'in'})</label>
           <input
             type="number"
             value={length}
@@ -62,7 +118,7 @@ const CreateParcel = () => {
           />
         </div>
         <div>
-          <label>Height</label>
+          <label>Height ({unit === 'metric' ? 'cm' : 'in'})</label>
           <input
             type="number"
             value={height}
@@ -71,7 +127,7 @@ const CreateParcel = () => {
           />
         </div>
         <div>
-          <label>Weight</label>
+          <label>Weight ({unit === 'metric' ? 'kg' : 'lbs'})</label>
           <input
             type="number"
             value={weight}
@@ -88,10 +144,25 @@ const CreateParcel = () => {
             required
           />
         </div>
-        <button type="submit">Create Parcel</button>
+        <button type="button" onClick={handleAddParcel}>Add Parcel</button>
       </form>
+      <h3>Added Parcels</h3>
+      <ul>
+        {parcels.map((parcel, index) => (
+          <li key={index}>
+            {parcel.serialNumber} - {parcel.width_dimension}x{parcel.length_dimension}x{parcel.height_dimension} cm - {parcel.weight} kg - ${parcel.price}
+          </li>
+        ))}
+      </ul>
+      <h4>Total Order Price: ${()=>{total.toFixed(2)}}</h4>
+      <button onClick={handleOrderSubmit} disabled={parcels.length === 0}>Order All Parcels</button>
+      <button onClick={handleCancelOrder} disabled={parcels.length === 0}>Cancel Order</button>
     </div>
-  )
-}
+  );
+};
 
-export default CreateParcel
+CreateParcel.propTypes = {
+  setErrorMessage: PropTypes.func.isRequired,
+};
+
+export default CreateParcel;

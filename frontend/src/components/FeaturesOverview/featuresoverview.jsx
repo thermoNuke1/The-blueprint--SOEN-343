@@ -1,6 +1,12 @@
 import './featuresoverview.css';
+import { useNavigate } from 'react-router-dom';
 
-function FeaturesOverview() {
+const FeaturesOverview = () => {
+  const navigate = useNavigate()
+  const handlePackage = () =>{
+    navigate('/placeDelivary')
+    
+  }
     return(
      <div className="container">
   <div className="row g-4 py-5 row-cols-1 row-cols-lg-3 justify-content-center mx-auto">
@@ -25,7 +31,7 @@ function FeaturesOverview() {
       </div>
       <h3 className="fs-2 text-body-emphasis">Send Shipment</h3>
       <p>Sending packages is easy!</p>
-      <a href="#" className="icon-link">
+      <a onClick={handlePackage} className="icon-link">
         Sending a package
         <svg className="bi"><use xlinkHref="#chevron-right"></use></svg>
       </a>
