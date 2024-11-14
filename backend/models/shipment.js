@@ -1,9 +1,10 @@
 const mongoose = require('mongoose')
 
 const shipmentSchema = new mongoose.Schema({
-    origin:String,
-    destination:String,
-    currentLocatio:String,
+    shipment_id:String,
+    shipment_status:String,
+    location:String,
+    timestamp:Date,
     ShippingLabel:[
         {
 
