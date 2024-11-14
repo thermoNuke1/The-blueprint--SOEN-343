@@ -14,6 +14,7 @@ import Notification from "./components/notifications.jsx";
 import Login from "./components/login.jsx";
 import parcelService from "./services/parcel.js";
 import AccountPage from "./pages/accountPage.jsx";
+import CreateParcel from "./pages/placeDelivary.jsx";
 
 
 // const stripePromise = loadStripe('pk_test_51QIZoARrCeYLfUcjF4kwH421Z5YCAybTbMhfwQKW2jCH0yRAOzy3Bqdu2BM021tNJLdyfX3txaqNGSLnxXZBS0Xq00lXkPvRFa');
@@ -44,6 +45,8 @@ const App = () => {
 			  <Route path="/tracking" element={<Tracking />} />
 			  <Route path="/login" element={<Login setErrorMessage={setErrorMessage} user={user} setUser={setUser} />} />
 			  <Route path="/account" element = {<AccountPage user={user} />}/>
+			  <Route path="/placeDelivary" element = {<CreateParcel/>}/>
+
       		</Routes>
       		<Footer />
 			

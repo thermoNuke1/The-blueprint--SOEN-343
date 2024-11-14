@@ -4,7 +4,7 @@ const User = require('../models/users')
 const { verifyToken } = require('./tokenVerification')
 
 usersRouter.post('/', async (request, response) => {
-  const { username, name, password } = request.body
+  const { username, firstname, lastname, password } = request.body
 
   const saltRounds = 10
   const passwordHash = await bcrypt.hash(password, saltRounds)
@@ -12,7 +12,8 @@ usersRouter.post('/', async (request, response) => {
 
   const user = new User({
     username,
-    name,
+    firstname,
+    lastname,
     passwordHash,
     type,
   })
