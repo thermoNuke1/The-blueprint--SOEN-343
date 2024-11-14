@@ -1,7 +1,9 @@
 //each shipment contains 1 or more parcels
 //subject observer's are watching
 const shipmentRouter = require('express').Router()
+const { response } = require('express')
 const Shipment = require('../models/shipment')
+const Logger = require('../utils/logger')
 
 shipmentRouter.post('/', async (request, response) => {
     const { shipment_id, shipment_status, location, timestamp,} = request.body
@@ -24,18 +26,15 @@ shipmentRouter.post('/', async (request, response) => {
   })
 
   shipmentRouter.get('/:shipment_id', async (req, res) => {
-    console.log('Fetching shipment with custom shipment_id:', req.params.shipment_id);  // Debug log
-    try {
-      const shipment = await Shipment.findOne({ shipment_id: Number(req.params.shipment_id) });  // Use shipment_id for query
-      if (shipment) {
-        res.json(shipment);
-      } else {
-        res.status(404).send({ error: 'Shipment not found' });
-      }
-    } catch (error) {
-      console.error('Error fetching shipment:', error);
-      res.status(500).send({ error: 'Server error' });
+    Logger.info('Fetching shipment with custom shipment_id:', req.params.shipment_id); 
+    const {shipment_id} = req.params
+    const shipment = await Shipment.findOne({shipment_id});  // Use shipment_id for query
+    if (!shipment) {
+      return res.status(404).json({
+        error: "Shipment not found"
+      });
     }
+    res.json(shipment)
   })
   
   
