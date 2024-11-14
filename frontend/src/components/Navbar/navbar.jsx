@@ -34,7 +34,7 @@ const CustomNavBar = ({setShowLogin, showLogin, user, setUser}) => {
 <nav className="navbar navbar-expand-lg navbar-light bg-light">
   <div className="container">
     <a className="navbar-brand d-flex align-items-center" href="/">
-      <img src="../../assets/deltra-logo.png" alt="Logo" width="100" height="50" className="d-inline-block align-top me-2"></img>
+      <img src="../../assets/deltra-logo.png" alt="Logo" width="75" height="75" className="d-inline-block align-top me-2"></img>
     </a>
 
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

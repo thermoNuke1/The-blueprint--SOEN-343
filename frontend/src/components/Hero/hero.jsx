@@ -8,7 +8,7 @@ function Hero() {
       <div className="col-lg-6">
         <h1 className="display-5 fw-bold text-body-emphasis lh-1 mb-3">DELTRA</h1>
         <h2 className="display-5 fw bold text-body-emphasis lh-1 mb-3">Fast.Reliable.Everywhere</h2>
-        <p className="lead">Deltra makes deliveries easy and fast. Whether it&aposs nearby or far away, we make sure your package gets where it needs to be, on time. With real-time tracking and modern technology. Deltra delivers with care and speed you can count on.</p>
+        <p className="lead">Deltra makes deliveries easy and fast. Whether it's nearby or far away, we make sure your package gets where it needs to be, on time. With real-time tracking and modern technology. Deltra delivers with care and speed you can count on.</p>
       </div>
     </div>
 </div>

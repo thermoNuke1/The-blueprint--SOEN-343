@@ -20,7 +20,7 @@ function FeaturesOverview() {
       <div className="feature col text-center">
       <div className="feature-icon d-inline-flex align-items-center justify-content-center bg-gradient fs-2 mb-3">
         <svg className="bi" width="1em" height="1em">
-          <image href="../../assets/delivery.png" width="1em" height="1em" />
+          <image href="../../assets/delivery.png" width="40" height="40" />
         </svg>
       </div>
       <h3 className="fs-2 text-body-emphasis">Send Shipment</h3>
