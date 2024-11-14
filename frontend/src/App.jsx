@@ -44,7 +44,7 @@ const App = () => {
 			/>
 			<Notification message={errorMessage} />
 			<Routes>
-				{/* Define your routes here */}
+				
 				<Route
 					path="/"
 					element={<Homepage />}
