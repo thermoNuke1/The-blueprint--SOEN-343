@@ -9,9 +9,8 @@ const AccountPage = ({ user }) => {
     const getUserInfo = async () => {
         try{
         const userInfo = await userService.getUserByUsername(user.username)
-        const {firstname, lastname} = userInfo;
-        setFirstName(firstname);
-        setLastName(lastname);
+        setFirstName(userInfo.firstname);
+        setLastName(userInfo.lastname);
 
         } catch(exception){
             // setErrorMessage('Wrong credentials');
