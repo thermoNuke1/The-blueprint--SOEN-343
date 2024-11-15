@@ -6,7 +6,7 @@ const { updateShipmentStatus } = require('../utils/shipmentUpdater');
 
 
 shipmentRouter.post('/', async (req, res) => {
-  const { location, timestamp, paid, parcels } = req.body;
+  const { location,origin,destination, timestamp, paid, parcels } = req.body;
 
   try {
     // Insert parcels into the database
