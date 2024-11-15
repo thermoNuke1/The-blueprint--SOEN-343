@@ -25,7 +25,7 @@ async function updateShipmentStatus(shipmentId, index = 0) {
       shipment.shipment_status = status;
       await shipment.save();
 
-      updateShipmentStatus(shipmentId, index + 1); // Recursive call for next status
+      updateShipmentStatus(shipmentId, index + 1); 
     } catch (error) {
       console.error('Error updating shipment status:', error);
     }

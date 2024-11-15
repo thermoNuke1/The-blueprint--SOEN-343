@@ -2,7 +2,7 @@ const shipmentRouter = require('express').Router();
 const Shipment = require('../models/shipment'); // Correctly import the model
 const Parcel = require('../models/parcel');
 const Logger = require('../utils/logger');
-//const { updateShipmentStatus } = require('../utils/shipmentUpdater');
+const { updateShipmentStatus } = require('../utils/shipmentUpdater');
 
 
 shipmentRouter.post('/', async (req, res) => {
@@ -23,7 +23,7 @@ shipmentRouter.post('/', async (req, res) => {
     });
 
     const savedShipment = await shipment.save();
-
+    updateShipmentStatus(savedShipment._id);
     res.status(201).json(savedShipment);
   } catch (error) {
     console.error('Error saving shipment:', error);
