@@ -1,62 +1,39 @@
 import React, { useEffect, useState } from 'react';
-import ColoredProgressBar from './coloredProgressBar';
+import ColoredProgressBar from './ColoredProgressBar';
+import UIObserver from '../../../observers/uiObserver';
 
 const ShipmentProgressBar = ({ shipmentId }) => {
   const [shipmentStatus, setShipmentStatus] = useState('');
   const [progress, setProgress] = useState(0);
 
-  useEffect(() => {
-    const fetchShipmentStatus = async () => {
-      try {
-        const response = await fetch(`http://localhost:3001/api/shipment/${shipmentId}`);
-        const data = await response.json();
-        
-        if (data.shipment_status) {
-          setShipmentStatus(data.shipment_status);
-          let newProgress = 0;
-          switch (data.shipment_status) {
-            case 'Order Placed':
-              newProgress = 10;
-              break;
-            case 'Processing':
-              newProgress = 20;
-              break;
-            case 'Ready for Pickup':
-              newProgress = 30;
-              break;
-            case 'Out for Delivery':
-              newProgress = 50;
-              break;
-            case 'In Transit':
-              newProgress = 70;
-              break;
-            case 'Delivered':
-              newProgress = 100;
-              break;
-            default:
-              newProgress = 0;
-          }
-          setProgress(newProgress);
-          // Stop polling if the shipment is delivered
-          if (data.shipment_status === 'Delivered') {
-            clearInterval(intervalId);
-          }
-        } else {
-          console.error('Shipment status not found');
-        }
-      } catch (error) {
-        console.error('Error fetching shipment status:', error);
-      }
+  // Map shipment statuses to progress values
+  const calculateProgress = (status) => {
+    const statusProgressMap = {
+      'Order Placed': 10,
+      'Processing': 20,
+      'Ready for Pickup': 30,
+      'Out for Delivery': 50,
+      'In Transit': 70,
+      'Delivered': 100,
     };
-  
-    if (shipmentId) {
-      fetchShipmentStatus();
-      const intervalId = setInterval(fetchShipmentStatus, 5000);
-      return () => clearInterval(intervalId);  // Cleanup on component unmount
-    }
+    return statusProgressMap[status] || 0; 
+  };
+
+  useEffect(() => {
+    const handleUpdate = (data) => {
+      setShipmentStatus(data.shipment_status);
+      setProgress(calculateProgress(data.shipment_status));
+    };
+
+    // Instantiate the UIObserver
+    const uiObserver = new UIObserver(handleUpdate, shipmentId);
+
+    // Initial fetch and set up polling
+    uiObserver.update(); // Fetch status on mount
+    const intervalId = setInterval(() => uiObserver.update(), 5000);
+
+    return () => clearInterval(intervalId); 
   }, [shipmentId]);
-  
-  
 
   return (
     <div className="progress-container">

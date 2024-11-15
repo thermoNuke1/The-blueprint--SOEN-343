@@ -19,7 +19,6 @@ import CreateParcel from "./pages/placeDelivary.jsx";
 import shipmentService from './services/shipment';
 
 
-
 // const stripePromise = loadStripe('pk_test_51QIZoARrCeYLfUcjF4kwH421Z5YCAybTbMhfwQKW2jCH0yRAOzy3Bqdu2BM021tNJLdyfX3txaqNGSLnxXZBS0Xq00lXkPvRFa');
 
 const App = () => {
