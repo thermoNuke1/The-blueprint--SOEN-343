@@ -1,24 +1,50 @@
-import axios from 'axios'
-const baseUrl = '/api/parcel'
+import axios from 'axios';
+const baseUrl = '/api/parcel';
 
-let token = null
+let token = null;
 
-const setToken = newToken => {  
-token = `Bearer ${newToken}`
-}
-
-const getAll = () => {
-    const request = axios.get(baseUrl)
-    return request.then(response => response.data)
-}
-
-const create = async newObject => {  
-    const config = {    
-        headers: { Authorization: token },  
+const initializeToken = () => {
+    try {
+        const storedUser = JSON.parse(localStorage.getItem('loggedappUser'));
+        if (storedUser && storedUser.token) {
+            token = `Bearer ${storedUser.token}`;
+        } 
+    } catch (error) {
+        console.error('Error initializing token:', error.message);
+        token = null;
     }
-  const response = await axios.post(baseUrl, newObject, config) 
-  return response.data
-}
+};
 
+initializeToken();
 
-export default { getAll, create, setToken }
+const setToken = newToken => {
+    token = `Bearer ${newToken}`;
+    console.log(token);
+};
+
+const getAll = async () => {
+    try {
+        const response = await axios.get(baseUrl, {
+            headers: { Authorization: token }
+        });
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching data:', error.message);
+        throw error;
+    }
+};
+
+const create = async newObject => {
+    try {
+        const config = {
+            headers: { Authorization: token }
+        };
+        const response = await axios.post(baseUrl, newObject, config);
+        return response.data;
+    } catch (error) {
+        console.error('Error creating object:', error.message);
+        throw error;
+    }
+};
+
+export default { getAll, create, setToken };

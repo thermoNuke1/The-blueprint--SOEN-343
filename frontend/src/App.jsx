@@ -12,10 +12,13 @@ import Footer from "./components/Footer/footer.jsx";
 import CustomNavBar from "./components/Navbar/navbar.jsx";
 import Notification from "./components/notifications.jsx";
 import Login from "./components/login.jsx";
-import parcelService from "./services/parcel.js";
+// import parcelService from "./services/parcel.js";
 import AccountPage from "./pages/accountPage.jsx";
 import SignUp from "./components/signup.jsx";
 import CreateParcel from "./pages/placeDelivary.jsx";
+import shipmentService from './services/shipment';
+import QuotationProposalPage from "./pages/QuotationProposalPage.jsx";
+
 
 
 // const stripePromise = loadStripe('pk_test_51QIZoARrCeYLfUcjF4kwH421Z5YCAybTbMhfwQKW2jCH0yRAOzy3Bqdu2BM021tNJLdyfX3txaqNGSLnxXZBS0Xq00lXkPvRFa');
@@ -26,13 +29,14 @@ const App = () => {
 	const [user, setUser] = useState(null);
 
 	useEffect(() => {
+		setShowLogin(true)
 		const loggedUserJSON = window.localStorage.getItem("loggedappUser");
 		if (loggedUserJSON) {
 			const user = JSON.parse(loggedUserJSON);
 			setUser(user);
-			parcelService.setToken(user.token);
+			shipmentService.setToken(user.token);
 		}
-	}, []);
+	}, [user, showLogin]);
 
 	return (
 		<>
@@ -40,10 +44,11 @@ const App = () => {
 				setShowLogin={setShowLogin}
 				showLogin={showLogin}
 				user={user}
+				setUser={setUser}
 			/>
 			<Notification message={errorMessage} />
 			<Routes>
-				{/* Define your routes here */}
+				
 				<Route
 					path="/"
 					element={<Homepage />}
@@ -55,7 +60,7 @@ const App = () => {
 
 				<Route
 					path="/signup"
-					element={<SignUp setErrorMessage={setErrorMessage} />}
+					element={<SignUp setErrorMessage={setErrorMessage} setUser={setUser}/>}
 				/>
 
 				<Route
@@ -70,9 +75,10 @@ const App = () => {
 				/>
 				<Route
 					path="/account"
-					element={<AccountPage user={user} />}
+					element={<AccountPage  />}
 				/>
-			  <Route path="/placeDelivary" element = {<CreateParcel/>}/>
+			  <Route path="/placeDelivary" element = {<CreateParcel setErrorMessage={setErrorMessage} />}/>
+			  <Route path="/quotationproposal" element = {<QuotationProposalPage setErrorMessage={setErrorMessage} />}></Route>
 
 			</Routes>
 			<Footer />

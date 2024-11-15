@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useNavigate, useLocation } from "react-router-dom";
 
-const CustomNavBar = ({setShowLogin, showLogin, user}) => {
+const CustomNavBar = ({setShowLogin, showLogin, user, setUser}) => {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -15,13 +15,26 @@ const CustomNavBar = ({setShowLogin, showLogin, user}) => {
     navigate("/account");
   }
 
+  const handleSignup = () => {
+    setShowLogin(false);
+    navigate("/signup");
+  }
+  const handleLogout = () => {
+    setShowLogin(true);
+    navigate("/");
+    window.localStorage.clear();
+    setUser(null);
+  
+
+  }
+
   const isLoginPage = location.pathname === '/login';
 
     return (
 <nav className="navbar navbar-expand-lg navbar-light bg-light">
   <div className="container">
     <a className="navbar-brand d-flex align-items-center" href="/">
-      <img src="../../assets/deltra-logo.png" alt="Logo" width="100" height="50" className="d-inline-block align-top me-2"></img>
+      <img src="../../assets/deltra-logo.png" alt="Logo" width="75" height="75" className="d-inline-block align-top me-2"></img>
     </a>
 
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,16 +56,27 @@ const CustomNavBar = ({setShowLogin, showLogin, user}) => {
           <a className="nav-link" href="#">Contact</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">Tracking</a>
+        <a
+                className="nav-link"
+                href="#"
+                onClick={() => navigate("/tracking")}
+              >Tracking </a>
         </li>
       </ul>
 
       <div className="ms-auto">
-     {!isLoginPage && showLogin && user ===null? (
+     {!isLoginPage && showLogin && user ===null? (<>
               <button className="btn btn-outline-primary me-2" onClick={handleLogin}>Login</button>
+              <button className="btn btn-outline-primary me-2" onClick={handleSignup}>Sign Up</button>
+              </>
             ) : null}
-      {!user?null:<button className="btn btn-outline-primary me-2" onClick={handleAccount}>My Account</button>}
+      {!user?null:<>
+      <button className="btn btn-outline-primary me-2" onClick={handleAccount}>My Account</button>
+      <button className="btn btn-outline-primary me-2" onClick={handleLogout}>Log out</button>
+      
+      </>}
       </div>
+      
     </div>
   </div>
 </nav>
@@ -63,5 +87,6 @@ CustomNavBar.propTypes = {
   setShowLogin: PropTypes.func.isRequired,
   showLogin: PropTypes.bool.isRequired,
   user: PropTypes.string.isRequired, 
+  setUser: PropTypes.func.isRequired,
 };
 export default CustomNavBar;
