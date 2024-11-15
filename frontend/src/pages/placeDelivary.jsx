@@ -2,6 +2,8 @@ import { useState } from 'react';
 import parcelService from '../services/parcel';
 import PropTypes from 'prop-types';
 import calculatePrice from '../function/priceMaker';
+import shipmentService from '../services/shipment';
+
 let total =0;
 
 const CreateParcel = ({ setErrorMessage }) => {
@@ -67,20 +69,51 @@ const CreateParcel = ({ setErrorMessage }) => {
     
   };
 
-  const handleOrderSubmit = async () => {
-    try {
-      for (const parcel of parcels) {
-        await parcelService.create(parcel);
-      }
-      setMessage('Order created successfully with all parcels!');
-      setParcels([]);
-    } catch (exception) {
-      setErrorMessage('Failed to create order, please try again.');
-      setTimeout(() => {
-        setErrorMessage(null);
-      }, 5000);
-    }
-  };
+  // const handleOrderSubmit = async () => {
+  //   try {
+  //     for (const parcel of parcels) {
+  //       await parcelService.create(parcel);
+  //     }
+  //     setMessage('Order created successfully with all parcels!');
+  //     setParcels([]);
+  //   } catch (exception) {
+  //     setErrorMessage('Failed to create order, please try again.');
+  //     setTimeout(() => {
+  //       setErrorMessage(null);
+  //     }, 5000);
+  //   }
+  // };
+
+
+const handleOrderSubmit = async () => {
+  try {
+    const newShipment = {
+      shipment_status: 'Order Placed',
+      location: 'Warehouse A',
+      timestamp: new Date(),
+      paid: true,
+      parcels: parcels.map(parcel => ({
+        width_dimension: parcel.width_dimension,
+        length_dimension: parcel.length_dimension,
+        height_dimension: parcel.height_dimension,
+        weight: parcel.weight,
+        serialNumber: parcel.serialNumber,
+      })),
+    };
+
+    await shipmentService.create(newShipment); // This call now includes the token
+
+    setMessage('Order created successfully with all parcels!');
+    setParcels([]);
+  } catch (exception) {
+    console.error('Error during order submission:', exception);
+    setErrorMessage('Failed to create order, please try again.');
+    setTimeout(() => {
+      setErrorMessage(null);
+    }, 5000);
+  }
+};
+
 
   const handleCancelOrder = () => {
     setParcels([]);
@@ -138,7 +171,7 @@ const CreateParcel = ({ setErrorMessage }) => {
         <div>
           <label>Serial Number</label>
           <input
-            type="text"
+            type="number"
             value={serialNumber}
             onChange={({ target }) => setSerialNumber(target.value)}
             required

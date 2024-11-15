@@ -2,6 +2,7 @@ import { useState } from "react";
 import loginService from '/src/services/login.js';
 import userService from '/src/services/user.js'
 import parcelService from '/src/services/parcel.js'
+import shipmentService from '/src/services/shipment.js'
 import PropTypes from 'prop-types';
 import { useNavigate } from "react-router-dom";
 
@@ -26,6 +27,8 @@ const Login = ({setErrorMessage, setUser}) => {
             )
             parcelService.setToken(user.token)
             userService.setToken(user.token)
+            shipmentService.setToken(user.token); 
+
             setUser(user)
             setUsername('')
             setPassword('')

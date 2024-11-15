@@ -16,6 +16,8 @@ import Login from "./components/login.jsx";
 import AccountPage from "./pages/accountPage.jsx";
 import SignUp from "./components/signup.jsx";
 import CreateParcel from "./pages/placeDelivary.jsx";
+import shipmentService from './services/shipment';
+
 
 
 // const stripePromise = loadStripe('pk_test_51QIZoARrCeYLfUcjF4kwH421Z5YCAybTbMhfwQKW2jCH0yRAOzy3Bqdu2BM021tNJLdyfX3txaqNGSLnxXZBS0Xq00lXkPvRFa');
@@ -31,6 +33,7 @@ const App = () => {
 		if (loggedUserJSON) {
 			const user = JSON.parse(loggedUserJSON);
 			setUser(user);
+			shipmentService.setToken(user.token);
 		}
 	}, [user, showLogin]);
 
