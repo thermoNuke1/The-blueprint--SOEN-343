@@ -17,6 +17,7 @@ import AccountPage from "./pages/accountPage.jsx";
 import SignUp from "./components/signup.jsx";
 import CreateParcel from "./pages/placeDelivary.jsx";
 import shipmentService from './services/shipment';
+import QuotationProposalPage from "./pages/QuotationProposalPage.jsx";
 
 
 
@@ -77,6 +78,7 @@ const App = () => {
 					element={<AccountPage  />}
 				/>
 			  <Route path="/placeDelivary" element = {<CreateParcel setErrorMessage={setErrorMessage} />}/>
+			  <Route path="/quotationproposal" element = {<QuotationProposalPage setErrorMessage={setErrorMessage} />}></Route>
 
 			</Routes>
 			<Footer />

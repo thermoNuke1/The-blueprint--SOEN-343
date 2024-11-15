@@ -18,7 +18,7 @@ const FeaturesOverview = () => {
       </div>
       <h3 className="fs-2 text-body-emphasis">Cost Calculator</h3>
       <p>Find out about our affordable rates!</p>
-      <a href="#" className="icon-link">
+      <a href="/quotationproposal" className="icon-link">
         Go to Cost Calculator
         <svg className="bi"><use xlinkHref="#chevron-right"></use></svg>
       </a>

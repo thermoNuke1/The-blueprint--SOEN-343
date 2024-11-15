@@ -1,8 +1,19 @@
 footer {
+    padding-top: 5px;
+    /* Adjust top padding */
+    padding-bottom: 5px;
+    /* Adjust bottom padding */
+    min-height: 50px;
+    /* Set a minimum height */
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
     z-index: 10;
-    /* Ensures it appears above other content */
+}
+
+footer img {
+    width: 30px;
+    /* Adjust the logo size to fit within the footer */
+    height: 30px;
 }
