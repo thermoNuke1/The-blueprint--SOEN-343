@@ -16,6 +16,8 @@ shipmentRouter.post('/', async (req, res) => {
     // Create shipment
     const shipment = new Shipment({
       shipment_status: 'Order Placed',
+      origin,
+      destination,
       location,
       timestamp,
       paid,
