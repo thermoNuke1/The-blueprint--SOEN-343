@@ -21,7 +21,6 @@ import QuotationProposalPage from "./pages/QuotationProposalPage.jsx";
 import PaymentPage from "./pages/PaymentPage.jsx";
 
 
-
 // const stripePromise = loadStripe('pk_test_51QIZoARrCeYLfUcjF4kwH421Z5YCAybTbMhfwQKW2jCH0yRAOzy3Bqdu2BM021tNJLdyfX3txaqNGSLnxXZBS0Xq00lXkPvRFa');
 
 const App = () => {

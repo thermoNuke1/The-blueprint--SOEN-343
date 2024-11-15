@@ -2,7 +2,7 @@ post http://localhost:3001/api/shipment
 Content-Type: application/json
 
 {
-    "shipment_id": "101", 
+   
     "shipment_status": "Order Placed", 
     "location": "Warehouse A", 
     "timestamp": "2024-11-09T12:00:00Z"
