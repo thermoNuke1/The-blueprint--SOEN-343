@@ -4,6 +4,8 @@ const shipmentSchema = new mongoose.Schema({
   shipment_status: { type: String, required: true },
   location: { type: String },
   timestamp: { type: Date },
+  origin: { type: String },
+  destination: { type: String },
   paid: { type: Boolean, default: false },
   parcels: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Parcel' }],
   deliveryType: { type: String, enum: ['standard', 'express'], default: 'standard' },

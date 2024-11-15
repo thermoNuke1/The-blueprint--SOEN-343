@@ -1,16 +1,20 @@
-import React from 'react';
 import CheckoutForm from '../components/checkoutForm';
 import { Elements} from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
+import { useLocation } from 'react-router-dom';
 
-const stripe_api_key = process.env.REACT_APP_STRIPE_KEY;
-const stripePromise = loadStripe(stripe_api_key);
+
+const stripePromise = loadStripe("sk_test_51QIZoARrCeYLfUcjMixiRRp6E02FVCIuWQ5Fz29zAHJzivPOQsWKHDHfORYnLDubw6BV30KXDaeUeD3dCDHHOYst00V0Xrjqp7");
 
 function PaymentPage () {
+    const location = useLocation();
+  const { total, totalAfterTax } = location.state || {};
     return (
         <>
             <Elements stripe={stripePromise}>
-                <CheckoutForm></CheckoutForm>
+             <h2>Payment Page</h2>
+              <p>Total Price: ${total}</p>
+                <CheckoutForm total={total}></CheckoutForm>
             </Elements>
         </>
     );

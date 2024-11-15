@@ -1,6 +1,4 @@
-
-
-export function Taxcalc(amount) {
+function Taxcalc(amount) {
     const GST_RATE = 0.05;  // 5%
     const QST_RATE = 0.09975;  // 9.975%
     
@@ -10,3 +8,5 @@ export function Taxcalc(amount) {
     
     return total.toFixed(2); // Returns the total rounded to 2 decimal places
 } 
+
+export default Taxcalc;
