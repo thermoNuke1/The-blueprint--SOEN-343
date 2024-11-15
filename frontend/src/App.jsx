@@ -18,6 +18,7 @@ import SignUp from "./components/signup.jsx";
 import CreateParcel from "./pages/placeDelivary.jsx";
 import shipmentService from './services/shipment';
 import QuotationProposalPage from "./pages/QuotationProposalPage.jsx";
+import PaymentPage from "./pages/PaymentPage.jsx";
 
 
 
@@ -79,7 +80,7 @@ const App = () => {
 				/>
 			  <Route path="/placeDelivary" element = {<CreateParcel setErrorMessage={setErrorMessage} />}/>
 			  <Route path="/quotationproposal" element = {<QuotationProposalPage setErrorMessage={setErrorMessage} />}></Route>
-
+			  <Route path="/payment" element = {<PaymentPage setErrorMessage={setErrorMessage} />}></Route>
 			</Routes>
 			<Footer />
 
