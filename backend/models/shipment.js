@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const toJSONTransform = require('./adaptor')
+
 
 const shipmentSchema = new mongoose.Schema({
   shipment_status: { type: String, required: true },
@@ -38,13 +40,7 @@ shipmentSchema.pre('save', function (next) {
 });
 
 // Customize JSON output
-shipmentSchema.set('toJSON', {
-  transform: (document, returnedObject) => {
-    returnedObject.id = returnedObject._id.toString();
-    delete returnedObject._id;
-    delete returnedObject.__v;
-  },
-});
+shipmentSchema.toJSONTransform
 
 const Shipment = mongoose.model('Shipment', shipmentSchema);
 

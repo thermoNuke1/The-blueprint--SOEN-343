@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const toJSONTransform = require('./adaptor')
 const parcelSchema = new mongoose.Schema({
   width_dimension: Number,
   length_dimension: Number,
@@ -8,15 +9,8 @@ const parcelSchema = new mongoose.Schema({
    
   })
   
-  parcelSchema.set('toJSON', {
-    transform: (document, returnedObject) => {
-      returnedObject.id = returnedObject._id.toString()
-      delete returnedObject._id
-      delete returnedObject.__v
-    
-    }
-  })
-  
+  parcelSchema.toJSONTransform
+
   const Parcel = mongoose.model('Parcel', parcelSchema)
   
   module.exports = Parcel
