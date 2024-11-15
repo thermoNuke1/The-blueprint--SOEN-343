@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { createPaymentIntent } from '../services/payment';
 import { Taxcalc } from '../../utilities/taxCalc';
+import { toast } from 'react-toastify'; // Import toast
+import 'react-toastify/dist/ReactToastify.css';
 
 const CheckoutForm = () => {
   const [amount, setAmount] = useState(500); // Amount in cents (e.g., $5 = 500 cents)
@@ -38,6 +40,7 @@ const CheckoutForm = () => {
       console.log(error.message);
     } else if (paymentIntent.status === 'succeeded') {
       console.log('Payment succeeded!');
+      toast.success("Payment Successful!")
     }
   };
 
