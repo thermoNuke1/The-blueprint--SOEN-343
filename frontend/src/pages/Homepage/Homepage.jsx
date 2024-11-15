@@ -10,6 +10,7 @@ function Homepage() {
             {/* <CustomNavBar></CustomNavBar> */}
             <Hero></Hero>
             <FeaturesOverview></FeaturesOverview>
+            <div className='container-fluid pl-3 pe-5'><img src="../../assets/chat-box.png" className="float-end pl-3 img-fluid" alt="Bootstrap Themes" width="75" height="25" loading="lazy"></img></div>
             {/* <Footer></Footer> */}
         </div>
     </>
