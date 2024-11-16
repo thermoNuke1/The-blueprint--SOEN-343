@@ -1,0 +1,26 @@
+.progress-container {
+  position: relative;
+  width: 100%;
+}
+
+.progress-timeline {
+  display: flex; /* Ensures horizontal alignment */
+  justify-content: space-between; /* Distributes items evenly */
+  margin-top: 20px;
+  padding: 10px 0;
+  border-top: 1px solid #ddd;
+}
+
+.timeline-item {
+  flex: 1; /* Each item gets equal width */
+  text-align: center; /* Center-aligns content in each item */
+}
+
+.timeline-status {
+  font-weight: bold;
+}
+
+.timeline-timestamp {
+  font-size: 0.9rem;
+  color: #666;
+}
