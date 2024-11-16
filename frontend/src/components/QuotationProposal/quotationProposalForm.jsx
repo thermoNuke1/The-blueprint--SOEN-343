@@ -1,21 +1,20 @@
 import React, { useState } from 'react';
 import './quotationProposalForm.css';
 
-const calculateShippingCost = (weight) => {
-  const baseCost = 10.0;
-  let shippingCost;
+const calculateShippingCost = (weight, width_dimension, length_dimension, height_dimension) => {
 
-  if (weight <= 1) {
-    shippingCost = baseCost;
-  } else if (weight <= 5) {
-    shippingCost = baseCost + (weight - 1) * 2.0;
-  } else if (weight <= 10) {
-    shippingCost = baseCost + 4 * 2.0 + (weight - 5) * 1.5;
-  } else {
-    shippingCost = baseCost + 4 * 2.0 + 5 * 1.5 + (weight - 10) * 1.0;
-  }
 
-  return shippingCost.toFixed(2);
+
+
+  const volumeRate = 0.05; 
+  const weightRate = 0.1;  
+
+  const volume = width_dimension * length_dimension * height_dimension;
+  const volumeCost = volume * volumeRate;
+  const weightCost = weight * weightRate;
+
+  const totalPrice = volumeCost + weightCost;
+  return totalPrice.toFixed(2);
 };
 
 const QuotationProposalForm = () => {
@@ -35,8 +34,8 @@ const QuotationProposalForm = () => {
 
   // Calculate quote based on weight
   const calculateQuote = () => {
-    const { weight } = dimensions;
-    const estimatedQuote = calculateShippingCost(parseFloat(weight));
+    const { weight , width_dimension, length_dimension, height_dimension} = dimensions;
+    const estimatedQuote = calculateShippingCost(parseFloat(weight), parseFloat(width_dimension), parseFloat(length_dimension), parseFloat(height_dimension));
     setQuote(estimatedQuote); // Set the calculated shipping cost
   };
 

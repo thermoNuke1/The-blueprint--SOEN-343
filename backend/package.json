@@ -24,6 +24,7 @@
     "mysql": "^2.18.1",
     "mysql2": "^3.11.3",
     "react-bootstrap": "^2.10.5",
+    "socket.io": "^4.8.1",
     "stripe": "^17.3.1"
   },
   "devDependencies": {

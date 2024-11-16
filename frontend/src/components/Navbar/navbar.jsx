@@ -64,18 +64,22 @@ const CustomNavBar = ({setShowLogin, showLogin, user, setUser}) => {
         </li>
       </ul>
 
-      <div className="ms-auto">
-     {!isLoginPage && showLogin && user ===null? (<>
-              <button className="btn btn-outline-primary me-2" onClick={handleLogin}>Login</button>
-              <button className="btn btn-outline-primary me-2" onClick={handleSignup}>Sign Up</button>
-              </>
-            ) : null}
-      {!user?null:<>
-      <button className="btn btn-outline-primary me-2" onClick={handleAccount}>My Account</button>
-      <button className="btn btn-outline-primary me-2" onClick={handleLogout}>Log out</button>
-      
-      </>}
-      </div>
+      <div className="ms-auto d-flex gap-2">
+  {!isLoginPage && showLogin && user === null ? (
+    <>
+      <button className="btn btn-outline-primary btn-sm text-nowrap py-2" onClick={handleLogin}>Login</button>
+      <button className="btn btn-outline-primary btn-sm text-nowrap py-2" onClick={handleSignup}>Sign Up</button>
+    </>
+  ) : null}
+
+  {user ? (
+    <>
+      <button className="btn btn-outline-primary btn-sm text-nowrap py-2" onClick={handleAccount}>My Account</button>
+      <button className="btn btn-outline-primary btn-sm text-nowrap py-2" onClick={handleLogout}>Log out</button>
+    </>
+  ) : null}
+</div>
+
       
     </div>
   </div>

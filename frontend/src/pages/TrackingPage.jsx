@@ -1,22 +1,36 @@
-import React, {useState} from 'react';
-
-import CustomNavBar from '../components/Navbar/navbar';
-import Hero from '../components/Hero/hero';
-import FeaturesOverview from '../components/FeaturesOverview/featuresoverview';
-import ShipmentProgressBar from '../components/Tracking/shipmentProgressBar';
+import React, { useState } from 'react';
 import ShipmentStatusForm from '../components/Tracking/shipmentStatusForm';
+import ShipmentProgressBar from '../components/Tracking/shipmentProgressBar';
 
+const TrackingPage = () => {
+  const [shipmentId, setShipmentId] = useState(null);
+  const [validShipmentId, setValidShipmentId] = useState(false);
 
+  const handleShipmentIdSubmit = async (id) => {
+    setShipmentId(id);
+    try {
+      const response = await fetch(`/api/shipment/${id}`);
+      if (response.ok) {
+        setValidShipmentId(true);
+      } else {
+        setValidShipmentId(false);
+      }
+    } catch {
+      setValidShipmentId(false);
+    }
+  };
 
-const Tracking = () => {
-    const [shipmentId] = useState(101);
-    return (
-        <>
-            <ShipmentStatusForm></ShipmentStatusForm>
-            {/* <ShipmentProgressBar shipmentId={shipmentId}></ShipmentProgressBar> */}
-            
-        </>
-        
-    );
-}
-export default Tracking;
+  return (
+    <div>
+      
+      <ShipmentStatusForm onShipmentIdSubmit={handleShipmentIdSubmit} />
+      {validShipmentId ? (
+        <ShipmentProgressBar shipmentId={shipmentId} />
+      ) : (
+        shipmentId && <p className="error">Invalid Shipment ID</p>
+      )}
+    </div>
+  );
+};
+
+export default TrackingPage;

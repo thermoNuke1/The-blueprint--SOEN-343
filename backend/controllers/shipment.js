@@ -1,45 +1,63 @@
-//each shipment contains 1 or more parcels
-//subject observer's are watching
-const shipmentRouter = require('express').Router()
-const { response } = require('express')
-const Shipment = require('../models/shipment')
-const Logger = require('../utils/logger')
+const shipmentRouter = require('express').Router();
+const Shipment = require('../models/shipment'); // Correctly import the model
+const Parcel = require('../models/parcel');
+const Logger = require('../utils/logger');
+const { updateShipmentStatus } = require('../utils/shipmentUpdater');
 
-shipmentRouter.post('/', async (request, response) => {
-    const { shipment_id, shipment_status, location, timestamp,} = request.body
-  
+
+shipmentRouter.post('/', async (req, res) => {
+  const { location,origin,destination, timestamp, paid, parcels } = req.body;
+
+  try {
+    // Insert parcels into the database
+    const parcelDocuments = await Parcel.insertMany(parcels);
+    const parcelIds = parcelDocuments.map((parcel) => parcel._id);
+
+    // Create shipment
     const shipment = new Shipment({
-      shipment_id,
-      shipment_status,
+      shipment_status: 'Order Placed',
+      origin,
+      destination,
       location,
       timestamp,
-    })
-  
-    const savedShipment = await shipment.save()
-  
-    response.status(201).json(savedShipment)
-  })
-  
-  shipmentRouter.get('/', async (request, response) => {
-    const shipments = await Shipment.find({})
-    response.json(shipments)
-  })
+      paid,
+      parcels: parcelIds,
+    });
 
-  shipmentRouter.get('/:shipment_id', async (req, res) => {
-    Logger.info('Fetching shipment with custom shipment_id:', req.params.shipment_id); 
-    const {shipment_id} = req.params
-    const shipment = await Shipment.findOne({shipment_id});  // Use shipment_id for query
+    const savedShipment = await shipment.save();
+    updateShipmentStatus(savedShipment._id);
+    res.status(201).json(savedShipment);
+  } catch (error) {
+    console.error('Error saving shipment:', error);
+    res.status(500).json({ error: 'Failed to create shipment' });
+  }
+});
+
+
+shipmentRouter.get('/', async (req, res) => {
+  try {
+    const shipments = await Shipment.find({});
+    res.json(shipments);
+  } catch (error) {
+    console.error('Error fetching shipments:', error);
+    res.status(500).json({ error: 'Failed to fetch shipments' });
+  }
+});
+
+// GET /api/shipment/:id - Fetch a shipment by ID
+shipmentRouter.get('/:id', async (req, res) => {
+  Logger.info('Fetching shipment with ID:', req.params.id);
+
+  try {
+    const shipment = await Shipment.findById(req.params.id).populate('parcels');
     if (!shipment) {
-      return res.status(404).json({
-        error: "Shipment not found"
-      });
+      return res.status(404).json({ error: 'Shipment not found' });
     }
-    res.json(shipment)
-  })
-  
-  
+    res.json(shipment);
+  } catch (error) {
+    console.error('Error fetching shipment:', error);
+    res.status(500).json({ error: 'Failed to fetch shipment' });
+  }
+});
 
-  //need to create update
-  //observer pattern
-  
-  module.exports = shipmentRouter
+module.exports = shipmentRouter;
