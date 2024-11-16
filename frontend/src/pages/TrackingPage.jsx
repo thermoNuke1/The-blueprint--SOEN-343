@@ -21,15 +21,19 @@ const TrackingPage = () => {
   };
 
   return (
-    <div>
-      
-      <ShipmentStatusForm onShipmentIdSubmit={handleShipmentIdSubmit} />
+    <div className="tracking-page">
+    {/* Shipment Status Form */}
+    <ShipmentStatusForm onShipmentIdSubmit={handleShipmentIdSubmit} />
+
+    {/* Progress Bar or Error Message */}
+    <div className="progress-section">
       {validShipmentId ? (
         <ShipmentProgressBar shipmentId={shipmentId} />
       ) : (
-        shipmentId && <p className="error">Invalid Shipment ID</p>
+        shipmentId && <p className="error-message">Invalid Shipment ID</p>
       )}
     </div>
+  </div>
   );
 };
 
