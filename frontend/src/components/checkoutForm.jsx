@@ -153,73 +153,134 @@
 // export default CheckoutForm;
 
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
+import { useNavigate } from 'react-router-dom';
+import { Taxcalc } from '../../utilities/taxCalc'; // Import Taxcalc
 
-const PaymentForm = () => {
-  const [cardNumber, setCardNumber] = useState('');
-  const [expiryDate, setExpiryDate] = useState('');
-  const [successMessage, setSuccessMessage] = useState('');
-  const navigate = useNavigate(); // Initialize the useNavigate hook
+const PaymentForm = ({ total }) => {
+    const [cardNumber, setCardNumber] = useState('');
+    const [expiryDate, setExpiryDate] = useState('');
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [orderSummary, setOrderSummary] = useState({});
+    const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+    const generateTrackingID = () => {
+        return Math.random().toString(36).substring(2, 10).toUpperCase();
+    };
 
-    if (cardNumber && expiryDate) {
-      setSuccessMessage('Payment Successful!');
-      setTimeout(() => {
-        navigate('/'); // Correctly call navigate
-      }, 5000); // 5000 milliseconds = 5 seconds
-    } else {
-      setSuccessMessage('Please fill in all fields.');
-    }
-  };
+    const handleSubmit = (e) => {
+        e.preventDefault();
 
-  return (
-    <div style={{ maxWidth: '400px', margin: 'auto', padding: '20px', border: '1px solid #ccc', borderRadius: '8px' }}>
-      <h2>Payment Form</h2>
-      <form onSubmit={handleSubmit}>
-        <div style={{ marginBottom: '15px' }}>
-          <label style={{ display: 'block', marginBottom: '5px' }}>Card Number</label>
-          <input
-            type="text"
-            value={cardNumber}
-            onChange={(e) => setCardNumber(e.target.value)}
-            placeholder="Enter card number"
-            style={{ width: '100%', padding: '10px', borderRadius: '4px', border: '1px solid #ccc' }}
-          />
+        if (cardNumber && expiryDate) {
+            const orderDate = new Date().toLocaleDateString();
+            const trackingID = generateTrackingID();
+            
+            // Calculate total with tax using the Taxcalc function
+            const totalWithTax = Taxcalc(total);
+
+            setOrderSummary({
+                total,
+                totalWithTax,
+                orderDate,
+                trackingID,
+            });
+
+            setIsModalOpen(true);
+        }
+    };
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+        navigate('/');
+    };
+
+    return (
+        <div style={{ maxWidth: '400px', margin: 'auto', padding: '20px', border: '1px solid #ccc', borderRadius: '8px' }}>
+            <h2>Payment Form</h2>
+            <form onSubmit={handleSubmit}>
+                <div style={{ marginBottom: '15px' }}>
+                    <label style={{ display: 'block', marginBottom: '5px' }}>Card Number</label>
+                    <input
+                        type="text"
+                        value={cardNumber}
+                        onChange={(e) => setCardNumber(e.target.value)}
+                        placeholder="Enter card number"
+                        style={{ width: '100%', padding: '10px', borderRadius: '4px', border: '1px solid #ccc' }}
+                    />
+                </div>
+                <div style={{ marginBottom: '15px' }}>
+                    <label style={{ display: 'block', marginBottom: '5px' }}>Expiry Date</label>
+                    <input
+                        type="text"
+                        value={expiryDate}
+                        onChange={(e) => setExpiryDate(e.target.value)}
+                        placeholder="MM/YY"
+                        style={{ width: '100%', padding: '10px', borderRadius: '4px', border: '1px solid #ccc' }}
+                    />
+                </div>
+                <button
+                    type="submit"
+                    style={{
+                        width: '100%',
+                        padding: '10px',
+                        backgroundColor: '#28a745',
+                        color: 'white',
+                        border: 'none',
+                        borderRadius: '4px',
+                        cursor: 'pointer',
+                    }}
+                >
+                    Submit
+                </button>
+            </form>
+
+            {isModalOpen && (
+                <div
+                    style={{
+                        position: 'fixed',
+                        top: '0',
+                        left: '0',
+                        width: '100%',
+                        height: '100%',
+                        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                    }}
+                >
+                    <div
+                        style={{
+                            backgroundColor: 'white',
+                            padding: '20px',
+                            borderRadius: '8px',
+                            textAlign: 'center',
+                            maxWidth: '400px',
+                            width: '90%',
+                        }}
+                    >
+                        <h3>Order Summary</h3>
+                        <p><strong>Total Price:</strong> ${orderSummary.total}</p>
+                        <p id="test"><strong>Total Price with Tax:</strong> ${orderSummary.totalWithTax}</p> {/* Display total with tax here */}
+                        <p><strong>Order Date:</strong> {orderSummary.orderDate}</p>
+                        <p><strong>Tracking ID:</strong> {orderSummary.trackingID}</p>
+                        <button
+                            onClick={handleCloseModal}
+                            style={{
+                                marginTop: '20px',
+                                padding: '10px',
+                                backgroundColor: '#007bff',
+                                color: 'white',
+                                border: 'none',
+                                borderRadius: '4px',
+                                cursor: 'pointer',
+                            }}
+                        >
+                            Close
+                        </button>
+                    </div>
+                </div>
+            )}
         </div>
-        <div style={{ marginBottom: '15px' }}>
-          <label style={{ display: 'block', marginBottom: '5px' }}>Expiry Date</label>
-          <input
-            type="text"
-            value={expiryDate}
-            onChange={(e) => setExpiryDate(e.target.value)}
-            placeholder="MM/YY"
-            style={{ width: '100%', padding: '10px', borderRadius: '4px', border: '1px solid #ccc' }}
-          />
-        </div>
-        <button
-          type="submit"
-          style={{
-            width: '100%',
-            padding: '10px',
-            backgroundColor: '#28a745',
-            color: 'white',
-            border: 'none',
-            borderRadius: '4px',
-            cursor: 'pointer',
-          }}
-        >
-          Submit
-        </button>
-      </form>
-      {successMessage && (
-        <div style={{ marginTop: '20px', padding: '10px', borderRadius: '4px', backgroundColor: '#d4edda', color: '#155724' }}>
-          {successMessage}
-        </div>
-      )}
-    </div>
-  );
+    );
 };
 
 export default PaymentForm;
