@@ -15,23 +15,23 @@ const ReviewForm = ({setErrorMessage}) => {
    e.preventDefault();
   try {
     const reviewData = {
-      username: name,
+      username: email,
       ratingScore: rating,
       feedback: review,
     };
     const response = await axios.post(baseUrl, reviewData);
     console.log(response.data.message);
-    setErrorMessage("Thank you for your feedback!")
-    setTimeout(() => {
-      setErrorMessage(null);
-    }, 5000);
+    // setErrorMessage("Thank you for your feedback!")
+    // setTimeout(() => {
+    //   setErrorMessage(null);
+    // }, 5000);
     // alert("Thank you for your feedback!");
   } catch (error) {
     console.error('Error submitting review:', error.response?.data?.message || error.message);
-    setErrorMessage("Failed to submit review. Please try again.")
-    setTimeout(() => {
-      setErrorMessage(null);
-    }, 5000);
+    // setErrorMessage("Failed to submit review. Please try again.")
+    // setTimeout(() => {
+    //   setErrorMessage(null);
+    // }, 5000);
     // alert("Failed to submit review. Please try again.");
   }
   setName("");
