@@ -1,7 +1,7 @@
 require("dotenv").config();
 const { CourierClient } = require("@trycourier/courier");
 
-const courier = CourierClient({
+const courier = new CourierClient({
   authorizationToken: process.env.COURIER_AUTH_TOKEN,
 });
 
