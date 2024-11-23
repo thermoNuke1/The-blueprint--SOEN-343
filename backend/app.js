@@ -8,12 +8,12 @@ const usersRouter = require('./controllers/users')
 const loginRouter = require('./controllers/login')
 const parcelRouter = require('./controllers/parcel')
 const paymentRouter = require('./controllers/payment');
+const reviewRouter = require('./controllers/reviewService');
 
 const shipmentRouter = require('./controllers/shipment')
 const middleware = require('./utils/middleware')
 const logger = require('./utils/logger')
 const mongoose = require('mongoose')
-const reviewRouter = require('./controllers/reviewService');
 
 
 
