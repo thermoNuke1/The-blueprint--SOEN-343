@@ -1,23 +1,35 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import axios from 'axios';
 
 const ReviewForm = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [rating, setRating] = useState(0);
   const [review, setReview] = useState("");
+  const baseUrl = '/api/review';
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Review Submitted:", { name, email, rating, review });
+  const handleSubmit = async (e) => {
+   e.preventDefault();
+  try {
+    const reviewData = {
+      username: name,
+      ratingScore: rating,
+      feedback: review,
+    };
+    const response = await axios.post(baseUrl, reviewData);
+    console.log(response.data.message);
     alert("Thank you for your feedback!");
-    // Reset the form
-    setName("");
-    setEmail("");
-    setRating(0);
-    setReview("");
-  };
+  } catch (error) {
+    console.error('Error submitting review:', error.response?.data?.message || error.message);
+    alert("Failed to submit review. Please try again.");
+  }
+  setName("");
+  setEmail("");
+  setRating(0);
+  setReview("");
+};
 
   return (
     <div className="container mt-5">

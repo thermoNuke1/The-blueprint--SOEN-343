@@ -13,6 +13,7 @@ const shipmentRouter = require('./controllers/shipment')
 const middleware = require('./utils/middleware')
 const logger = require('./utils/logger')
 const mongoose = require('mongoose')
+const reviewRouter = require('./controllers/reviewService');
 
 
 
@@ -37,6 +38,7 @@ app.use('/api/login', loginRouter)
 app.use('/api/parcel', parcelRouter)
 app.use('/api/payment', paymentRouter)
 app.use('/api/shipment', shipmentRouter)
+app.use('/api/reviews', reviewRouter);
 
 app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'dist', 'index.html'))
