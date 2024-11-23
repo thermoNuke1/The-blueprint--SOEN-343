@@ -25,7 +25,7 @@ const ShipmentProgressBar = ({ shipmentId }) => {
     const handleUpdate = (data) => {
       setShipmentStatus(data.shipment_status);
       setProgress(calculateProgress(data.shipment_status));
-      setStatusHistory(data.statusHistory || []); // Update the timeline
+      setStatusHistory(data.statusHistory || []); 
     };
 
 

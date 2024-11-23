@@ -12,7 +12,6 @@ const AccountPage = ({ setErrorMessage }) => {
     const getUserInfo = async () => {
         try {
             const userInfo = await userService.getUserByUsername(user.username);
-            console.log()
             setFirstName(userInfo.firstname);
             setLastName(userInfo.lastname);
         } catch {
