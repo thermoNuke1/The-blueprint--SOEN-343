@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import axios from 'axios';
+import PropTypes from "prop-types";
 
-const ReviewForm = () => {
+const ReviewForm = ({setErrorMessage}) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [rating, setRating] = useState(0);
   const [review, setReview] = useState("");
-  const baseUrl = '/api/review';
+  const baseUrl = '/api/reviews';
 
   const handleSubmit = async (e) => {
    e.preventDefault();
@@ -20,10 +21,18 @@ const ReviewForm = () => {
     };
     const response = await axios.post(baseUrl, reviewData);
     console.log(response.data.message);
-    alert("Thank you for your feedback!");
+    setErrorMessage("Thank you for your feedback!")
+    setTimeout(() => {
+      setErrorMessage(null);
+    }, 5000);
+    // alert("Thank you for your feedback!");
   } catch (error) {
     console.error('Error submitting review:', error.response?.data?.message || error.message);
-    alert("Failed to submit review. Please try again.");
+    setErrorMessage("Failed to submit review. Please try again.")
+    setTimeout(() => {
+      setErrorMessage(null);
+    }, 5000);
+    // alert("Failed to submit review. Please try again.");
   }
   setName("");
   setEmail("");
@@ -113,6 +122,13 @@ const ReviewForm = () => {
       </div>
     </div>
   );
+};
+
+
+
+ReviewForm.propTypes = {
+	setErrorMessage: PropTypes.func.isRequired,
+	
 };
 
 export default ReviewForm;
