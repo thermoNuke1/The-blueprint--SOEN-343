@@ -1,44 +1,56 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import axios from 'axios';
+import axios from "axios";
 import PropTypes from "prop-types";
 
-const ReviewForm = ({setErrorMessage}) => {
-  const [name, setName] = useState("");
+const ReviewForm = ({ setErrorMessage }) => {
   const [email, setEmail] = useState("");
   const [rating, setRating] = useState(0);
   const [review, setReview] = useState("");
-  const baseUrl = '/api/reviews';
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [showErrorModal, setShowErrorModal] = useState(false);
+  const navigate = useNavigate(); // Initialize useNavigate
+  const baseUrl = "/api/reviews";
 
   const handleSubmit = async (e) => {
-   e.preventDefault();
-  try {
-    const reviewData = {
-      username: email,
-      ratingScore: rating,
-      feedback: review,
-    };
-    const response = await axios.post(baseUrl, reviewData);
-    console.log(response.data.message);
-    // setErrorMessage("Thank you for your feedback!")
-    // setTimeout(() => {
-    //   setErrorMessage(null);
-    // }, 5000);
-    // alert("Thank you for your feedback!");
-  } catch (error) {
-    console.error('Error submitting review:', error.response?.data?.message || error.message);
-    // setErrorMessage("Failed to submit review. Please try again.")
-    // setTimeout(() => {
-    //   setErrorMessage(null);
-    // }, 5000);
-    // alert("Failed to submit review. Please try again.");
-  }
-  setName("");
-  setEmail("");
-  setRating(0);
-  setReview("");
-};
+    e.preventDefault();
+    try {
+      const reviewData = {
+        username: email,
+        ratingScore: rating,
+      };
+
+      // Only include feedback if it has content
+      if (review.trim()) {
+        reviewData.feedback = review;
+      }
+
+      const response = await axios.post(baseUrl, reviewData);
+      console.log(response.data.message);
+      setShowSuccessModal(true); // Show success modal
+
+      // Navigate to the main page after showing the success modal for 3 seconds
+      setTimeout(() => {
+        setShowSuccessModal(false);
+        navigate("/");
+      }, 5000);
+    } catch (error) {
+      console.error("Error submitting review:", error.response?.data?.message || error.message);
+      setShowErrorModal(true); // Show error modal
+    }
+    setEmail("");
+    setRating(0);
+    setReview("");
+  };
+
+  const closeSuccessModal = () => {
+    setShowSuccessModal(false);
+    navigate("/"); // Redirect to the main page when closing the success modal
+  };
+
+  const closeErrorModal = () => setShowErrorModal(false); // Close the error modal
 
   return (
     <div className="container mt-5">
@@ -46,22 +58,6 @@ const ReviewForm = ({setErrorMessage}) => {
         <div className="card-body">
           <h2 className="text-center mb-4">Rate Your Delivery Experience</h2>
           <form onSubmit={handleSubmit}>
-            {/* Name Input */}
-            <div className="mb-3">
-              <label htmlFor="name" className="form-label">
-                Your Name
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                id="name"
-                placeholder="Enter your name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-              />
-            </div>
-
             {/* Email Input */}
             <div className="mb-3">
               <label htmlFor="email" className="form-label">
@@ -88,7 +84,11 @@ const ReviewForm = ({setErrorMessage}) => {
                     className={`fa-star ${
                       rating >= star ? "fas text-warning" : "far text-muted"
                     }`}
-                    style={{ fontSize: "1.5rem", cursor: "pointer", marginRight: "8px" }}
+                    style={{
+                      fontSize: "1.5rem",
+                      cursor: "pointer",
+                      marginRight: "8px",
+                    }}
                     onClick={() => setRating(star)}
                   />
                 ))}
@@ -98,7 +98,7 @@ const ReviewForm = ({setErrorMessage}) => {
             {/* Review Input */}
             <div className="mb-3">
               <label htmlFor="review" className="form-label">
-                Your Review
+                Your Review (Optional)
               </label>
               <textarea
                 className="form-control"
@@ -107,7 +107,6 @@ const ReviewForm = ({setErrorMessage}) => {
                 rows="4"
                 value={review}
                 onChange={(e) => setReview(e.target.value)}
-                required
               ></textarea>
             </div>
 
@@ -120,15 +119,86 @@ const ReviewForm = ({setErrorMessage}) => {
           </form>
         </div>
       </div>
+
+      {/* Success Modal */}
+      {showSuccessModal && (
+        <div
+          className="modal fade show d-block"
+          tabIndex="-1"
+          style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
+        >
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">Review Submitted</h5>
+                <button
+                  type="button"
+                  className="btn-close"
+                  onClick={closeSuccessModal}
+                ></button>
+              </div>
+              <div className="modal-body">
+                <p>
+                  Thank you for your feedback! Your review has been submitted
+                  successfully.
+                </p>
+              </div>
+              <div className="modal-footer">
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  onClick={closeSuccessModal}
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Error Modal */}
+      {showErrorModal && (
+        <div
+          className="modal fade show d-block"
+          tabIndex="-1"
+          style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
+        >
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">Submission Failed</h5>
+                <button
+                  type="button"
+                  className="btn-close"
+                  onClick={closeErrorModal}
+                ></button>
+              </div>
+              <div className="modal-body">
+                <p>
+                  Sorry, we couldn't submit your review. Please check your
+                  connection and try again.
+                </p>
+              </div>
+              <div className="modal-footer">
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  onClick={closeErrorModal}
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 
-
-
 ReviewForm.propTypes = {
-	setErrorMessage: PropTypes.func.isRequired,
-	
+  setErrorMessage: PropTypes.func.isRequired,
 };
 
 export default ReviewForm;
