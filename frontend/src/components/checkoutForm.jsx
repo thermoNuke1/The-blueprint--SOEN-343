@@ -155,6 +155,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Taxcalc } from '../../utilities/taxCalc';
+import userService  from '../services/user';
 
 const PaymentForm = ({ total = 0 }) => {
     const [cardNumber, setCardNumber] = useState('');
@@ -166,26 +167,21 @@ const PaymentForm = ({ total = 0 }) => {
     const [totalAfterDiscount, setTotalAfterDiscount] = useState(total); // Total after discount
     const navigate = useNavigate();
 
-    // Fetch the discount from the backend
     const handleFetchDiscount = async () => {
+        const user = JSON.parse(window.localStorage.getItem('loggedappUser'));
+        
+        
+        
         try {
-            const response = await fetch('/api/users/applyDiscount', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: verifyToken, // Use the verifyToken middleware
-                },
-            });
-
-            const data = await response.json();
-
+           
+            const data = await userService.applyDiscount();  
             if (data.success) {
                 const discountPercentage = data.discount;
                 console.log("Fetched Discount Percentage:", discountPercentage);
-
+        
                 const discountedPrice = total - (total * (discountPercentage / 100));
                 setDiscount(discountPercentage);
-                setTotalAfterDiscount(discountedPrice); // Update the total after discount
+                setTotalAfterDiscount(discountedPrice); 
                 alert(`Discount applied: ${discountPercentage}%`);
             } else {
                 alert(data.message || 'Failed to fetch discount.');
@@ -195,6 +191,8 @@ const PaymentForm = ({ total = 0 }) => {
             alert('An error occurred while fetching the discount.');
         }
     };
+    
+    
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -204,7 +202,7 @@ const PaymentForm = ({ total = 0 }) => {
             return;
         }
 
-        const tax = parseFloat(Taxcalc(totalAfterDiscount)); // Calculate tax
+        const tax = parseFloat(Taxcalc(totalAfterDiscount)); 
         const orderDate = new Date().toLocaleDateString();
         const trackingID = Math.random().toString(36).substring(2, 10).toUpperCase();
 
@@ -218,7 +216,7 @@ const PaymentForm = ({ total = 0 }) => {
             trackingID,
         });
 
-        setPointsEarned(Math.floor(totalAfterDiscount)); // Assign points based on total after discount
+        setPointsEarned(Math.floor(totalAfterDiscount)); 
         setIsModalOpen(true);
     };
 
@@ -342,3 +340,32 @@ const PaymentForm = ({ total = 0 }) => {
 export default PaymentForm;
 
 
+    // Fetch the discount from the backend
+    // const handleFetchDiscount = async () => {
+    //     try {
+    //         const response = await fetch('/api/users/applyDiscount', {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //                 Authorization: verifyToken,
+    //             },
+    //         });
+
+    //         const data = await response.json();
+
+    //         if (data.success) {
+    //             const discountPercentage = data.discount;
+    //             console.log("Fetched Discount Percentage:", discountPercentage);
+
+    //             const discountedPrice = total - (total * (discountPercentage / 100));
+    //             setDiscount(discountPercentage);
+    //             setTotalAfterDiscount(discountedPrice); // Update the total after discount
+    //             alert(`Discount applied: ${discountPercentage}%`);
+    //         } else {
+    //             alert(data.message || 'Failed to fetch discount.');
+    //         }
+    //     } catch (error) {
+    //         console.error('Error fetching discount:', error);
+    //         alert('An error occurred while fetching the discount.');
+    //     }
+    // };
