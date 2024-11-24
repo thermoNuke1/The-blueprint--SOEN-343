@@ -12,6 +12,7 @@
   "author": "Carlo Aldabi",
   "license": "ISC",
   "dependencies": {
+    "@trycourier/courier": "^6.3.1",
     "axios": "^1.7.7",
     "bcrypt": "^5.1.1",
     "bootstrap": "^5.3.3",

@@ -39,6 +39,7 @@ usersRouter.get('/:username',verifyToken ,async (request, response) => {
   response.json(user)
 })
 
+
 usersRouter.put('/',verifyToken ,async (request, response) => {
   const { username, name, password } = request.body
 

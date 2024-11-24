@@ -1,1 +1,0 @@
-const mailSender = require('nodemailer')
