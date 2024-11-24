@@ -27,9 +27,9 @@ const AccountPage = ({ setErrorMessage }) => {
             setUserData({
                 firstName: userInfo.firstname,
                 lastName: userInfo.lastname,
-                points: (userPoints.points),
-                level: userPoints.level,
-                discount: userPoints.discount,
+                points: (userInfo.points),
+                level: userInfo.level,
+                discount: userInfo.discount,
             });
             console.log(userData.points)
         } catch {
