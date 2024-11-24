@@ -76,7 +76,10 @@ const updateUser = async (userData) => {
 };
 
 const applyDiscount = async () => {
-   
+    if (!token) {
+        console.error('Token is missing');
+        return;
+    }
     try {
        
         const config = {

@@ -171,7 +171,6 @@ const PaymentForm = ({ total = 0 }) => {
         const user = JSON.parse(window.localStorage.getItem('loggedappUser'));
         
         
-        
         try {
            
             const data = await userService.applyDiscount();  
