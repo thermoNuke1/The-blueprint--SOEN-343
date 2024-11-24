@@ -45,10 +45,11 @@ shipmentSchema.pre('save', function (next) {
       this.shipment_status === 'Delivered'
     ) {
       
-      this.statusHistory.push({ status: this.shipment_status });
+      
       
       observer.notifyObservers(this);
     }
+    this.statusHistory.push({ status: this.shipment_status });
     
   }
   
