@@ -32,11 +32,13 @@ app.use(express.static('dist'))
 app.use(express.json())
 app.use(middleware.requestLogger)
 
+
 app.use('/api/users', usersRouter)
 app.use('/api/login', loginRouter)
 app.use('/api/parcel', parcelRouter)
 app.use('/api/payment', paymentRouter)
 app.use('/api/shipment', shipmentRouter)
+
 
 app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'dist', 'index.html'))

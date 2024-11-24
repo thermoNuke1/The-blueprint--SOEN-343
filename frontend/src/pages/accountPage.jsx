@@ -5,18 +5,35 @@ import { useNavigate } from 'react-router-dom';
 
 const AccountPage = ({ setErrorMessage }) => {
     const navigate = useNavigate();
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
+    const [userData, setUserData] = useState({
+        firstName: '',
+        lastName: '',
+        points: 0,
+        level: 1,
+        discount: 0,
+    });
+
     const user = JSON.parse(window.localStorage.getItem('loggedappUser'));
 
     const getUserInfo = async () => {
         try {
+            // Fetch user info
             const userInfo = await userService.getUserByUsername(user.username);
-            console.log()
-            setFirstName(userInfo.firstname);
-            setLastName(userInfo.lastname);
+
+            // Fetch user points, level, and discount
+            // const userPoints = await userService.getUserPoints(user.username);
+
+            // Update the userData state with new data
+            setUserData({
+                firstName: userInfo.firstname,
+                lastName: userInfo.lastname,
+                points: (userPoints.points),
+                level: userPoints.level,
+                discount: userPoints.discount,
+            });
+            console.log(userData.points)
         } catch {
-            setErrorMessage('Unable to load, Please log in.');
+            setErrorMessage('Unable to load. Please log in.');
             setTimeout(() => {
                 setErrorMessage(null);
             }, 5000);
@@ -24,14 +41,14 @@ const AccountPage = ({ setErrorMessage }) => {
     };
 
     useEffect(() => {
-        if (user === null) {
+        if (!user) {
             navigate('/');
         } else {
             getUserInfo();
         }
     }, []);
 
-    if (user === null) {
+    if (!user) {
         return null;
     }
 
@@ -48,13 +65,31 @@ const AccountPage = ({ setErrorMessage }) => {
             {/* First Name */}
             <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-700">First Name</label>
-                <p className="mt-1 text-gray-800">{firstName}</p>
+                <p className="mt-1 text-gray-800">{userData.firstName}</p>
             </div>
 
             {/* Last Name */}
             <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-700">Last Name</label>
-                <p className="mt-1 text-gray-800">{lastName}</p>
+                <p className="mt-1 text-gray-800">{userData.lastName}</p>
+            </div>
+
+            {/* Points */}
+            <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700">Points</label>
+                <p className="mt-1 text-gray-800">{userData.points}</p>
+            </div>
+
+            {/* Level */}
+            <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700">Level</label>
+                <p className="mt-1 text-gray-800">{userData.level}</p>
+            </div>
+
+            {/* Discount */}
+            <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700">Discount</label>
+                <p className="mt-1 text-gray-800">{userData.discount}%</p>
             </div>
         </div>
     );

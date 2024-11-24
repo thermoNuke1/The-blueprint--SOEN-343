@@ -161,6 +161,7 @@ const PaymentForm = ({ total }) => {
     const [expiryDate, setExpiryDate] = useState('');
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [orderSummary, setOrderSummary] = useState({});
+    const [pointsEarned, setPointsEarned] = useState(0); // New state for points
     const navigate = useNavigate();
 
     const generateTrackingID = () => {
@@ -177,6 +178,9 @@ const PaymentForm = ({ total }) => {
             // Calculate total with tax using the Taxcalc function
             const totalWithTax = Taxcalc(total);
 
+            // Calculate points earned based on total (e.g., 1 point per dollar spent)
+            const points = Math.floor(total);
+
             setOrderSummary({
                 total,
                 totalWithTax,
@@ -184,6 +188,7 @@ const PaymentForm = ({ total }) => {
                 trackingID,
             });
 
+            setPointsEarned(points); // Update points state
             setIsModalOpen(true);
         }
     };
@@ -259,9 +264,10 @@ const PaymentForm = ({ total }) => {
                     >
                         <h3>Order Summary</h3>
                         <p><strong>Total Price:</strong> ${orderSummary.total}</p>
-                        <p id="test"><strong>Total Price with Tax:</strong> ${orderSummary.totalWithTax}</p> {/* Display total with tax here */}
+                        <p id="test"><strong>Total Price with Tax:</strong> ${orderSummary.totalWithTax}</p>
                         <p><strong>Order Date:</strong> {orderSummary.orderDate}</p>
                         <p><strong>Tracking ID:</strong> {orderSummary.trackingID}</p>
+                        <p><strong>Points Earned:</strong> {pointsEarned}</p> {/* New points display */}
                         <button
                             onClick={handleCloseModal}
                             style={{
@@ -284,3 +290,4 @@ const PaymentForm = ({ total }) => {
 };
 
 export default PaymentForm;
+
