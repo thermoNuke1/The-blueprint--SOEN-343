@@ -75,32 +75,11 @@ usersRouter.post('/addPoints', verifyToken, async (request, response) => {
 
     user.points = (user.points || 0) + pointsToAdd;
 
-    let level = 1;
-    let discount = 0;
-
-    if (user.points >= 400) {
-      level = 4;
-      discount = 20;
-    } else if (user.points >= 300) {
-      level = 3;
-      discount = 15;
-    } else if (user.points >= 200) {
-      level = 2;
-      discount = 10;
-    } else if (user.points >= 100) {
-      level = 1;
-      discount = 5;
-    }
-
-    user.level = level;
-    user.discount = discount;
     await user.save();
 
     response.status(200).json({
       success: true,
       points: user.points,
-      level: user.level,
-      discount: user.discount,
       message: 'Points added successfully!',
     });
   } catch (error) {

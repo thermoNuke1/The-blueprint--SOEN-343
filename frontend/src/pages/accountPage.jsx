@@ -31,7 +31,7 @@ const AccountPage = ({ setErrorMessage }) => {
                 level: userInfo.level,
                 discount: userInfo.discount,
             });
-            console.log(userData.points)
+            console.log(userInfo)
         } catch {
             setErrorMessage('Unable to load. Please log in.');
             setTimeout(() => {
