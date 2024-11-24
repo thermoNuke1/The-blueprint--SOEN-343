@@ -26,9 +26,43 @@ usersRouter.post('/', async (request, response) => {
 
 
 usersRouter.get('/', async (request, response) => {
-  const users = await User.find({});
-  response.json(users);
+  try {
+    const users = await User.find({});
+
+    const usersWithUpdatedLevels = users.map((user) => {
+      let level = 1;
+      let discount = 0;
+
+      // Recalculate level and discount based on points
+      if (user.points >= 400) {
+        level = 4;
+        discount = 20;
+      } else if (user.points >= 300) {
+        level = 3;
+        discount = 15;
+      } else if (user.points >= 200) {
+        level = 2;
+        discount = 10;
+      } else if (user.points >= 100) {
+        level = 1;
+        discount = 5;
+      }
+
+      // Return updated user data
+      return {
+        ...user._doc,
+        level,
+        discount,
+      };
+    });
+
+    response.status(200).json(usersWithUpdatedLevels);
+  } catch (error) {
+    console.error('Error fetching users:', error);
+    response.status(500).json({ error: 'Failed to fetch users' });
+  }
 });
+
 
 
 usersRouter.get('/:username', verifyToken, async (request, response) => {
@@ -92,8 +126,11 @@ usersRouter.post('/addPoints', verifyToken, async (request, response) => {
       discount = 5;
     }
 
+    console.log(`Updated level: ${level}, discount: ${discount}`);
+
     user.level = level;
     user.discount = discount;
+    console.log(`User ${username} updated:`, user);
     await user.save();
 
     response.status(200).json({
@@ -108,5 +145,29 @@ usersRouter.post('/addPoints', verifyToken, async (request, response) => {
     response.status(500).json({ error: 'Failed to add points' });
   }
 });
+
+
+usersRouter.post('/applyDiscount', verifyToken, async (request, response) => {
+  const { username } = request.body;
+
+  try {
+    const user = await User.findOne({ username });
+    if (!user) {
+      return response.status(404).json({ error: 'User not found' });
+    }
+
+    // Return the user's discount
+    response.status(200).json({
+      success: true,
+      discount: user.discount,
+      message: `You have a ${user.discount}% discount available!`,
+    });
+  } catch (error) {
+    console.error(error);
+    response.status(500).json({ error: 'Failed to apply discount' });
+  }
+});
+
+
 
 module.exports = usersRouter;

@@ -17,22 +17,21 @@ const AccountPage = ({ setErrorMessage }) => {
 
     const getUserInfo = async () => {
         try {
-            // Fetch user info
+            // Fetch user info (including points, level, and discount)
             const userInfo = await userService.getUserByUsername(user.username);
-
-            // Fetch user points, level, and discount
-            // const userPoints = await userService.getUserPoints(user.username);
-
-            // Update the userData state with new data
+    
+            // Ensure all user data is properly updated in the state
             setUserData({
                 firstName: userInfo.firstname,
                 lastName: userInfo.lastname,
-                points: (userInfo.points),
-                level: userInfo.level,
-                discount: userInfo.discount,
+                points: userInfo.points || 0,  // Default to 0 if undefined
+                level: userInfo.level || 1,   // Default to 1 if undefined
+                discount: userInfo.discount || 0, // Default to 0% if undefined
             });
-            console.log(userData.points)
-        } catch {
+    
+            console.log("User data updated:", userInfo);
+        } catch (error) {
+            console.error("Error fetching user data:", error);
             setErrorMessage('Unable to load. Please log in.');
             setTimeout(() => {
                 setErrorMessage(null);
@@ -51,6 +50,9 @@ const AccountPage = ({ setErrorMessage }) => {
     if (!user) {
         return null;
     }
+
+    // Determine discount code based on user level
+    const discountCode = userData.level > 1 ? `LEVEL${userData.level}_DISCOUNT` : 'No discount available';
 
     return (
         <div className="max-w-md mx-auto p-6 bg-white shadow-md rounded-md">
@@ -90,6 +92,12 @@ const AccountPage = ({ setErrorMessage }) => {
             <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-700">Discount</label>
                 <p className="mt-1 text-gray-800">{userData.discount}%</p>
+            </div>
+
+            {/* Discount Code */}
+            <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700">Available Discount Code</label>
+                <p className="mt-1 text-gray-800">{discountCode}</p>
             </div>
         </div>
     );
