@@ -136,8 +136,6 @@ usersRouter.post('/addPoints', verifyToken, async (request, response) => {
     response.status(200).json({
       success: true,
       points: user.points,
-      level: user.level,
-      discount: user.discount,
       message: 'Points added successfully!',
     });
   } catch (error) {
