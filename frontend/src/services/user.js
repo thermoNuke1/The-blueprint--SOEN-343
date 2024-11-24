@@ -33,6 +33,10 @@ const createUser = async (userData) => {
 };
 
 const getAllUsers = async () => {
+    if (!token) {
+        console.error('Token is missing');
+        return;
+    }
     try {
         const response = await axios.get(baseUrl, {
             headers: { Authorization: token }
@@ -43,6 +47,7 @@ const getAllUsers = async () => {
         throw error;
     }
 };
+
 
 const getUserByUsername = async (username) => {
     try {
@@ -70,4 +75,33 @@ const updateUser = async (userData) => {
     }
 };
 
-export default { createUser, getAllUsers, updateUser, setToken, getUserByUsername };
+const applyDiscount = async () => {
+   
+    try {
+       
+        const config = {
+            headers: { Authorization: `Bearer ${token}` }  
+        };
+
+      
+        const response = await axios.get(`${baseUrl}/applyDiscount`, config);
+
+
+        if (response.status === 200) {
+            return response.data;
+        } else {
+            throw new Error(`Failed to apply discount: ${response.statusText}`);
+        }
+    } catch (error) {
+        
+        console.error('Error applying discount:', error.response ? error.response.data : error.message);
+        throw error;  
+    }
+};
+
+
+
+
+
+
+export default { createUser, getAllUsers, updateUser, setToken, applyDiscount, getUserByUsername };

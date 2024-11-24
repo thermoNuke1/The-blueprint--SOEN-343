@@ -154,43 +154,70 @@
 
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Taxcalc } from '../../utilities/taxCalc'; // Import Taxcalc
+import { Taxcalc } from '../../utilities/taxCalc';
+import userService  from '../services/user';
 
-const PaymentForm = ({ total }) => {
+const PaymentForm = ({ total = 0 }) => {
     const [cardNumber, setCardNumber] = useState('');
     const [expiryDate, setExpiryDate] = useState('');
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [orderSummary, setOrderSummary] = useState({});
-    const [pointsEarned, setPointsEarned] = useState(0); // New state for points
+    const [pointsEarned, setPointsEarned] = useState(0);
+    const [discount, setDiscount] = useState(0); // Discount percentage
+    const [totalAfterDiscount, setTotalAfterDiscount] = useState(total); // Total after discount
     const navigate = useNavigate();
 
-    const generateTrackingID = () => {
-        return Math.random().toString(36).substring(2, 10).toUpperCase();
+    const handleFetchDiscount = async () => {
+        const user = JSON.parse(window.localStorage.getItem('loggedappUser'));
+        
+        
+        
+        try {
+           
+            const data = await userService.applyDiscount();  
+            if (data.success) {
+                const discountPercentage = data.discount;
+                console.log("Fetched Discount Percentage:", discountPercentage);
+        
+                const discountedPrice = total - (total * (discountPercentage / 100));
+                setDiscount(discountPercentage);
+                setTotalAfterDiscount(discountedPrice); 
+                alert(`Discount applied: ${discountPercentage}%`);
+            } else {
+                alert(data.message || 'Failed to fetch discount.');
+            }
+        } catch (error) {
+            console.error('Error fetching discount:', error);
+            alert('An error occurred while fetching the discount.');
+        }
     };
+    
+    
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (cardNumber && expiryDate) {
-            const orderDate = new Date().toLocaleDateString();
-            const trackingID = generateTrackingID();
-            
-            // Calculate total with tax using the Taxcalc function
-            const totalWithTax = Taxcalc(total);
-
-            // Calculate points earned based on total (e.g., 1 point per dollar spent)
-            const points = Math.floor(total);
-
-            setOrderSummary({
-                total,
-                totalWithTax,
-                orderDate,
-                trackingID,
-            });
-
-            setPointsEarned(points); // Update points state
-            setIsModalOpen(true);
+        if (!cardNumber || !expiryDate) {
+            alert('Please fill out all payment fields!');
+            return;
         }
+
+        const tax = parseFloat(Taxcalc(totalAfterDiscount)); 
+        const orderDate = new Date().toLocaleDateString();
+        const trackingID = Math.random().toString(36).substring(2, 10).toUpperCase();
+
+        setOrderSummary({
+            total,
+            totalAfterDiscount,
+            tax,
+            totalWithTax: totalAfterDiscount + tax,
+            discountApplied: discount,
+            orderDate,
+            trackingID,
+        });
+
+        setPointsEarned(Math.floor(totalAfterDiscount)); 
+        setIsModalOpen(true);
     };
 
     const handleCloseModal = () => {
@@ -223,6 +250,25 @@ const PaymentForm = ({ total }) => {
                     />
                 </div>
                 <button
+                    type="button"
+                    onClick={handleFetchDiscount}
+                    style={{
+                        marginBottom: '15px',
+                        padding: '10px',
+                        backgroundColor: '#007bff',
+                        color: 'white',
+                        borderRadius: '4px',
+                        cursor: 'pointer',
+                        border: 'none',
+                    }}
+                >
+                    Fetch Discount
+                </button>
+                <p><strong>Total:</strong> ${total.toFixed(2)}</p>
+                {discount > 0 && <p><strong>Discount Applied:</strong> {discount}%</p>}
+                <p><strong>Total after Discount:</strong> ${totalAfterDiscount.toFixed(2)}</p>
+                <p><strong>Total after Tax:</strong> ${(totalAfterDiscount + parseFloat(Taxcalc(totalAfterDiscount))).toFixed(2)}</p>
+                <button
                     type="submit"
                     style={{
                         width: '100%',
@@ -234,7 +280,7 @@ const PaymentForm = ({ total }) => {
                         cursor: 'pointer',
                     }}
                 >
-                    Submit
+                    Submit Payment
                 </button>
             </form>
 
@@ -263,11 +309,14 @@ const PaymentForm = ({ total }) => {
                         }}
                     >
                         <h3>Order Summary</h3>
-                        <p><strong>Total Price:</strong> ${orderSummary.total}</p>
-                        <p id="test"><strong>Total Price with Tax:</strong> ${orderSummary.totalWithTax}</p>
+                        <p><strong>Total:</strong> ${orderSummary.total.toFixed(2)}</p>
+                        <p><strong>Total after Discount:</strong> ${orderSummary.totalAfterDiscount.toFixed(2)}</p>
+                        <p><strong>Tax:</strong> ${orderSummary.tax.toFixed(2)}</p>
+                        <p><strong>Total after Tax:</strong> ${orderSummary.totalWithTax.toFixed(2)}</p>
+                        <p><strong>Discount Applied:</strong> {discount}%</p>
                         <p><strong>Order Date:</strong> {orderSummary.orderDate}</p>
                         <p><strong>Tracking ID:</strong> {orderSummary.trackingID}</p>
-                        <p><strong>Points Earned:</strong> {pointsEarned}</p> {/* New points display */}
+                        <p><strong>Points Earned:</strong> {pointsEarned}</p>
                         <button
                             onClick={handleCloseModal}
                             style={{
@@ -275,7 +324,6 @@ const PaymentForm = ({ total }) => {
                                 padding: '10px',
                                 backgroundColor: '#007bff',
                                 color: 'white',
-                                border: 'none',
                                 borderRadius: '4px',
                                 cursor: 'pointer',
                             }}
@@ -291,3 +339,33 @@ const PaymentForm = ({ total }) => {
 
 export default PaymentForm;
 
+
+    // Fetch the discount from the backend
+    // const handleFetchDiscount = async () => {
+    //     try {
+    //         const response = await fetch('/api/users/applyDiscount', {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //                 Authorization: verifyToken,
+    //             },
+    //         });
+
+    //         const data = await response.json();
+
+    //         if (data.success) {
+    //             const discountPercentage = data.discount;
+    //             console.log("Fetched Discount Percentage:", discountPercentage);
+
+    //             const discountedPrice = total - (total * (discountPercentage / 100));
+    //             setDiscount(discountPercentage);
+    //             setTotalAfterDiscount(discountedPrice); // Update the total after discount
+    //             alert(`Discount applied: ${discountPercentage}%`);
+    //         } else {
+    //             alert(data.message || 'Failed to fetch discount.');
+    //         }
+    //     } catch (error) {
+    //         console.error('Error fetching discount:', error);
+    //         alert('An error occurred while fetching the discount.');
+    //     }
+    // };
