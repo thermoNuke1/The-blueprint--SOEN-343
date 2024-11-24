@@ -147,8 +147,8 @@ usersRouter.post('/addPoints', verifyToken, async (request, response) => {
 });
 
 
-usersRouter.post('/applyDiscount', verifyToken, async (request, response) => {
-  const { username } = request.body;
+usersRouter.get('/applyDiscount', verifyToken, async (request, response) => {
+  const { username } = request.user;
 
   try {
     const user = await User.findOne({ username });
