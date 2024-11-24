@@ -174,6 +174,8 @@ if (user === null) {
   const handleCancelOrder = () => {
     setParcels([]);
     setMessage('Order canceled.');
+    total = 0;
+    totalAfterTax = 0;
   };
 
   useEffect(() => {
@@ -187,102 +189,119 @@ if (user === null) {
   }, [message]);
 
   return (
-    <div>
-      <h2>Create New Parcel</h2>
-      {message && <p style={{ color: 'green' }}>{message}</p>}
-      <form onSubmit={(e) => e.preventDefault()}>
-        <div>
-          <label>Origin Address</label>
-          <input
-            type="text"
-            value={originAddress}
-            onChange={({ target }) => setOriginAddress(target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Destination Address</label>
-          <input
-            type="text"
-            value={destinationAddress}
-            onChange={({ target }) => setDestinationAddress(target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Units</label>
-          <select value={unit} onChange={({ target }) => setUnit(target.value)}>
-            <option value="metric">Metric (cm, kg)</option>
-            <option value="imperial">Imperial (in, lbs)</option>
-          </select>
-        </div>
-        <div>
-          <label>Width ({unit === 'metric' ? 'cm' : 'in'})</label>
-          <input
-            type="number"
-            value={width}
-            onChange={({ target }) => setWidth(target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Length ({unit === 'metric' ? 'cm' : 'in'})</label>
-          <input
-            type="number"
-            value={length}
-            onChange={({ target }) => setLength(target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Height ({unit === 'metric' ? 'cm' : 'in'})</label>
-          <input
-            type="number"
-            value={height}
-            onChange={({ target }) => setHeight(target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Weight ({unit === 'metric' ? 'kg' : 'lbs'})</label>
-          <input
-            type="number"
-            value={weight}
-            onChange={({ target }) => setWeight(target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Serial Number</label>
-          <input
-            type="number"
-            value={serialNumber}
-            onChange={({ target }) => setSerialNumber(target.value)}
-            required
-          />
-        </div>
-        <button type="button" onClick={handleAddParcel}>
-          Add Parcel
-        </button>
-      </form>
-      <h3>Added Parcels</h3>
-      <ul>
-        {parcels.map((parcel, index) => (
-          <li key={index}>
-            {parcel.serialNumber} - {parcel.width_dimension}x{parcel.length_dimension}x{parcel.height_dimension} cm - {parcel.weight} kg - $
-            {parcel.price}
-          </li>
-        ))}
-      </ul>
-      <h4>Total Order Price: ${total}</h4>
-      <h3>Total After Taxes: ${totalAfterTax}</h3>
-      <button onClick={handleOrderSubmit} disabled={parcels.length === 0}>
-        Order All Parcels
-      </button>
-      <button onClick={handleCancelOrder} disabled={parcels.length === 0}>
-        Cancel Order
-      </button>
+    <div className="container mt-5">
+  <h2 className="mb-4">Create New Parcel</h2>
+  {message && <p className="text-success">{message}</p>}
+  <form onSubmit={(e) => e.preventDefault()}>
+    <div className="mb-3">
+      <label className="form-label">Origin Address</label>
+      <input
+        type="text"
+        className="form-control"
+        value={originAddress}
+        onChange={({ target }) => setOriginAddress(target.value)}
+        required
+      />
     </div>
+    <div className="mb-3">
+      <label className="form-label">Destination Address</label>
+      <input
+        type="text"
+        className="form-control"
+        value={destinationAddress}
+        onChange={({ target }) => setDestinationAddress(target.value)}
+        required
+      />
+    </div>
+    <div className="mb-3">
+      <label className="form-label">Units</label>
+      <select
+        className="form-select"
+        value={unit}
+        onChange={({ target }) => setUnit(target.value)}
+      >
+        <option value="metric">Metric (cm, kg)</option>
+        <option value="imperial">Imperial (in, lbs)</option>
+      </select>
+    </div>
+    <div className="row">
+      <div className="col-md-4 mb-3">
+        <label className="form-label">Width ({unit === 'metric' ? 'cm' : 'in'})</label>
+        <input
+          type="number"
+          className="form-control"
+          value={width}
+          onChange={({ target }) => setWidth(target.value)}
+          required
+        />
+      </div>
+      <div className="col-md-4 mb-3">
+        <label className="form-label">Length ({unit === 'metric' ? 'cm' : 'in'})</label>
+        <input
+          type="number"
+          className="form-control"
+          value={length}
+          onChange={({ target }) => setLength(target.value)}
+          required
+        />
+      </div>
+      <div className="col-md-4 mb-3">
+        <label className="form-label">Height ({unit === 'metric' ? 'cm' : 'in'})</label>
+        <input
+          type="number"
+          className="form-control"
+          value={height}
+          onChange={({ target }) => setHeight(target.value)}
+          required
+        />
+      </div>
+    </div>
+    <div className="mb-3">
+      <label className="form-label">Weight ({unit === 'metric' ? 'kg' : 'lbs'})</label>
+      <input
+        type="number"
+        className="form-control"
+        value={weight}
+        onChange={({ target }) => setWeight(target.value)}
+        required
+      />
+    </div>
+    <div className="mb-3">
+      <label className="form-label">Serial Number</label>
+      <input
+        type="number"
+        className="form-control"
+        value={serialNumber}
+        onChange={({ target }) => setSerialNumber(target.value)}
+        required
+      />
+    </div>
+    <button type="button" className="btn btn-primary me-2" onClick={handleAddParcel}>
+      Add Parcel
+    </button>
+  </form>
+
+  <h3 className="mt-4">Added Parcels</h3>
+  <ul className="list-group mb-3">
+    {parcels.map((parcel, index) => (
+      <li key={index} className="list-group-item">
+        {parcel.serialNumber} - {parcel.width_dimension}x{parcel.length_dimension}x{parcel.height_dimension} cm - {parcel.weight} kg - ${parcel.price}
+      </li>
+    ))}
+  </ul>
+
+  <h4>Total Order Price: ${total}</h4>
+  <h3>Total After Taxes: ${totalAfterTax}</h3>
+  <div className="d-flex gap-2 mt-3">
+    <button className="btn btn-success" onClick={handleOrderSubmit} disabled={parcels.length === 0}>
+      Order All Parcels
+    </button>
+    <button className="btn btn-danger" onClick={handleCancelOrder} disabled={parcels.length === 0}>
+      Cancel Order
+    </button>
+  </div>
+</div>
+
   );
 };
 
