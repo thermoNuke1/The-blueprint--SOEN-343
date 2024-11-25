@@ -54,7 +54,7 @@ userSchema.pre('save', function (next) {
     next(); // Proceed to save
 });
 
-userSchema.virtual('discount').get(function () {
+userSchema.virtual('Discount').get(function () {
         if (this.points >= 400) {
             return 20;
         } else if (this.points >= 300) {

@@ -145,8 +145,8 @@ usersRouter.post('/addPoints', verifyToken, async (request, response) => {
 });
 
 
-usersRouter.get('/applyDiscount', verifyToken, async (request, response) => {
-  const { username } = request.user;
+usersRouter.get('/:username/applyDiscount', verifyToken, async (request, response) => {
+  const { username } = request.params;
 
   try {
     const user = await User.findOne({ username });
@@ -154,7 +154,6 @@ usersRouter.get('/applyDiscount', verifyToken, async (request, response) => {
       return response.status(404).json({ error: 'User not found' });
     }
 
-    // Return the user's discount
     response.status(200).json({
       success: true,
       discount: user.discount,
