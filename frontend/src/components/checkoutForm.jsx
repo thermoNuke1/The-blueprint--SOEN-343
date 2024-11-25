@@ -215,7 +215,7 @@ const PaymentForm = ({ total = 0 }) => {
             total,
             totalAfterDiscount,
             tax,
-            totalWithTax: totalAfterDiscount + tax,
+            totalWithTax: tax,
             discountApplied: discount,
             orderDate,
             trackingID,
