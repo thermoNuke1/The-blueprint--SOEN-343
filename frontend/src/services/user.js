@@ -75,7 +75,7 @@ const updateUser = async (userData) => {
     }
 };
 
-const applyDiscount = async () => {
+const applyDiscount = async (username) => {
     if (!token) {
         console.error('Token is missing');
         return;
@@ -83,11 +83,11 @@ const applyDiscount = async () => {
     try {
        
         const config = {
-            headers: { Authorization: `Bearer ${token}` }  
+            headers: { Authorization: token}  
         };
 
       
-        const response = await axios.get(`${baseUrl}/applyDiscount`, config);
+        const response = await axios.get(`${baseUrl}/${username}/applyDiscount`, config);
 
 
         if (response.status === 200) {

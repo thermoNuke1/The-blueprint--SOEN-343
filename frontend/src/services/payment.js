@@ -22,6 +22,7 @@ const initializeToken = () => {
 
 const setToken = (newToken) => {
     token = `Bearer ${newToken}`;
+    console.log(token);
 };
 
 

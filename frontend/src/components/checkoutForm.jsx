@@ -168,28 +168,34 @@ const PaymentForm = ({ total = 0 }) => {
     const navigate = useNavigate();
 
     const handleFetchDiscount = async () => {
-        const user = JSON.parse(window.localStorage.getItem('loggedappUser'));
-        
-        
-        try {
-           
-            const data = await userService.applyDiscount();  
-            if (data.success) {
-                const discountPercentage = data.discount;
-                console.log("Fetched Discount Percentage:", discountPercentage);
-        
-                const discountedPrice = total - (total * (discountPercentage / 100));
-                setDiscount(discountPercentage);
-                setTotalAfterDiscount(discountedPrice); 
-                alert(`Discount applied: ${discountPercentage}%`);
-            } else {
-                alert(data.message || 'Failed to fetch discount.');
-            }
-        } catch (error) {
-            console.error('Error fetching discount:', error);
-            alert('An error occurred while fetching the discount.');
+        const user = JSON.parse(window.localStorage.getItem('loggedappUser')); 
+        console.log('Logged-in User:', user);
+      
+        if (!user || !user.username) {
+          console.error('User not found or missing username');
+          alert('You must be logged in to apply a discount.');
+          return;
         }
-    };
+      
+        try {
+          const data = await userService.applyDiscount(user.username); 
+          if (data.success) {
+            const discountPercentage = data.discount;
+            console.log('Fetched Discount Percentage:', discountPercentage);
+      
+            const discountedPrice = total - (total * (discountPercentage / 100));
+            setDiscount(discountPercentage);
+            setTotalAfterDiscount(discountedPrice);
+            alert(`Discount applied: ${discountPercentage}%`);
+          } else {
+            alert(data.message || 'Failed to fetch discount.');
+          }
+        } catch (error) {
+          console.error('Error fetching discount:', error);
+          alert('An error occurred while fetching the discount.');
+        }
+      };
+      
     
     
 
