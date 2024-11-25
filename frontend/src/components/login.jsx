@@ -4,7 +4,7 @@ import userService from "/src/services/user.js";
 import parcelService from "/src/services/parcel.js";
 import shipmentService from "/src/services/shipment.js";
 import PropTypes from "prop-types";
-import { useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 const Login = ({ setErrorMessage, setUser }) => {
   const [username, setUsername] = useState("");
@@ -67,6 +67,14 @@ const Login = ({ setErrorMessage, setUser }) => {
           />
         </div>
         <div className="pt-4"><button type="submit">Login</button></div>
+        <div className="text-center mt-3">
+          <p>
+            Don't have an account?{" "}
+            <Link to="/signup" className="text-primary">
+              Sign up here
+            </Link>
+          </p>
+        </div>
       </form>
     </div>
   );
