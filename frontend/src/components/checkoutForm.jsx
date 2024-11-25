@@ -207,7 +207,7 @@ const PaymentForm = ({ total = 0 }) => {
             return;
         }
 
-        const tax = parseFloat(Taxcalc(totalAfterDiscount)); 
+        const tax = parseFloat(Taxcalc(totalAfterDiscount));
         const orderDate = new Date().toLocaleDateString();
         const trackingID = Math.random().toString(36).substring(2, 10).toUpperCase();
 
@@ -272,7 +272,7 @@ const PaymentForm = ({ total = 0 }) => {
                 <p><strong>Total:</strong> ${total.toFixed(2)}</p>
                 {discount > 0 && <p><strong>Discount Applied:</strong> {discount}%</p>}
                 <p><strong>Total after Discount:</strong> ${totalAfterDiscount.toFixed(2)}</p>
-                <p><strong>Total after Tax:</strong> ${(totalAfterDiscount + parseFloat(Taxcalc(totalAfterDiscount))).toFixed(2)}</p>
+                <p><strong>Total after Tax:</strong> ${(parseFloat(Taxcalc(totalAfterDiscount))).toFixed(2)}</p>
                 <button
                     type="submit"
                     style={{
