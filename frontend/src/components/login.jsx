@@ -4,12 +4,13 @@ import userService from "/src/services/user.js";
 import parcelService from "/src/services/parcel.js";
 import shipmentService from "/src/services/shipment.js";
 import PropTypes from "prop-types";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Login = ({ setErrorMessage, setUser }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -27,7 +28,8 @@ const Login = ({ setErrorMessage, setUser }) => {
       setUser(user);
       setUsername("");
       setPassword("");
-      navigate("/");
+      const redirectPath = location.state?.from?.pathname || "/";
+      navigate(redirectPath, { replace: true });
     } catch (exception) {
       setErrorMessage("Wrong credentials");
       setUser(null);

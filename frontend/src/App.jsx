@@ -20,6 +20,7 @@ import shipmentService from './services/shipment';
 import QuotationProposalPage from "./pages/QuotationProposalPage.jsx";
 import PaymentPage from "./pages/PaymentPage.jsx";
 import ReviewPage from "./pages/ReviewPage.jsx";
+import ProtectedRoute from "./components/ProtectedRoute.jsx";
 
 
 // const stripePromise = loadStripe('pk_test_51QIZoARrCeYLfUcjF4kwH421Z5YCAybTbMhfwQKW2jCH0yRAOzy3Bqdu2BM021tNJLdyfX3txaqNGSLnxXZBS0Xq00lXkPvRFa');
@@ -56,7 +57,11 @@ const App = () => {
 				/>
 				<Route
 					path="/review"
-					element={<ReviewPage />}
+					element={
+					<ProtectedRoute user={user}>
+						<ReviewPage />
+					</ProtectedRoute>
+				}
 				/>
 				<Route
 					path="/tracking"
