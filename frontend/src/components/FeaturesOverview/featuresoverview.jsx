@@ -39,13 +39,13 @@ const FeaturesOverview = () => {
       <div className="feature col text-center">
       <div className="feature-icon d-inline-flex align-items-center justify-content-center bg-gradient fs-2 mb-3">
         <svg className="bi" width="1em" height="1em">
-          <image href="../../assets/support.png" width="1em" height="1em" />
+          <image href="../../assets/bus-location.png" width="1em" height="1em" />
         </svg>
       </div>
-      <h3 className="fs-2 text-body-emphasis">Help and Support</h3>
-      <p>Let's get you the right help!</p>
-      <a href="#" className="icon-link">
-        Get Help
+      <h3 className="fs-2 text-body-emphasis">Tracking</h3>
+      <p>Tracking your package is easy!</p>
+      <a href="/tracking" className="icon-link">
+        Track your package!
         <svg className="bi"><use xlinkHref="#chevron-right"></use></svg>
       </a>
     </div>

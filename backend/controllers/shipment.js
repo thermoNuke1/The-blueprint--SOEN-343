@@ -1,21 +1,35 @@
 const shipmentRouter = require('express').Router();
-const Shipment = require('../models/shipment'); // Correctly import the model
+const Shipment = require('../models/shipment');
+const User = require('../models/users');
 const Parcel = require('../models/parcel');
 const Logger = require('../utils/logger');
 const { updateShipmentStatus } = require('../utils/shipmentUpdater');
+const {verifyToken} = require('../controllers/tokenVerification');
+const shipmentObserver = require('../observers/shipmentObserver');
 
 
 shipmentRouter.post('/', async (req, res) => {
-  const { location,origin,destination, timestamp, paid, parcels } = req.body;
+  const { location,origin,destination, timestamp, paid, parcels, user } = req.body;
 
   try {
-    // Insert parcels into the database
+    
+    if (!user) {
+      return res.status(400).json({ error: 'User ID is required.' });
+    }
+
+    const existingUser = await User.findById(user);
+
+    if (!existingUser) {
+      return res.status(404).json({ error: 'User not found.' });
+    }
+
     const parcelDocuments = await Parcel.insertMany(parcels);
     const parcelIds = parcelDocuments.map((parcel) => parcel._id);
 
     // Create shipment
     const shipment = new Shipment({
       shipment_status: 'Order Placed',
+      user,
       origin,
       destination,
       location,
@@ -36,7 +50,7 @@ shipmentRouter.post('/', async (req, res) => {
 
 shipmentRouter.get('/', async (req, res) => {
   try {
-    const shipments = await Shipment.find({});
+    const shipments = await Shipment.find({}).populate('user', 'username firstname lastname');
     res.json(shipments);
   } catch (error) {
     console.error('Error fetching shipments:', error);
@@ -44,7 +58,7 @@ shipmentRouter.get('/', async (req, res) => {
   }
 });
 
-// GET /api/shipment/:id - Fetch a shipment by ID
+
 shipmentRouter.get('/:id', async (req, res) => {
   Logger.info('Fetching shipment with ID:', req.params.id);
 

@@ -19,6 +19,7 @@ const AccountPage = ({ setErrorMessage }) => {
         try {
             // Fetch user info (including points, level, and discount)
             const userInfo = await userService.getUserByUsername(user.username);
+<<<<<<< HEAD
     
             // Ensure all user data is properly updated in the state
             setUserData({
@@ -33,6 +34,12 @@ const AccountPage = ({ setErrorMessage }) => {
         } catch (error) {
             console.error("Error fetching user data:", error);
             setErrorMessage('Unable to load. Please log in.');
+=======
+            setFirstName(userInfo.firstname);
+            setLastName(userInfo.lastname);
+        } catch {
+            setErrorMessage('Unable to load, Please log in.');
+>>>>>>> 309b5c016b0d4445b161dad0b39b92e9f6d79db4
             setTimeout(() => {
                 setErrorMessage(null);
             }, 5000);

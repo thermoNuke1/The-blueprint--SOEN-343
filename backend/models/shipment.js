@@ -1,9 +1,14 @@
 const mongoose = require('mongoose');
 const toJSONTransform = require('./adaptor')
+const observer = require('../observers/observer'); 
+const shipmentObserver = require('../observers/shipmentObserver');
 
+
+observer.addObserver(shipmentObserver); 
 
 const shipmentSchema = new mongoose.Schema({
   shipment_status: { type: String, required: true },
+  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
   location: { type: String },
   timestamp: { type: Date },
   origin: { type: String },
@@ -28,18 +33,29 @@ const shipmentSchema = new mongoose.Schema({
   ],
 });
 
-
-// Pre-save middleware
 shipmentSchema.pre('save', function (next) {
-  console.log('Before Save:', this);
-  if (this.isModified('shipment_status')) {
-    this.statusHistory.push({ status: this.shipment_status });
-   // this.notifyObservers();
+
+  if (this.isNew && this.shipment_status === 'Order Placed'){
+    observer.notifyObservers(this);
   }
+  if (this.isModified('shipment_status')) {
+    if (
+      this.shipment_status === 'Processing' ||
+      this.shipment_status === 'Out for Delivery' ||
+      this.shipment_status === 'Delivered'
+    ) {
+      
+      
+      
+      observer.notifyObservers(this);
+    }
+    this.statusHistory.push({ status: this.shipment_status });
+    
+  }
+  
   next();
 });
 
-// Customize JSON output
 shipmentSchema.toJSONTransform
 
 const Shipment = mongoose.model('Shipment', shipmentSchema);

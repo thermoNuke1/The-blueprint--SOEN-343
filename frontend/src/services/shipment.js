@@ -15,8 +15,12 @@ const getShipment = async (shipmentId) => {
     return response.data;
 };
 
-const create = async (newShipment) => {
-    const response = await axios.post(baseUrl, newShipment, {
+const create = async (newShipment, userId) => {
+    const shipmentData = {
+        ...newShipment,
+        user: userId, 
+    };
+    const response = await axios.post(baseUrl, shipmentData, {
         headers: { Authorization: token }
     });
     return response.data;

@@ -8,11 +8,14 @@ const usersRouter = require('./controllers/users')
 const loginRouter = require('./controllers/login')
 const parcelRouter = require('./controllers/parcel')
 const paymentRouter = require('./controllers/payment');
+const reviewRouter = require('./controllers/reviewService');
 
 const shipmentRouter = require('./controllers/shipment')
 const middleware = require('./utils/middleware')
 const logger = require('./utils/logger')
 const mongoose = require('mongoose')
+const notificationsRouter = require("./controllers/notifications");
+
 
 
 
@@ -38,6 +41,8 @@ app.use('/api/login', loginRouter)
 app.use('/api/parcel', parcelRouter)
 app.use('/api/payment', paymentRouter)
 app.use('/api/shipment', shipmentRouter)
+app.use("/api/notifications", notificationsRouter);
+app.use('/api/reviews', reviewRouter);
 
 
 app.get('*', (req, res) => {

@@ -56,6 +56,7 @@ const Login = ({ setErrorMessage, setUser }) => {
             type="text"
             value={username}
             name="username"
+            placeholder="Enter username"
             onChange={({ target }) => setUsername(target.value)}
           />
         </div>
@@ -65,6 +66,7 @@ const Login = ({ setErrorMessage, setUser }) => {
             type="password"
             value={password}
             name="password"
+            placeholder="Enter password"
             onChange={({ target }) => setPassword(target.value)}
           />
         </div>

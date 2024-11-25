@@ -32,49 +32,77 @@ const SignUp = ({ setErrorMessage, setUser }) => {
 	};
 
 	return (
-		<div>
-			<form onSubmit={handleSignUp}>
-				<div>
-					<label htmlFor="username">Username</label>
-					<input
-						type="email"
-						value={username}
-						name="username"
-						onChange={({ target }) => setUsername(target.value)}
-					/>
-				</div>
-				<div>
-					<label htmlFor="password">Password</label>
-					<input
-						type="password"
-						value={password}
-						name="password"
-						onChange={({ target }) => setPassword(target.value)}
-					/>
-				</div>
+		<div className="container mt-5">
+    <form
+        className="form-group w-50 container border p-4 shadow"
+        onSubmit={handleSignUp}
+    >
+        <h1 className="text-center fw-bold mb-4">Sign Up</h1>
 
-				<div>
-					<label htmlFor="firstname">First Name</label>
-					<input
-						type="text"
-						value={firstname}
-						name="firstname"
-						onChange={({ target }) => setFirstname(target.value)}
-					/>
-				</div>
+        <div className="mb-3">
+            <label htmlFor="username" className="form-label">
+                Username
+            </label>
+            <input
+                type="email"
+                className="form-control"
+                value={username}
+                name="username"
+                placeholder="Enter your email"
+                onChange={({ target }) => setUsername(target.value)}
+            />
+        </div>
 
-				<div>
-					<label htmlFor="lastname">Last Name</label>
-					<input
-						type="text"
-						value={lastname}
-						name="lastname"
-						onChange={({ target }) => setLastname(target.value)}
-					/>
-				</div>
-				<button type="submit">Sign Up</button>
-			</form>
-		</div>
+        <div className="mb-3">
+            <label htmlFor="password" className="form-label">
+                Password
+            </label>
+            <input
+                type="password"
+                className="form-control"
+                value={password}
+                name="password"
+                placeholder="Enter your password"
+                onChange={({ target }) => setPassword(target.value)}
+            />
+        </div>
+
+        <div className="mb-3">
+            <label htmlFor="firstname" className="form-label">
+                First Name
+            </label>
+            <input
+                type="text"
+                className="form-control"
+                value={firstname}
+                name="firstname"
+                placeholder="Enter your first name"
+                onChange={({ target }) => setFirstname(target.value)}
+            />
+        </div>
+
+        <div className="mb-3">
+            <label htmlFor="lastname" className="form-label">
+                Last Name
+            </label>
+            <input
+                type="text"
+                className="form-control"
+                value={lastname}
+                name="lastname"
+                placeholder="Enter your last name"
+                onChange={({ target }) => setLastname(target.value)}
+            />
+        </div>
+
+        <div className="text-center pt-3">
+            <button type="submit" className="btn btn-primary">
+                Sign Up
+            </button>
+        </div>
+    </form>
+</div>
+
 	);
 };
 
