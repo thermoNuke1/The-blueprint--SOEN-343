@@ -65,7 +65,11 @@ const App = () => {
 				/>
 				<Route
 					path="/tracking"
-					element={<Tracking />}
+					element={
+					<ProtectedRoute user={user}>
+						<Tracking />
+					</ProtectedRoute>
+				}
 				/>
 
 				<Route
@@ -87,7 +91,11 @@ const App = () => {
 					path="/account"
 					element={<AccountPage  />}
 				/>
-			  <Route path="/placeDelivary" element = {<CreateParcel setErrorMessage={setErrorMessage} />}/>
+			  <Route path="/placeDelivary" element = {
+				<ProtectedRoute user={user}>
+					<CreateParcel setErrorMessage={setErrorMessage} />
+				</ProtectedRoute>
+				}/>
 			  <Route path="/quotationproposal" element = {<QuotationProposalPage setErrorMessage={setErrorMessage} />}></Route>
 			  <Route path="/payment" element = {<PaymentPage setErrorMessage={setErrorMessage} />}></Route>
 			</Routes>
