@@ -35,25 +35,42 @@ const AccountPage = ({ setErrorMessage }) => {
     }
 
     return (
-        <div className="max-w-md mx-auto p-6 bg-white shadow-md rounded-md">
-            <h2 className="text-2xl font-semibold mb-4">Account Details</h2>
+         <div className="container mt-5">
+            <div className="row justify-content-center">
+                <div className="col-md-6">
+                    <div className="card shadow-sm">
+                        <div className="card-header bg-primary text-white">
+                            <h2 className="card-title mb-0 text-center">Account Details</h2>
+                        </div>
+                        <div className="card-body">
+                            {/* Email */}
+                            <div className="mb-3">
+                                <label className="form-label fw-bold">Email</label>
+                                <p className="form-control-plaintext">{user.username}</p>
+                            </div>
 
-            {/* Email (as Username) */}
-            <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700">Email</label>
-                <p className="mt-1 text-gray-800">{user.username}</p>
-            </div>
+                            {/* First Name */}
+                            <div className="mb-3">
+                                <label className="form-label fw-bold">First Name</label>
+                                <p className="form-control-plaintext">{firstName}</p>
+                            </div>
 
-            {/* First Name */}
-            <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700">First Name</label>
-                <p className="mt-1 text-gray-800">{firstName}</p>
-            </div>
-
-            {/* Last Name */}
-            <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700">Last Name</label>
-                <p className="mt-1 text-gray-800">{lastName}</p>
+                            {/* Last Name */}
+                            <div className="mb-3">
+                                <label className="form-label fw-bold">Last Name</label>
+                                <p className="form-control-plaintext">{lastName}</p>
+                            </div>
+                        </div>
+                        <div className="card-footer text-center">
+                            <button
+                                className="btn btn-primary"
+                                onClick={() => navigate("/")}
+                            >
+                                Back to Home
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );
