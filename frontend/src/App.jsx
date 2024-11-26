@@ -20,6 +20,8 @@ import shipmentService from './services/shipment';
 import QuotationProposalPage from "./pages/QuotationProposalPage.jsx";
 import PaymentPage from "./pages/PaymentPage.jsx";
 import ReviewPage from "./pages/ReviewPage.jsx";
+import ChatbotComponent from "./components/chatbot/ChatbotComponent.jsx";
+import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import Wheel from "./components/WHeel.jsx";
 
 
@@ -57,11 +59,19 @@ const App = () => {
 				/>
 				<Route
 					path="/review"
-					element={<ReviewPage />}
+					element={
+					<ProtectedRoute user={user}>
+						<ReviewPage />
+					</ProtectedRoute>
+				}
 				/>
 				<Route
 					path="/tracking"
-					element={<Tracking />}
+					element={
+					<ProtectedRoute user={user}>
+						<Tracking />
+					</ProtectedRoute>
+				}
 				/>
 
 				<Route
@@ -83,12 +93,22 @@ const App = () => {
 					path="/account"
 					element={<AccountPage  />}
 				/>
-			  <Route path="/placeDelivary" element = {<CreateParcel setErrorMessage={setErrorMessage} />}/>
+			  <Route path="/placeDelivary" element = {
+				<ProtectedRoute user={user}>
+					<CreateParcel setErrorMessage={setErrorMessage} />
+				</ProtectedRoute>
+				}/>
 			  <Route path="/quotationproposal" element = {<QuotationProposalPage setErrorMessage={setErrorMessage} />}></Route>
 			  <Route path="/payment" element = {<PaymentPage setErrorMessage={setErrorMessage} />}></Route>
+
+			  <Route
+					path="/chatbot-test"
+					element={<ChatbotComponent  />}
+				/>
 			  <Route path="/WHeel" element = {<Wheel/>}></Route>
 			</Routes>
 			<Footer />
+			<ChatbotComponent />
 
 			{/* <Tracking></Tracking>
 			<Elements stripe={stripePromise}>

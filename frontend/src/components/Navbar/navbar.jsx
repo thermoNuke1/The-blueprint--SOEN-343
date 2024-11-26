@@ -61,10 +61,11 @@ const CustomNavBar = ({setShowLogin, showLogin, user, setUser}) => {
         <li className="nav-item">
         <a className="nav-link" href="/review">Review </a>
         </li>
+       
       </ul>
 
       <div className="ms-auto d-flex gap-2">
-  {!isLoginPage && showLogin && user === null ? (
+  {showLogin && user === null ? (
     <>
       <button className="btn btn-outline-primary btn-sm text-nowrap py-2" onClick={handleLogin}>Login</button>
       <button className="btn btn-outline-primary btn-sm text-nowrap py-2" onClick={handleSignup}>Sign Up</button>

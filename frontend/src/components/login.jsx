@@ -6,12 +6,13 @@ import shipmentService from "/src/services/shipment.js";
 import paymentService from "/src/services/payment.js";
 
 import PropTypes from "prop-types";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 const Login = ({ setErrorMessage, setUser }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -33,7 +34,8 @@ const Login = ({ setErrorMessage, setUser }) => {
       setUser(user);
       setUsername("");
       setPassword("");
-      navigate("/");
+      const redirectPath = location.state?.from?.pathname || "/";
+      navigate(redirectPath, { replace: true });
     } catch (exception) {
       setErrorMessage("Wrong credentials");
       setUser(null);
@@ -71,6 +73,14 @@ const Login = ({ setErrorMessage, setUser }) => {
           />
         </div>
         <div className="pt-4"><button type="submit">Login</button></div>
+        <div className="text-center mt-3">
+          <p>
+            Don't have an account?{" "}
+            <Link to="/signup" className="text-primary">
+              Sign up here
+            </Link>
+          </p>
+        </div>
       </form>
     </div>
   );
