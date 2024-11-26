@@ -102,30 +102,26 @@ const applyDiscount = async (username) => {
     }
 };
 
-const Subscribe = async () => {
-    const storedUser = JSON.parse(localStorage.getItem('loggedappUser'));
+const Subscribe = async (username) => {
     if (!token) {
         console.error('Token is missing');
         return;
     }
-    try{
-
+    try {
         const config = {
             headers: { Authorization: token}  
         };
-        const response = await axios.post(`${baseUrl}/${storedUser.username}/Sub`, config);
-
+        const response = await axios.post(
+            `${baseUrl}/${username}/Sub`,
+            { username }, 
+            config 
+        );
+        return response.data;
+    } catch (error) {
+        console.error('Error Subscribing:', error);
+        throw error;
     }
-
-    catch(Exception){
-        console.log("Error Subscribing");
-        throw error
-    }
-}
-
-
-
-
+};
 
 
 export default { createUser, getAllUsers, updateUser, setToken, applyDiscount, getUserByUsername, Subscribe };

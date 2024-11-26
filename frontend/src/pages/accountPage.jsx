@@ -19,6 +19,7 @@ const AccountPage = ({ setErrorMessage }) => {
     const getUserInfo = async () => {
         try {
             const userInfo = await userService.getUserByUsername(user.username);
+            console.log(userInfo)
             setUserData({
                 firstName: userInfo.firstname,
                 lastName: userInfo.lastname,
@@ -36,8 +37,10 @@ const AccountPage = ({ setErrorMessage }) => {
 
     const handleSubscribe = async () => {
         try {
+            const userInfo = await userService.getUserByUsername(user.username);
+            console.log(userInfo);
             console.log("Calling Subscribe API...");
-            const response = await userService.Subscribe();
+            const response = await userService.Subscribe(userInfo.username);
             console.log("Subscribe API response:", response);
             if (response.Subscription) {
                 setUserData((prevData) => ({
