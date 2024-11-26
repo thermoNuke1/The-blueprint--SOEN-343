@@ -165,6 +165,25 @@ usersRouter.get('/:username/applyDiscount', verifyToken, async (request, respons
   }
 });
 
+usersRouter.post('/:username/Sub', verifyToken, async (request, response) => {
+
+  const { username } = request.params;
+
+  try {
+    const user = await User.findOne({ username });
+    if (!user) {
+      return response.status(404).json({ error: 'User not found' });
+    }
+
+    response.status(200).json({
+      Subscription: true,
+    });
+  } catch (error) {
+    console.error(error);
+    response.status(500).json({ error: 'Failed to Subscribe' });
+  }
+})
+
 
 
 module.exports = usersRouter;

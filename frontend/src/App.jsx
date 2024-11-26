@@ -20,6 +20,7 @@ import shipmentService from './services/shipment';
 import QuotationProposalPage from "./pages/QuotationProposalPage.jsx";
 import PaymentPage from "./pages/PaymentPage.jsx";
 import ReviewPage from "./pages/ReviewPage.jsx";
+import Wheel from "./components/WHeel.jsx";
 
 
 // const stripePromise = loadStripe('pk_test_51QIZoARrCeYLfUcjF4kwH421Z5YCAybTbMhfwQKW2jCH0yRAOzy3Bqdu2BM021tNJLdyfX3txaqNGSLnxXZBS0Xq00lXkPvRFa');
@@ -85,6 +86,7 @@ const App = () => {
 			  <Route path="/placeDelivary" element = {<CreateParcel setErrorMessage={setErrorMessage} />}/>
 			  <Route path="/quotationproposal" element = {<QuotationProposalPage setErrorMessage={setErrorMessage} />}></Route>
 			  <Route path="/payment" element = {<PaymentPage setErrorMessage={setErrorMessage} />}></Route>
+			  <Route path="/WHeel" element = {<Wheel/>}></Route>
 			</Routes>
 			<Footer />
 

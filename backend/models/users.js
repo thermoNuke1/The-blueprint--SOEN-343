@@ -29,6 +29,10 @@ const userSchema = new mongoose.Schema({
     discount: { 
         type: Number, 
         default: 0 // Default discount is 0%
+    },
+    Subscription: {
+        type: Boolean,
+        default: false
     }
 });
 

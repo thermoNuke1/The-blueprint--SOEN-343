@@ -1,40 +1,38 @@
-import "./WHeel.css";
-import WheelComponent from "react-wheel-of-prizes";
+import React, { useState } from 'react';
+import './WHeel.css';
 
-export default function WheelSpin() {
-  const segments = [
-    "better luck next time",
-    "won 70",
-    "won 10",
-    "better luck next time",
-    "won 2",
-    "won uber pass"
-  ];
-  const segColors = ["#EE4040", "#F0CF50", "#815CD1", "#3DA5E0", "#34A24F"];
-  const onFinished = (winner) => {
-    console.log(winner);
+const Wheel = () => {
+  const [result, setResult] = useState('');
+  const [spinning, setSpinning] = useState(false);
+
+  const prizes = ['5% Off', '10% Off', '15% Off', 'Free Item', 'Try Again'];
+
+  const spin = () => {
+    if (spinning) return;
+
+    setSpinning(true);
+    const randomPrizeIndex = Math.floor(Math.random() * prizes.length);
+    const spinAngle = 360 * 5 + (360 / prizes.length) * randomPrizeIndex;
+
+    const wheel = document.getElementById('wheel');
+    wheel.style.transition = 'transform 3s ease-out';
+    wheel.style.transform = `rotate(${spinAngle}deg)`;
+
+    setTimeout(() => {
+      setSpinning(false);
+      setResult(prizes[randomPrizeIndex]);
+    }, 3000);
   };
+
   return (
-    <div className="whe">
-      <h1>Hello CodeSandbox</h1>
-      <div>
-        <WheelComponent
-          segments={segments}
-          segColors={segColors}
-          onFinished={(winner) => onFinished(winner)}
-          primaryColor="black"
-          contrastColor="white"
-          buttonText="Spin"
-          isOnlyOnce={false}
-          size={190}
-          upDuration={500}
-          downDuration={600}
-          fontFamily="Arial"
-        />
-      </div>
-      <h2>Start editing to see some magic happen!</h2>
+    <div className="wheel-container">
+      <div id="wheel" className="wheel" />
+      <button onClick={spin} disabled={spinning}>
+        {spinning ? 'Spinning...' : 'Spin'}
+      </button>
+      {result && <p>You won: {result}</p>}
     </div>
   );
-}
+};
 
-
+export default Wheel;

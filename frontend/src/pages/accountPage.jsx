@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 
+
 const AccountPage = ({ setErrorMessage }) => {
     const navigate = useNavigate();
     const [userData, setUserData] = useState({
@@ -11,6 +12,7 @@ const AccountPage = ({ setErrorMessage }) => {
         points: 0,
         level: 1,
         discount: 0,
+        Subscription: false,
     });
 
     const user = JSON.parse(window.localStorage.getItem('loggedappUser'));
@@ -27,6 +29,8 @@ const AccountPage = ({ setErrorMessage }) => {
                 points: userInfo.points || 0,  // Default to 0 if undefined
                 level: userInfo.level || 1,   // Default to 1 if undefined
                 discount: userInfo.discount || 0, // Default to 0% if undefined
+                Subscription: userInfo.Subscription,
+
             });
             
     
@@ -98,6 +102,13 @@ const AccountPage = ({ setErrorMessage }) => {
                 <label className="block text-sm font-medium text-gray-700">Available Discount Code</label>
                 <p className="mt-1 text-gray-800">{discountCode}</p>
             </div>
+
+            <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700">Is Subscription</label>
+                <p className="mt-1 text-gray-800">{userData.Subscription}</p>
+            </div>
+
+            <button onClick={userService.Subscribe()}>SUBSCRIBE</button>
         </div>
     );
 };
