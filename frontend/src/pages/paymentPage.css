@@ -1,0 +1,70 @@
+/* General page styling */
+.payment-container {
+    font-family: Arial, sans-serif;
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 500px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .payment-header {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  /* Form container */
+  .payment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  /* CardElement styling */
+  .stripe-element {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+  }
+  
+  .stripe-element-focus {
+    border-color: #3b82f6;
+  }
+  
+  .stripe-element-invalid {
+    border-color: #ef4444;
+  }
+  
+  /* Button styling */
+  .payment-button {
+    background-color: #3b82f6;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .payment-button:hover {
+    background-color: #2563eb;
+  }
+  
+  .payment-button:disabled {
+    background-color: #a5b4fc;
+    cursor: not-allowed;
+  }
+  
+  /* Loading spinner */
+  .loading-text {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #333;
+  }
+  

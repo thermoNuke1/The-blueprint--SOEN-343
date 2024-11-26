@@ -32,6 +32,16 @@ const createUser = async (userData) => {
     }
 };
 
+const createDriver = async (userData) => {
+    try {
+        const response = await axios.post(`${baseUrl}/driver`, userData);
+        return response.data;
+    } catch (error) {
+        console.error('Error creating user:', error.message);
+        throw error;
+    }
+};
+
 const getAllUsers = async () => {
     try {
         const response = await axios.get(baseUrl, {
@@ -70,4 +80,4 @@ const updateUser = async (userData) => {
     }
 };
 
-export default { createUser, getAllUsers, updateUser, setToken, getUserByUsername };
+export default { createUser, getAllUsers, updateUser, setToken, getUserByUsername, createDriver };
