@@ -25,6 +25,7 @@ const config = {
 					handleGolang: props.actionProvider.handleGolang,
 					handleTracking: props.actionProvider.handleTracking,
 					handleAccount: props.actionProvider.handleAccount,
+          handleExplainAI: props.actionProvider.handleExplainAI,
 				});
 			},
 		},
