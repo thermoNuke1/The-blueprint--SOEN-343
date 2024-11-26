@@ -1,7 +1,6 @@
 
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import parcelService from '../services/parcel';
 import PropTypes from 'prop-types';
 import calculatePrice from '../function/priceMaker';
 import shipmentService from '../services/shipment';
@@ -26,7 +25,6 @@ const CreateParcel = ({ setErrorMessage }) => {
   const [unit, setUnit] = useState('metric');
   const [originAddress, setOriginAddress] = useState(''); // Origin Address
   const [destinationAddress, setDestinationAddress] = useState(''); // Destination Address
-  const [id, setId] = useState('');
   const [userInfo, setUserInfo] = useState(null);
  
   
@@ -149,8 +147,9 @@ if (user === null) {
         
       };
 
-      await shipmentService.create(newShipment, userInfo._id);
-
+      const shipmentData = await shipmentService.create(newShipment, userInfo._id);
+      const trackingId = shipmentData._id
+      const timestamp	= shipmentData.timestamp	
       setMessage('Order created successfully with all parcels!');
       setParcels([]);
       setOriginAddress('');
@@ -160,6 +159,8 @@ if (user === null) {
         state: {
           total,
           totalAfterTax,
+          trackingId,
+          timestamp,
         },
       });
     } catch (exception) {
