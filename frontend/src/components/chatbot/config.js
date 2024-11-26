@@ -2,7 +2,7 @@ import React from "react";
 import { createChatBotMessage } from "react-chatbot-kit";
 import { createCustomMessage } from "react-chatbot-kit";
 import Options from "./Options";
-import DogPicture from "./DogPicture";
+
 import ActionProvider from "./ActionProvider";
 
 const config = {

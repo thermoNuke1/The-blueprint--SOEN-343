@@ -1,4 +1,4 @@
-/* Chatbot container styles */
+
 .chatbot-container {
   position: fixed;
   bottom: 20px;
@@ -6,17 +6,15 @@
   z-index: 9999;
 }
 
-/* Chatbot styles */
 .chatbot {
   position: relative;
-  width: 300px; /* Adjust the width as needed */
+  width: 300px; 
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   background-color: white;
 }
 
-/* Header styles for chatbot (to contain the close button) */
 .chatbot-header {
   position: absolute;
   top: 0;
@@ -26,7 +24,6 @@
   justify-content: flex-end;
 }
 
-/* Close button (X) styles */
 .close-btn {
   background: none;
   border: none;
@@ -41,7 +38,7 @@
   color: #000;
 }
 
-/* Open chatbot button (shown when the chatbot is closed) */
+
 .open-chatbot-btn {
   background: none;
   border: none;
@@ -50,11 +47,13 @@
 }
 
 .open-chatbot-btn img {
-  width: 50px; /* Adjust the size as needed */
-  height: 50px; /* Adjust the size as needed */
+  width: 50px; 
+  height: 50px; 
   transition: transform 0.3s ease;
+  margin-bottom: 40px;
+  margin-left: 40px;
 }
 
 .open-chatbot-btn:hover img {
-  transform: scale(1.1); /* Slight zoom effect on hover */
+  transform: scale(1.1); 
 }

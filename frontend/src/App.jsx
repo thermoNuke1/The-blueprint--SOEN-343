@@ -93,6 +93,7 @@ const App = () => {
 				/>
 			</Routes>
 			<Footer />
+			<ChatbotComponent />
 
 			{/* <Tracking></Tracking>
 			<Elements stripe={stripePromise}>

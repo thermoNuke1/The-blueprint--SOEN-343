@@ -9,7 +9,7 @@ import './ChatbotComponent.css';
 
 function ChatbotComponent() {
 
-  const [isChatbotVisible, setIsChatbotVisible] = useState(true);
+  const [isChatbotVisible, setIsChatbotVisible] = useState(false);
 
   const closeChatbot = () => {
     setIsChatbotVisible(false);
