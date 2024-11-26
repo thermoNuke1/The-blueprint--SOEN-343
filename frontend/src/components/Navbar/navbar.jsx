@@ -58,6 +58,7 @@ const CustomNavBar = ({setShowLogin, showLogin, user, setUser}) => {
         <li className="nav-item">
         <a className="nav-link" href="/review">Review </a>
         </li>
+       
       </ul>
 
       <div className="ms-auto d-flex gap-2">

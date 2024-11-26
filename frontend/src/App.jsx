@@ -20,6 +20,7 @@ import shipmentService from './services/shipment';
 import QuotationProposalPage from "./pages/QuotationProposalPage.jsx";
 import PaymentPage from "./pages/PaymentPage.jsx";
 import ReviewPage from "./pages/ReviewPage.jsx";
+import ChatbotComponent from "./components/chatbot/ChatbotComponent.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 
 
@@ -98,8 +99,14 @@ const App = () => {
 				}/>
 			  <Route path="/quotationproposal" element = {<QuotationProposalPage setErrorMessage={setErrorMessage} />}></Route>
 			  <Route path="/payment" element = {<PaymentPage setErrorMessage={setErrorMessage} />}></Route>
+
+			  <Route
+					path="/chatbot-test"
+					element={<ChatbotComponent  />}
+				/>
 			</Routes>
 			<Footer />
+			<ChatbotComponent />
 
 			{/* <Tracking></Tracking>
 			<Elements stripe={stripePromise}>
