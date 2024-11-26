@@ -7,11 +7,12 @@
     "start": "cross-env NODE_ENV=production node index.js",
     "dev": "cross-env NODE_ENV=development nodemon index.js",
     "test": "cross-env  NODE_ENV=test node --test",
-    "setdep": "npm install axios && npm install express && npm install --save-dev nodemon && npm install cors && npm install --save-dev supertest && npm install dotenv && npm install mongodb && npm install mongoose && npm install bcrypt && npm install --save-dev cross-env && npm install express-async-errors --save-dev && npm install jsonwebtoken"
+    "setdep": "npm install axios && npm install express && npm install --save-dev nodemon && npm install cors && npm install --save-dev supertest && npm install dotenv && npm install mongodb && npm install mongoose && npm install bcrypt && npm install --save-dev cross-env && npm install express-async-errors --save-dev && npm install jsonwebtoken && npm install stripe"
   },
   "author": "Carlo Aldabi",
   "license": "ISC",
   "dependencies": {
+    "@trycourier/courier": "^6.3.1",
     "axios": "^1.7.7",
     "bcrypt": "^5.1.1",
     "bootstrap": "^5.3.3",
@@ -19,11 +20,14 @@
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
     "jsonwebtoken": "^9.0.2",
-    "mongodb": "^6.10.0",
-    "mongoose": "^8.8.0",
+    "mongodb": "^6.11.0",
+    "mongoose": "^8.8.2",
     "mysql": "^2.18.1",
     "mysql2": "^3.11.3",
-    "react-bootstrap": "^2.10.5"
+    "react-bootstrap": "^2.10.5",
+    "react-chatbot-kit": "^2.2.2",
+    "socket.io": "^4.8.1",
+    "stripe": "^17.4.0"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",

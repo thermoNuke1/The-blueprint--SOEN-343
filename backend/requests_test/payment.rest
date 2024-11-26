@@ -1,0 +1,7 @@
+POST http://localhost:3001/api/payment
+Content-Type: application/json
+
+{
+  "amount": 5000, 
+  "paymentMethodId": "pm_card_visa"
+}

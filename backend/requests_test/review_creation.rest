@@ -1,0 +1,8 @@
+POST http://localhost:3001/api/reviews
+Content-Type: application/json
+
+{
+    "username": "mohamedsanoko@example.com",
+    "ratingScore": 4,
+    "feedback": "Amazing service!"
+}

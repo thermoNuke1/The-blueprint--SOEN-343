@@ -1,15 +1,21 @@
 const config = require('./utils/config')
 const express = require('express')
+const path = require('path');
 const app = express()
 require('express-async-errors')
 const cors =  require('cors')
 const usersRouter = require('./controllers/users')
 const loginRouter = require('./controllers/login')
 const parcelRouter = require('./controllers/parcel')
+const paymentRouter = require('./controllers/payment');
+const reviewRouter = require('./controllers/reviewService');
 
+const shipmentRouter = require('./controllers/shipment')
 const middleware = require('./utils/middleware')
 const logger = require('./utils/logger')
 const mongoose = require('mongoose')
+const notificationsRouter = require("./controllers/notifications");
+
 
 
 
@@ -32,6 +38,14 @@ app.use(middleware.requestLogger)
 app.use('/api/users', usersRouter)
 app.use('/api/login', loginRouter)
 app.use('/api/parcel', parcelRouter)
+app.use('/api/payment', paymentRouter)
+app.use('/api/shipment', shipmentRouter)
+app.use("/api/notifications", notificationsRouter);
+app.use('/api/reviews', reviewRouter);
+
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'dist', 'index.html'))
+  })
 
 app.use(middleware.unknownEndpoint)
 app.use(middleware.errorHandler)
