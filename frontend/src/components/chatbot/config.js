@@ -20,9 +20,11 @@ const config = {
 			widgetName: "options",
 			widgetFunc: (props) => {
 				return React.createElement(Options, {
-					//handleQuote: props.actionProvider.handleQuote,
+					handleJavascript: props.actionProvider.handleJavascript,
 					handlePython: props.actionProvider.handlePython,
 					handleGolang: props.actionProvider.handleGolang,
+					handleTracking: props.actionProvider.handleTracking,
+					handleAccount: props.actionProvider.handleAccount,
 				});
 			},
 		},

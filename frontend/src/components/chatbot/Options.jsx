@@ -1,4 +1,5 @@
 import React from "react";
+import "./Options.css";
 import { useNavigate } from "react-router-dom";
 
 const Options = ({ handleTracking, handleAccount, handleOther }) => {
@@ -37,7 +38,6 @@ const Options = ({ handleTracking, handleAccount, handleOther }) => {
 			id: 5,
 		},
 	];
-
 	const buttonsMarkup = options.map((option) => (
 		<button
 			key={option.id}
