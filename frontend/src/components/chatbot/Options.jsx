@@ -1,21 +1,31 @@
 import React from "react";
 
-const Options = ({ handleJavascript, handlePython, handleGolang }) => {
+const Options = ({ handleTracking, handleQuote, handleShip, handleAccount, handleOther}) => {
     const options = [
         {
-            text: "Javascript",
-            handler: handleJavascript, 
+            text: "Track your Package",
+            handler: handleTracking, 
             id: 1,
         },
         {
-            text: "Python",
-            handler: handlePython, 
+            text: "Get a Quote",
+            handler: handleQuote, 
             id: 2,
         },
         {
-            text: "Golang",
-            handler: handleGolang, 
+            text: "Ship a Package",
+            handler: handleShip, 
             id: 3,
+        },
+        {
+            text: "View my Account",
+            handler: handleAccount, 
+            id: 4,
+        },
+        {
+            text: "Other",
+            handler: handleOther, 
+            id: 5,
         },
     ];
 
