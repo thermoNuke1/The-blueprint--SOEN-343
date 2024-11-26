@@ -14,9 +14,10 @@ function PaymentPage () {
     return (
         <>
             <Elements stripe={stripePromise}>
-             <h2>Payment Page</h2>
-              <p>Total Price: ${total}</p>
-              <p>Total Price with tax: ${Taxcalc(total)}</p>
+             <h2></h2>
+              <p></p>
+              <p></p>
+              
 
                 <CheckoutForm total={total} clientSecret={"pk_test_51QIZoARrCeYLfUcjF4kwH421Z5YCAybTbMhfwQKW2jCH0yRAOzy3Bqdu2BM021tNJLdyfX3txaqNGSLnxXZBS0Xq00lXkPvRFa"}></CheckoutForm>
             </Elements>
