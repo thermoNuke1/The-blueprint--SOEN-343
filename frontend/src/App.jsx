@@ -18,7 +18,9 @@ import QuotationProposalPage from "./pages/QuotationProposalPage.jsx";
 import PaymentPage from "./pages/PaymentPage.jsx";
 import ReviewPage from "./pages/ReviewPage.jsx";
 import DriverSignUp from "./pages/driverSignup.jsx";
-import Confirmation from "./pages/confimation.jsx";
+import Confirmation from "./pages/confimation.jsx";import ChatbotComponent from "./components/chatbot/ChatbotComponent.jsx";
+import ProtectedRoute from "./components/ProtectedRoute.jsx";
+
 
 // Initialize Stripe
 const stripePromise = loadStripe(

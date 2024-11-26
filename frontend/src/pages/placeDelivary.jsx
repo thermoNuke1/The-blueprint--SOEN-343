@@ -170,6 +170,15 @@ const CreateParcel = ({ setErrorMessage }) => {
 
   const handleCancelOrder = () => {
     setParcels([]);
+    setWidth('');
+    setLength('');
+    setHeight('');
+    setWeight('');
+    setSerialNumber('');
+    setUnit('metric');
+    setOriginAddress('');
+    setDestinationAddress('');
+
     setMessage("Order canceled.");
     total = 0;
     totalAfterTax = 0;

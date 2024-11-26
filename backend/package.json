@@ -20,13 +20,14 @@
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
     "jsonwebtoken": "^9.0.2",
-    "mongodb": "^6.10.0",
-    "mongoose": "^8.8.1",
+    "mongodb": "^6.11.0",
+    "mongoose": "^8.8.2",
     "mysql": "^2.18.1",
     "mysql2": "^3.11.3",
     "react-bootstrap": "^2.10.5",
+    "react-chatbot-kit": "^2.2.2",
     "socket.io": "^4.8.1",
-    "stripe": "^17.3.1"
+    "stripe": "^17.4.0"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
