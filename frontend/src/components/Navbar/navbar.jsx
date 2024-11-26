@@ -56,6 +56,9 @@ const CustomNavBar = ({setShowLogin, showLogin, user, setUser}) => {
           <a className="nav-link" href="#">Contact</a>
         </li>
         <li className="nav-item">
+          <a className="nav-link" href="/WHeel">Wheel</a>
+        </li>
+        <li className="nav-item">
         <a className="nav-link" href="/review">Review </a>
         </li>
       </ul>
