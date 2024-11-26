@@ -2,7 +2,7 @@ import React from "react";
 import "./Options.css";
 import { useNavigate } from "react-router-dom";
 
-const Options = ({ handleTracking, handleAccount, handleOther, handleExplainAI }) => {
+const Options = ({ handleTracking, handleAccount, handleQuestion }) => {
 	const navigate = useNavigate();
 	const handleQuote = () => {
 		navigate("/quotationproposal");
@@ -32,12 +32,10 @@ const Options = ({ handleTracking, handleAccount, handleOther, handleExplainAI }
 			handler: handleAccount,
 			id: 4,
 		},
-		{
-			text: "Other",
-			handler: handleOther,
-			id: 5,
-		},
-        { text: "Explain AI", handler: handleExplainAI, id: 6 },
+        { 
+            text: "All Other Questions", 
+            handler: handleQuestion, 
+            id: 6 },
 	];
 	const buttonsMarkup = options.map((option) => (
 		<button

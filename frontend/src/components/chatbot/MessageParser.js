@@ -9,11 +9,18 @@ class MessageParser {
 
     const lowercase = message.toLowerCase();
 
-    if (lowercase.includes("hello world")) {
-      this.actionProvider.helloWorldHandler();
-    } else if (lowercase.includes("explain ai")) {
-      this.actionProvider.handleExplainAI(); // Added logic for Explain AI
-    } else {
+    if (lowercase.includes("how does shipping work") || lowercase.includes("shipping process") || lowercase.includes("delivery system") || lowercase.includes("logistics") || lowercase.includes("shipping information") || lowercase.includes("delivery methods") || lowercase.includes("shipping services") || lowercase.includes("parcel delivery") || lowercase.includes("shipping procedures")) {
+      this.actionProvider.handleExplainShipping();
+  } else if (lowercase.includes("company")|| lowercase.includes("policy")) {
+  this.actionProvider.handleCompanyInfo(); 
+  }   else if (lowercase.includes("points")) {
+      this.actionProvider.handlePointsRequest(); 
+    } else if (lowercase.includes("name")) {
+      this.actionProvider.handleNameRequest(); 
+    } else if (lowercase.includes("discount")) {
+      this.actionProvider.handleDiscountRequest(); 
+    }
+    else {
       const trackingIdPattern = /^[a-zA-Z0-9]{24}$/;
 
       const match = message.match(trackingIdPattern);

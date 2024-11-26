@@ -8,6 +8,12 @@ class ActionProvider {
 		this.setState = setStateFunc;
 	}
 
+  showOptionsWidget() {
+    const message = this.createChatBotMessage("What else can I help you with?", {
+      widget: "options",
+    });
+    this.setChatbotMessage(message);
+  }
   
 	handleTracking = () => {
 		const message = this.createChatBotMessage(
@@ -30,6 +36,9 @@ class ActionProvider {
 			const errorMessage = `Sorry, I cannot find any information for shipment ID ${trackingId}. Please check the ID and try again.`;
 			this.setChatbotMessage(this.createChatBotMessage(errorMessage));
 		}
+    setTimeout(() => {
+      this.showOptionsWidget();
+    }, 30000); 
 	};
 	handleAccount = () => {
 		const message = this.createChatBotMessage("What would you like to know?");
@@ -40,14 +49,13 @@ class ActionProvider {
 handleAccountInfo = async () => {
   const user = JSON.parse(window.localStorage.getItem('loggedappUser'));
 
-
   if (!user) {
       console.error('No user found in localStorage');
       return;
   }
-
   try {
       const userData = await userService.getUserByUsername(user.username);
+
       console.log('User Data:', userData);
 
       this.setChatbotMessage(this.createChatBotMessage(`Here is your account information:`));
@@ -67,17 +75,26 @@ handleAccountInfo = async () => {
 getName = (userData) => {
   const fullName = `${userData.firstname} ${userData.lastname}`;
   this.setChatbotMessage(this.createChatBotMessage(`Your name is ${fullName}.`));
+  setTimeout(() => {
+    this.showOptionsWidget();
+  }, 30000); 
 };
 
 
 getPoints = (userData) => {
   const points = userData.points;
   this.setChatbotMessage(this.createChatBotMessage(`You have ${points} points.`));
+  setTimeout(() => {
+    this.showOptionsWidget();
+  }, 30000); 
 };
 
 getDiscountCodes = (userData) => {
   const discount = userData.discount;
   this.setChatbotMessage(this.createChatBotMessage(`You have a ${discount}% discount.`));
+  setTimeout(() => {
+    this.showOptionsWidget();
+  }, 30000); 
 };
 
 handleNameRequest = async () => {
@@ -137,7 +154,7 @@ handleDiscountRequest = async () => {
 
   async callGoogleGeminiAPI(userInput) {
     const apiUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent';  
-    const apiKey = '';  
+    const apiKey = 'AIzaSyBUBU7gDK0FY8IKe9kP6seV7rYYQj_-PCQ';  
 
     const payload = {
         contents: [
@@ -171,19 +188,23 @@ handleDiscountRequest = async () => {
         const generatedText = data.candidates?.[0]?.content?.parts?.[0]?.text || "Sorry, I couldn't generate a response.";
         const message = this.createChatBotMessage(generatedText);
         this.setChatbotMessage(message);
+        setTimeout(() => {
+          this.showOptionsWidget();
+        }, 20000); 
     } catch (error) {
         console.error("Error calling Google Gemini API:", error);
         const errorMessage = "There was an issue generating a response. Please try again later.";
         this.setChatbotMessage(this.createChatBotMessage(errorMessage));
+       
+          this.showOptionsWidget();
+       
     }
 }
 
 
 
-handleExplainAI = async () => {
-  const userInput = "Explain how AI works";
-  const message = this.createChatBotMessage("Let me explain AI...");
-  this.setChatbotMessage(message);
+handleExplainShipping = async () => {
+  const userInput = "Explain how shipping works in a delivery system for beginners. outline three key components. keep it to 2 sentences with short bullet points. If the user asks about ";
 
   await this.callGoogleGeminiAPI(userInput);
 };
@@ -194,6 +215,15 @@ handleExplainAI = async () => {
 			...prevState,
 			messages: [...prevState.messages, message],
 		}));
+	};
+
+  handleCompanyInfo = async() => {
+    const userInput = "Company name is Deltra come up with 3 basic company policies for our fake shipping delivert system. keep it very short. Don't make the sentences long";
+    await this.callGoogleGeminiAPI(userInput);
+  };
+handleQuestion  = () => {
+		const message = this.createChatBotMessage("What would you like to know about our shipping service?");
+		this.setChatbotMessage(message);
 	};
 }
 
