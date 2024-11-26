@@ -1,8 +1,7 @@
-import userService from '../services/user.js';
+import userService from '../services/user.js'; // Ensure this is the correct path
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
-
 
 const AccountPage = ({ setErrorMessage }) => {
     const navigate = useNavigate();
@@ -19,27 +18,36 @@ const AccountPage = ({ setErrorMessage }) => {
 
     const getUserInfo = async () => {
         try {
-            // Fetch user info (including points, level, and discount)
             const userInfo = await userService.getUserByUsername(user.username);
-    
-            // Ensure all user data is properly updated in the state
             setUserData({
                 firstName: userInfo.firstname,
                 lastName: userInfo.lastname,
-                points: userInfo.points || 0,  // Default to 0 if undefined
-                level: userInfo.level || 1,   // Default to 1 if undefined
-                discount: userInfo.discount || 0, // Default to 0% if undefined
+                points: userInfo.points || 0,
+                level: userInfo.level || 1,
+                discount: userInfo.discount || 0,
                 Subscription: userInfo.Subscription,
-
             });
-            
-    
             console.log("User data updated:", userInfo);
         } catch (error) {
             console.error("Error fetching user data:", error);
             setErrorMessage('Unable to load. Please log in.');
-          
-        } 
+        }
+    };
+
+    const handleSubscribe = async () => {
+        try {
+            console.log("Calling Subscribe API...");
+            const response = await userService.Subscribe();
+            console.log("Subscribe API response:", response);
+            if (response.Subscription) {
+                setUserData((prevData) => ({
+                    ...prevData,
+                    Subscription: true,
+                }));
+            }
+        } catch (error) {
+            console.error("Error subscribing:", error);
+        }
     };
 
     useEffect(() => {
@@ -54,7 +62,6 @@ const AccountPage = ({ setErrorMessage }) => {
         return null;
     }
 
-    // Determine discount code based on user level
     const discountCode = userData.level > 1 ? `LEVEL${userData.level}_DISCOUNT` : 'No discount available';
 
     return (
@@ -104,11 +111,21 @@ const AccountPage = ({ setErrorMessage }) => {
             </div>
 
             <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700">Is Subscription</label>
-                <p className="mt-1 text-gray-800">{userData.Subscription}</p>
+                <label className="block text-sm font-medium text-gray-700">Subscription Status</label>
+                <p className="mt-1 text-gray-800">
+                    {userData.Subscription ? "Active" : "Not Subscribed"}
+                </p>
             </div>
 
-            <button onClick={userService.Subscribe()}>SUBSCRIBE</button>
+            <button
+                onClick={handleSubscribe}
+                disabled={userData.Subscription}
+                className={`px-4 py-2 ${
+                    userData.Subscription ? 'bg-gray-400' : 'bg-blue-500'
+                } text-white rounded-md`}
+            >
+                {userData.Subscription ? "Subscribed" : "Subscribe"}
+            </button>
         </div>
     );
 };
