@@ -199,18 +199,22 @@ const PaymentForm = ({ total = 0 }) => {
     
     
 
-    const handleSubmit = (e) => {
+      const handleSubmit = async (e) => {
         e.preventDefault();
-
+    
         if (!cardNumber || !expiryDate) {
             alert('Please fill out all payment fields!');
             return;
         }
-
+    
         const tax = parseFloat(Taxcalc(totalAfterDiscount));
         const orderDate = new Date().toLocaleDateString();
         const trackingID = Math.random().toString(36).substring(2, 10).toUpperCase();
+    
 
+        const points = Math.floor(totalAfterDiscount);
+        setPointsEarned(points);
+    
         setOrderSummary({
             total,
             totalAfterDiscount,
@@ -220,10 +224,45 @@ const PaymentForm = ({ total = 0 }) => {
             orderDate,
             trackingID,
         });
-
-        setPointsEarned(Math.floor(totalAfterDiscount)); 
+    
+        
+        const user = JSON.parse(window.localStorage.getItem('loggedappUser'));
+        if (!user || !user.username) {
+            alert('You must be logged in to earn points.');
+            return;
+        }
+    
+        try {
+            
+            const response = await fetch('/api/users/addPoints', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${user.token}`, 
+                },
+                body: JSON.stringify({
+                    username: user.username, 
+                    pointsToAdd: points,
+                }),
+            });
+    
+            const data = await response.json();
+    
+            if (response.ok) {
+                console.log('Points successfully added:', data);
+                alert(`You earned ${points} points!`);
+            } else {
+                console.error('Failed to add points:', data.error);
+                alert('An error occurred while adding your points.');
+            }
+        } catch (error) {
+            console.error('Error while adding points:', error);
+            alert('An error occurred while processing your points.');
+        }
+    
         setIsModalOpen(true);
     };
+    
 
     const handleCloseModal = () => {
         setIsModalOpen(false);

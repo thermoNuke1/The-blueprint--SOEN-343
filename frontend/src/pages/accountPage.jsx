@@ -86,7 +86,7 @@ const AccountPage = ({ setErrorMessage }) => {
                             <div className="mb-3">
                                 <label className="form-label fw-bold">First Name</label>
                                 <p className="form-control-plaintext">{userData.firstName}</p>
-                            </div>
+                            
 
             {/* Last Name */}
             <div className="mb-4">
@@ -135,6 +135,11 @@ const AccountPage = ({ setErrorMessage }) => {
                 {userData.Subscription ? "Subscribed" : "Subscribe"}
             </button>
         </div>
+        </div>
+                            </div>
+                            </div>
+                            </div>
+                            </div>
     );
 };
 
