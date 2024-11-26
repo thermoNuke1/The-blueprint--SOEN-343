@@ -22,7 +22,9 @@ const config = {
         return React.createElement(Options, {
           handleJavascript: props.actionProvider.handleJavascript,
           handlePython: props.actionProvider.handlePython,
-          handleGolang: props.actionProvider.handleGolang
+          handleGolang: props.actionProvider.handleGolang,
+          handleTracking: props.actionProvider.handleTracking,
+          handleAccount: props.actionProvider.handleAccount,
         });
       }
       

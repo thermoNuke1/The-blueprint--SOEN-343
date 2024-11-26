@@ -1,5 +1,5 @@
 import React from "react";
-
+import "./Options.css";
 const Options = ({ handleTracking, handleQuote, handleShip, handleAccount, handleOther}) => {
     const options = [
         {
