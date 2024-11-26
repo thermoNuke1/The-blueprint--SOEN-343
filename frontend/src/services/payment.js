@@ -14,3 +14,4 @@ export const createPaymentIntent = async (amount, paymentMethodId) => {
     throw error;
   }
 };
+
