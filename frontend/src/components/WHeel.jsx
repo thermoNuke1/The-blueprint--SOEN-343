@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './WHeel.css';
+import './Wheel.css';
 
 const Wheel = () => {
   const [result, setResult] = useState('');
@@ -15,8 +15,10 @@ const Wheel = () => {
     const spinAngle = 360 * 5 + (360 / prizes.length) * randomPrizeIndex;
 
     const wheel = document.getElementById('wheel');
-    wheel.style.transition = 'transform 3s ease-out';
-    wheel.style.transform = `rotate(${spinAngle}deg)`;
+    if (wheel) {
+      wheel.style.transition = 'transform 3s ease-out';
+      wheel.style.transform = `rotate(${spinAngle}deg)`;
+    }
 
     setTimeout(() => {
       setSpinning(false);
