@@ -1,6 +1,9 @@
 import React from "react";
 import { createChatBotMessage } from "react-chatbot-kit";
 import { createCustomMessage } from "react-chatbot-kit";
+import Options from "./Options";
+import DogPicture from './DogPicture';
+import ActionProvider from "./ActionProvider"; 
 
 const config = {
   botName: "DeltraBot",
@@ -15,9 +18,18 @@ const config = {
   widgets: [
     {
       widgetName: "options",
-      widgetFunc: (props) => <Options {...props} />,
+      widgetFunc: (props) => {
+        return React.createElement(Options, {
+          handleJavascript: props.actionProvider.handleJavascript,
+          handlePython: props.actionProvider.handlePython,
+          handleGolang: props.actionProvider.handleGolang
+        });
+      }
+      
     },
   ],
+  
+
 };
 
 export default config;

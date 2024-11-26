@@ -1,18 +1,20 @@
-const Options = (props) => {
+import React from "react";
+
+const Options = ({ handleJavascript, handlePython, handleGolang }) => {
     const options = [
         {
             text: "Javascript",
-            handler: () => {},
+            handler: handleJavascript, 
             id: 1,
         },
         {
             text: "Python",
-            handler: () => {},
+            handler: handlePython, 
             id: 2,
         },
         {
             text: "Golang",
-            handler: () => {},
+            handler: handleGolang, 
             id: 3,
         },
     ];
@@ -23,4 +25,6 @@ const Options = (props) => {
         </button>
     ));
     return <div className="options-container">{buttonsMarkup}</div>;
-}
+};
+
+export default Options;

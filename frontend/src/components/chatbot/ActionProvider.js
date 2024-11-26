@@ -1,27 +1,30 @@
 class ActionProvider {
-    constructor(
-     createChatBotMessage,
-     setStateFunc,
-     createClientMessage,
-     stateRef,
-     createCustomMessage,
-     ...rest
-   ) {
-     this.createChatBotMessage = createChatBotMessage;
-     this.setState = setStateFunc;
-     this.createClientMessage = createClientMessage;
-     this.stateRef = stateRef;
-     this.createCustomMessage = createCustomMessage;
-   }
+  constructor(createChatBotMessage, setStateFunc) {
+    this.createChatBotMessage = createChatBotMessage;
+    this.setState = setStateFunc;
+  }
 
-   helloWorldHandler = () => {
-    const message = this.createChatBotMessage("Hello! I like to pee my pants ;)")
-    this.setChatbotMessage(message)
-   }
+  handleJavascript = () => {
+    const message = this.createChatBotMessage("Great! Let's talk about Javascript.");
+    this.setChatbotMessage(message);
+  };
 
-   setChatbotMessage = (message) => {
-    this.setState(state => ({...state, messages: [...state.messages, message] }))
-   }
- }
- 
- export default ActionProvider;
+  handlePython = () => {
+    const message = this.createChatBotMessage("Python is a fantastic choice!");
+    this.setChatbotMessage(message);
+  };
+
+  handleGolang = () => {
+    const message = this.createChatBotMessage("Golang is known for its speed and efficiency!");
+    this.setChatbotMessage(message);
+  };
+
+  setChatbotMessage = (message) => {
+    this.setState((prevState) => ({
+      ...prevState,
+      messages: [...prevState.messages, message],
+    }));
+  };
+}
+
+export default ActionProvider;
