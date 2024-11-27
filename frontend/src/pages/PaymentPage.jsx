@@ -2,6 +2,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import {createPaymentIntent} from '../services/payment';
 import './paymentPage.css';
+import {getUserByUsername} from '../services/user';
+import {useState} from 'react';
 
 function PaymentPage() {
   const stripe = useStripe();
@@ -9,6 +11,25 @@ function PaymentPage() {
   const location = useLocation();
   const { totalAfterTax, trackingId, timestamp } = location.state || {};
   const navigate = useNavigate();
+  const {username} = window.localStorage.getItem('loggedappUser');
+  
+  const [discount, setdiscount ] = useState (0)
+
+  const getUserInfo= async (username) => {
+    
+
+    try{
+      const response = await getUserByUsername(username);
+      setdiscount (response.discount);
+      
+
+    }
+    catch(Exception){
+      console.log(Exception);
+      
+    }
+
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
