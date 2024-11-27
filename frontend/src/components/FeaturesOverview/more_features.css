@@ -1,0 +1,54 @@
+
+.btn, .btn-primaryy {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #101d2d!important;  
+    --bs-btn-border-color: #003744 !important; 
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #002C36;  
+    --bs-btn-hover-border-color: #002C36; 
+    --bs-btn-focus-shadow-rgb: 0, 56, 68;
+    --bs-btn-active-color: #fff; 
+    --bs-btn-active-bg: #002C36; 
+    --bs-btn-active-border-color: #00242A;
+    --bs-btn-disabled-color: #fff; 
+    --bs-btn-disabled-bg: #003744; 
+    --bs-btn-disabled-border-color: #003744;
+}
+
+.btn, .btn-primaryy {
+    background-color: var(--bs-btn-bg) !important; 
+    color: var(--bs-btn-color) !important;
+    border: 1px solid var(--bs-btn-border-color) !important;
+}
+
+.btn:hover, .btn-primaryy:hover {
+    background-color: var(--bs-btn-hover-bg) !important;  
+    border-color: var(--bs-btn-hover-border-color) !important;
+}
+
+.btn:active, .btn-primaryy:active {
+    background-color: var(--bs-btn-active-bg) !important;
+    border-color: var(--bs-btn-active-border-color) !important;
+    box-shadow: var(--bs-btn-active-shadow, inset 0 3px 5px rgba(0, 0, 0, 0.125)) !important;
+}
+
+.btn-login-signup {
+    min-width: 150px;  
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    transition: box-shadow 0.2s ease-in-out, transform 0.1s ease-in-out; 
+  }
+  
+
+  .btn-login-signup:hover {
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05); 
+  }
+  /* Sticky navbar */
+  .navbar {
+    position: fixed;
+    top: 0;             
+    background-color: #f8f9fa; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  }
+  
+ 

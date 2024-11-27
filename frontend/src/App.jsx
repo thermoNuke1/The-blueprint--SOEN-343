@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Route, Routes } from "react-router-dom";
 import Homepage from "./pages/Homepage/Homepage.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -103,7 +103,8 @@ const App = () => {
           }
         />
       </Routes>
-      <Footer />
+	  <ChatbotComponent></ChatbotComponent>
+      {/* <Footer /> */}
     </Elements>
   );
 };

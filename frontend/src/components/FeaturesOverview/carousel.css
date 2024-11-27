@@ -1,0 +1,47 @@
+.team-block{
+    background-color:   #101d2d;
+}
+.carousel {
+    margin-bottom: 4rem; 
+    position: relative; 
+    background-color: #101d2d;
+  }
+  
+  .carousel-inner {
+    overflow: hidden; 
+  }
+  
+  .carousel-item {
+    height: 400px; 
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    background-color: #101d2d; 
+  }
+  
+  .carousel-caption {
+    text-align: center; 
+    color: var(--bs-light); 
+  }
+  
+  .carousel-indicators button {
+    background-color: var(--bs-primary);
+  }
+  
+  .carousel-indicators button.active {
+    background-color: var(--bs-secondary); 
+  }
+  
+  .btn-primary {
+    background-color: var(--bs-primary); 
+    border: none;
+    padding: 0.75rem 1.5rem;
+  }
+  
+  svg.bd-placeholder-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    fill: var(--bs-secondary-color); 
+  }
+  
