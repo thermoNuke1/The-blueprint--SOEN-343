@@ -6,9 +6,9 @@
 }
 
 .wheel {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
+  width: 300px; /* Increased size */
+  height: 300px; /* Increased size */
+  border-radius: 50%; /* Keeps it circular */
   border: 5px solid black;
   background: conic-gradient(
     #ff9999 0% 20%,

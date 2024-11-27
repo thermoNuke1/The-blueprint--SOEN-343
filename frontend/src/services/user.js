@@ -91,22 +91,16 @@ const applyDiscount = async (username) => {
         return;
     }
     try {
-       
         const config = {
-            headers: { Authorization: token}  
+            headers: { Authorization: token }  
         };
-
-      
         const response = await axios.get(`${baseUrl}/${username}/applyDiscount`, config);
-
-
         if (response.status === 200) {
             return response.data;
         } else {
             throw new Error(`Failed to apply discount: ${response.statusText}`);
         }
     } catch (error) {
-        
         console.error('Error applying discount:', error.response ? error.response.data : error.message);
         throw error;  
     }
@@ -119,7 +113,7 @@ const Subscribe = async (username) => {
     }
     try {
         const config = {
-            headers: { Authorization: token}  
+            headers: { Authorization: token }  
         };
         const response = await axios.post(
             `${baseUrl}/${username}/Sub`,
@@ -133,5 +127,25 @@ const Subscribe = async (username) => {
     }
 };
 
+const addPoints = async (username, pointsToAdd) => {
+    if (!token) {
+        console.error('Token is missing');
+        return;
+    }
+    try {
+        const config = {
+            headers: { Authorization: token },
+        };
+        const response = await axios.post(
+            `${baseUrl}/addPoints`,
+            { username, pointsToAdd },
+            config
+        );
+        return response.data;
+    } catch (error) {
+        console.error('Error adding points:', error.message);
+        throw error;
+    }
+};
 
-export default { createUser, getAllUsers, updateUser, setToken, applyDiscount, getUserByUsername, Subscribe };
+export default { createUser, createDriver, getAllUsers, updateUser, setToken, applyDiscount, getUserByUsername, Subscribe, addPoints };
