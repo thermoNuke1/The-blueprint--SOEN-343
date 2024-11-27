@@ -40,7 +40,4 @@ const createPaymentIntent = async (amount, paymentMethodId) => {
     throw error;
   }
 };
-export default {
-  createPaymentIntent,
-  setToken,
-};
+

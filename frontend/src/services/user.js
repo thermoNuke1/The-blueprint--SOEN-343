@@ -32,6 +32,16 @@ const createUser = async (userData) => {
     }
 };
 
+const createDriver = async (userData) => {
+    try {
+        const response = await axios.post(`${baseUrl}/driver`, userData);
+        return response.data;
+    } catch (error) {
+        console.error('Error creating user:', error.message);
+        throw error;
+    }
+};
+
 const getAllUsers = async () => {
     if (!token) {
         console.error('Token is missing');

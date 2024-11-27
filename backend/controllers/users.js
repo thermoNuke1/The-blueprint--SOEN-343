@@ -1,9 +1,9 @@
-const bcrypt = require('bcrypt');
-const usersRouter = require('express').Router();
-const User = require('../models/users');
-const { verifyToken } = require('./tokenVerification');
+const bcrypt = require('bcrypt')
+const usersRouter = require('express').Router()
+const User = require('../models/users')
+const { verifyToken } = require('./tokenVerification')
+const mongoose = require('mongoose')
 
-// Create a new user
 usersRouter.post('/', async (request, response) => {
   const { username, firstname, lastname, password } = request.body;
 
@@ -17,9 +17,30 @@ usersRouter.post('/', async (request, response) => {
     lastname,
     passwordHash,
     type,
-  });
+    
+  })
 
-  const savedUser = await user.save();
+  const savedUser = await user.save()
+
+  response.status(201).json(savedUser)
+})
+
+usersRouter.post('/driver', async (request, response) => {
+  const { username, firstname, lastname, password } = request.body
+
+  const saltRounds = 10
+  const passwordHash = await bcrypt.hash(password, saltRounds)
+  const type = "Driver"
+
+  const user = new User({
+    username,
+    firstname,
+    lastname,
+    passwordHash,
+    type,
+    Shipment: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Shipment' }],
+    
+  })
 
   response.status(201).json(savedUser);
 });

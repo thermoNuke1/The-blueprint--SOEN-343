@@ -1,0 +1,72 @@
+/* Base styles for the page */
+.confirmation-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+  }
+  
+  .inner-confirmation-page {
+    text-align: center;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .inner-confirmation-page:hover {
+    transform: translateY(-10px); /* Lift effect */
+  }
+  
+  .title, .title2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #333;
+    transition: opacity 0.3s ease;
+  }
+  
+  .title2 {
+    opacity: 0; /* Initially hidden */
+  }
+  
+  .info-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 0;
+  }
+  
+  .info-label {
+    font-weight: 600;
+    color: #555;
+  }
+  
+  .info-value {
+    color: #333;
+  }
+  
+  /* Hover effect on the info-item */
+  .info-item:hover {
+    background-color: #f0f0f0;
+    cursor: pointer;
+    transform: translateY(-3px);
+    transition: transform 0.2s ease;
+  }
+  
+  /* Switch titles on click using :active */
+  .confirmation-page:active .title {
+    opacity: 0; /* Hide 'Payment Successful' when clicked */
+  }
+  
+  .confirmation-page:active .title2 {
+    opacity: 1; /* Show 'Thank You' when clicked */
+  }
+  
+  /* Optional: Add focus styles for accessibility */
+  .confirmation-page:focus .inner-confirmation-page {
+    outline: 2px solid #007BFF;
+    outline-offset: 4px;
+  }
+  
