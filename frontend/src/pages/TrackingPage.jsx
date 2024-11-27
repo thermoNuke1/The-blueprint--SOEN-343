@@ -6,6 +6,7 @@ const TrackingPage = () => {
   const [shipmentId, setShipmentId] = useState(null);
   const [validShipmentId, setValidShipmentId] = useState(false);
 
+
   const handleShipmentIdSubmit = async (id) => {
     setShipmentId(id);
     try {
