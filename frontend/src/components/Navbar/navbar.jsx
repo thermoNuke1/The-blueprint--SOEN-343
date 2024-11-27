@@ -79,9 +79,6 @@ const CustomNavBar = ({ setShowLogin, showLogin, user, setUser, scrollToSection 
             <li className="nav-item">
               <a className="nav-link" href="#" onClick={() => handleSectionNavigation('meet-team')}>Meet the Team</a>
             </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/review" >Review</a>
-            </li>
           </ul>
 
           <div className="ms-auto d-flex gap-2">
