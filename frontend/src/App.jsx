@@ -55,7 +55,11 @@ const App = () => {
 	  <body className="main-body">
       <Routes>
         <Route path="/" element={<Homepage />} />
-        <Route path="/review" element={<ReviewPage />} />
+        <Route path="/review" element={
+			<ProtectedRoute user={user}>
+				<ReviewPage />
+			</ProtectedRoute>
+			} />
         <Route path="/tracking" element={
 			<ProtectedRoute user={user}>
 				<Tracking />
