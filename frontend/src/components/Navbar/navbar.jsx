@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { useNavigate, useLocation } from 'react-router-dom';
-
+import '../FeaturesOverview/more_features.css';
 
 
 const CustomNavBar = ({ setShowLogin, showLogin, user, setUser, scrollToSection }) => {
@@ -33,21 +33,21 @@ const CustomNavBar = ({ setShowLogin, showLogin, user, setUser, scrollToSection 
 
   const handleSectionNavigation = (sectionId) => {
     if (location.pathname !== '/') {
-      // Navigate to home page if not already on the homepage
+
       navigate('/');
     }
 
-    // Once we're on the home page, scroll to the specific section
+   
     setTimeout(() => {
       const section = document.getElementById(sectionId);
       if (section) {
         section.scrollIntoView({ behavior: 'smooth' });
       }
-    }, 300); // Timeout ensures the navigation to home page happens before scrolling
+    }, 300); 
   };
   const handleHomeClick = (e) => {
     e.preventDefault();
-    navigate("/");  // Navigate to homepage
+    navigate("/");  
   };
 
   return (
@@ -83,15 +83,15 @@ const CustomNavBar = ({ setShowLogin, showLogin, user, setUser, scrollToSection 
           <div className="ms-auto d-flex gap-2">
             {!isLoginPage && showLogin && user === null ? (
               <>
-                <button className="btn btn-outline-primary btn-sm text-nowrap py-2" onClick={handleLogin}>Login</button>
-                <button className="btn btn-outline-primary btn-sm text-nowrap py-2" onClick={handleSignup}>Sign Up</button>
+                <button className="btn btn btn-primary btn-login-signup" onClick={handleLogin}>Login</button>
+                <button className="btn btn btn-primary btn-login-signup" onClick={handleSignup}>Sign Up</button>
               </>
             ) : null}
 
             {user ? (
               <>
-                <button className="btn btn-outline-primary btn-sm text-nowrap py-2" onClick={handleAccount}>My Account</button>
-                <button className="btn btn-outline-primary btn-sm text-nowrap py-2" onClick={handleLogout}>Log out</button>
+                <button className="btn btn-primary btn-login-signup" onClick={handleAccount}>My Account</button>
+                <button className="btn btn-primary btn-login-signup" onClick={handleLogout}>Log out</button>
               </>
             ) : null}
           </div>

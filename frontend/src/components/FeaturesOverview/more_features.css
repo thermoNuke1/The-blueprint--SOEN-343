@@ -1,55 +1,54 @@
-.btn-primaryy {
+/* Ensure specific targeting for both btn and btn-primaryy */
+.btn, .btn-primaryy {
     --bs-btn-color: #fff;
-    --bs-btn-bg: #0d6efd;
-    --bs-btn-border-color: #0d6efd;
+    --bs-btn-bg: #101d2d!important;  
+    --bs-btn-border-color: #003744 !important; 
     --bs-btn-hover-color: #fff;
-    --bs-btn-hover-bg: #0b5ed7;
-    --bs-btn-hover-border-color: #0a58ca;
-    --bs-btn-focus-shadow-rgb: 49, 132, 253;
-    --bs-btn-active-color: #fff;
-    --bs-btn-active-bg: #0a58ca;
-    --bs-btn-active-border-color: #0a53be;
-    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-    --bs-btn-disabled-color: #fff;
-    --bs-btn-disabled-bg: #0d6efd;
-    --bs-btn-disabled-border-color: #0d6efd;
-    color: var(--bs-btn-color);
-    background-color: var(--bs-btn-bg);
-    border-color: var(--bs-btn-border-color);
-    padding: 0.375rem 0.75rem;
-    font-size: 1rem;
-    font-weight: 400;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    cursor: pointer;
-    border: 1px solid;
-    border-radius: 0.25rem;
-    transition: all 0.15s ease-in-out;
+    --bs-btn-hover-bg: #002C36;  
+    --bs-btn-hover-border-color: #002C36; 
+    --bs-btn-focus-shadow-rgb: 0, 56, 68;
+    --bs-btn-active-color: #fff; 
+    --bs-btn-active-bg: #002C36; 
+    --bs-btn-active-border-color: #00242A;
+    --bs-btn-disabled-color: #fff; 
+    --bs-btn-disabled-bg: #003744; 
+    --bs-btn-disabled-border-color: #003744;
 }
 
-.btn-primaryy:hover {
-    color: var(--bs-btn-hover-color);
-    background-color: var(--bs-btn-hover-bg);
-    border-color: var(--bs-btn-hover-border-color);
+.btn, .btn-primaryy {
+    background-color: var(--bs-btn-bg) !important; 
+    color: var(--bs-btn-color) !important;
+    border: 1px solid var(--bs-btn-border-color) !important;
 }
 
-.btn-primaryy:focus {
-    outline: none;
-    box-shadow: 0 0 0 0.25rem rgba(var(--bs-btn-focus-shadow-rgb), 0.5);
+.btn:hover, .btn-primaryy:hover {
+    background-color: var(--bs-btn-hover-bg) !important;  
+    border-color: var(--bs-btn-hover-border-color) !important;
 }
 
-.btn-primaryy:active {
-    color: var(--bs-btn-active-color);
-    background-color: var(--bs-btn-active-bg);
-    border-color: var(--bs-btn-active-border-color);
-    box-shadow: var(--bs-btn-active-shadow);
+.btn:active, .btn-primaryy:active {
+    background-color: var(--bs-btn-active-bg) !important;
+    border-color: var(--bs-btn-active-border-color) !important;
+    box-shadow: var(--bs-btn-active-shadow, inset 0 3px 5px rgba(0, 0, 0, 0.125)) !important;
 }
 
-.btn-primaryy:disabled {
-    color: var(--bs-btn-disabled-color);
-    background-color: var(--bs-btn-disabled-bg);
-    border-color: var(--bs-btn-disabled-border-color);
-    opacity: 0.65;
-    cursor: not-allowed;
-}
+.btn-login-signup {
+    min-width: 150px;  
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    transition: box-shadow 0.2s ease-in-out, transform 0.1s ease-in-out; 
+  }
+  
+
+  .btn-login-signup:hover {
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05); 
+  }
+  /* Sticky navbar */
+  .navbar {
+    position: fixed;
+    top: 0;             
+    background-color: #f8f9fa; /* Optional: Customize the background color */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Adds a shadow under the navbar */
+  }
+  
+  
