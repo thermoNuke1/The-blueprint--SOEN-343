@@ -17,16 +17,16 @@ const Wheel = ({ username }) => {
   ];
 
   // Fetch initial points when the component mounts
-  useEffect(() => {
-    const fetchUserPoints = async () => {
-      try {
-        const userInfo = await userService.getUserByUsername(username);
-        setUserPoints(userInfo.points || 0); // Update the user's points
-      } catch (error) {
-        console.error('Error fetching user points:', error);
-      }
-    };
+  const fetchUserPoints = async () => {
+    try {
+      const userInfo = await userService.getUserByUsername(username);
+      setUserPoints(userInfo.points || 0); // Update the user's points
+    } catch (error) {
+      console.error('Error fetching user points:', error);
+    }
+  };
 
+  useEffect(() => {
     fetchUserPoints();
   }, [username]);
 
@@ -53,8 +53,7 @@ const Wheel = ({ username }) => {
         try {
           const response = await userService.addPoints(username, selectedPrize.points);
           if (response.success) {
-            setUserPoints(response.updatedPoints); // Update the points from the server response
-            console.log('Points successfully added:', response.updatedPoints);
+            fetchUserPoints(); // Fetch updated points from the server
           } else {
             console.error('Failed to update points:', response.message);
           }
