@@ -14,6 +14,7 @@ import AccountPage from "./pages/accountPage.jsx";
 import SignUp from "./components/signup.jsx";
 import CreateParcel from "./pages/placeDelivary.jsx";
 import shipmentService from "./services/shipment";
+import shipmentService from "./services/shipment";
 import QuotationProposalPage from "./pages/QuotationProposalPage.jsx";
 import PaymentPage from "./pages/PaymentPage.jsx";
 import ReviewPage from "./pages/ReviewPage.jsx";
@@ -54,7 +55,6 @@ const App = () => {
 			/>
 			<Notification message={errorMessage} />
 			<Routes>
-				
 				<Route
 					path="/"
 					element={<Homepage />}
@@ -62,23 +62,28 @@ const App = () => {
 				<Route
 					path="/review"
 					element={
-					<ProtectedRoute user={user}>
-						<ReviewPage />
-					</ProtectedRoute>
-				}
+						<ProtectedRoute user={user}>
+							<ReviewPage />
+						</ProtectedRoute>
+					}
 				/>
 				<Route
 					path="/tracking"
 					element={
-					<ProtectedRoute user={user}>
-						<Tracking />
-					</ProtectedRoute>
-				}
+						<ProtectedRoute user={user}>
+							<Tracking />
+						</ProtectedRoute>
+					}
 				/>
 
 				<Route
 					path="/signup"
-					element={<SignUp setErrorMessage={setErrorMessage} setUser={setUser}/>}
+					element={
+						<SignUp
+							setErrorMessage={setErrorMessage}
+							setUser={setUser}
+						/>
+					}
 				/>
 
 				<Route
@@ -93,7 +98,7 @@ const App = () => {
 				/>
 				<Route
 					path="/account"
-					element={<AccountPage  />}
+					element={<AccountPage />}
 				/>
 			  <Route path="/placeDelivary" element = {
 				<ProtectedRoute user={user}>
@@ -117,10 +122,16 @@ const App = () => {
         />
 			  <Route
 					path="/chatbot-test"
-					element={<ChatbotComponent  />}
+					element={<ChatbotComponent />}
 				/>
-			  <Route path="/WHeel" element = {<Wheel/>}></Route>
-        
+				<Route
+					path="/WHeel"
+					element={
+						<ProtectedRoute user={user}>
+							<Wheel />
+						</ProtectedRoute>
+					}
+				/>
 			</Routes>
 			<Footer />
 			<ChatbotComponent />
