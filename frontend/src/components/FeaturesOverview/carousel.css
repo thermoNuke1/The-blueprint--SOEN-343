@@ -1,9 +1,10 @@
 .team-block{
-    background-color: #f4f4f4;
+    background-color:   #101d2d;
 }
 .carousel {
     margin-bottom: 4rem; 
     position: relative; 
+    background-color: #101d2d;
   }
   
   .carousel-inner {
@@ -15,7 +16,7 @@
     display: flex; 
     align-items: center;
     justify-content: center;
-    background-color: #f4f4f4; 
+    background-color: #101d2d; 
   }
   
   .carousel-caption {

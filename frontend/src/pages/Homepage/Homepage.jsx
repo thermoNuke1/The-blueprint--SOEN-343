@@ -5,6 +5,7 @@ import AwesomeComponentsSection from '../../components/FeaturesOverview/more_fea
 import Carousel from '../../components/FeaturesOverview/carousel';
 import AboutUs from '../../components/FeaturesOverview/about_us';
 import MeetTeam from '../../components/FeaturesOverview/meet_team';
+import ContactForm from '../../components/FeaturesOverview/contact';
 
 function Homepage() {
   
@@ -18,6 +19,7 @@ function Homepage() {
         <AboutUs id="about-us" />
         <MeetTeam id="meet-team"/>
         <Carousel />
+        <ContactForm id = "contact-form"/>
       </div>
     </>
   );

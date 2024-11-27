@@ -20,8 +20,8 @@ const Carousel = () => {
                     <div class="carousel-item active" style={{ backgroundImage: `url(${deliveryImage})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
                         <div class="container">
                             <div class="carousel-caption text-start">
-                                <h1>First Example Headline</h1>
-                                <p class="opacity-75">Some representative placeholder content for the first slide of the carousel.</p>
+                                <h1>It Starts with the Click of a Button</h1>
+                                <p class="opacity-75">Join Deltra and watch your life change.</p>
                                 <p><a class="btn btn-lg btn-primary" href="/signup">Sign up today</a></p>
                             </div>
                         </div>
@@ -29,8 +29,8 @@ const Carousel = () => {
                     <div class="carousel-item" style={{ backgroundImage: `url(${deliveryImage2})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
                         <div class="container">
                             <div class="carousel-caption">
-                                <h1>Second Example Headline</h1>
-                                <p>Some representative placeholder content for the second slide of the carousel.</p>
+                                <h1>A New Beginning Starts Here</h1>
+                                <p>The More Knowledgable you Become, the Happier we Stay.</p>
                                 <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
                             </div>
                         </div>
@@ -38,8 +38,8 @@ const Carousel = () => {
                     <div class="carousel-item" style={{ backgroundImage: `url(${deliveryImage3})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
                         <div class="container">
                             <div class="carousel-caption text-end">
-                                <h1>Third Example Headline</h1>
-                                <p>Some representative placeholder content for the third slide of this carousel.</p>
+                                <h1>A Group of Students with a Big Idea..</h1>
+                                <p>We All Started Somewhere, Yet our Story is One to Here.</p>
                                 <p><a class="btn btn-lg btn-primary" href="#">Our story</a></p>
                             </div>
                         </div>

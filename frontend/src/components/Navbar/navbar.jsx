@@ -54,6 +54,7 @@ const CustomNavBar = ({ setShowLogin, showLogin, user, setUser, scrollToSection 
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container">
         <a className="navbar-brand d-flex align-items-center" href="/">
+        <h2>DELTRA</h2>
           <img src="../../assets/deltra-logo.png" alt="Logo" width="75" height="75" className="d-inline-block align-top me-2" />
         </a>
 
@@ -73,7 +74,7 @@ const CustomNavBar = ({ setShowLogin, showLogin, user, setUser, scrollToSection 
               <a className="nav-link" href="#" onClick={() => handleSectionNavigation('services')}>Services</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#" onClick={() => handleSectionNavigation('contact')}>Contact</a>
+              <a className="nav-link" href="#" onClick={() => handleSectionNavigation('contact-form')}>Contact</a>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#" onClick={() => handleSectionNavigation('meet-team')}>Meet the Team</a>

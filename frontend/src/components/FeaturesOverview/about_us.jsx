@@ -1,8 +1,9 @@
 import React from "react";
-import './AboutUs.css'; // Ensure this imports the CSS
+import './AboutUs.css'; 
 
 const AboutUs = () => {
   return (
+    <div id = "about-us">
     <section className="page-section" id="about">
       <div className="container">
         <div className="text-center">
@@ -106,6 +107,7 @@ const AboutUs = () => {
         </ul>
       </div>
     </section>
+    </div>
   );
 };
 

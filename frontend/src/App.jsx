@@ -126,7 +126,7 @@ const App = () => {
 				/>
 
 			</Routes>
-			<Footer />
+			{/* <Footer /> */}
 			<ChatbotComponent />
 
 			{/* <Tracking></Tracking>
