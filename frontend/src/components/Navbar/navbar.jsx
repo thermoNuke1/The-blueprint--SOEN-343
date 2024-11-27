@@ -82,7 +82,7 @@ const CustomNavBar = ({ setShowLogin, showLogin, user, setUser, scrollToSection 
           </ul>
 
           <div className="ms-auto d-flex gap-2">
-            {!isLoginPage && showLogin && user === null ? (
+            {showLogin && user === null ? (
               <>
                 <button className="btn btn btn-primary btn-login-signup" onClick={handleLogin}>Login</button>
                 <button className="btn btn btn-primary btn-login-signup" onClick={handleSignup}>Sign Up</button>

@@ -20,6 +20,7 @@ import ReviewPage from "./pages/ReviewPage.jsx";
 import DriverSignUp from "./pages/driverSignup.jsx";
 import Confirmation from "./pages/confimation.jsx";import ChatbotComponent from "./components/chatbot/ChatbotComponent.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
+import './App.css';
 
 
 // Initialize Stripe
@@ -51,10 +52,15 @@ const App = () => {
         setUser={setUser}
       />
       <Notification message={errorMessage} />
+	  <body className="main-body">
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/review" element={<ReviewPage />} />
-        <Route path="/tracking" element={<Tracking />} />
+        <Route path="/tracking" element={
+			<ProtectedRoute user={user}>
+				<Tracking />
+			</ProtectedRoute>
+			} />
         <Route
           path="/signup"
           element={
@@ -77,7 +83,11 @@ const App = () => {
         <Route path="/account" element={<AccountPage />} />
         <Route
           path="/placeDelivary"
-          element={<CreateParcel setErrorMessage={setErrorMessage} />}
+          element={
+			<ProtectedRoute user={user}>
+				<CreateParcel setErrorMessage={setErrorMessage} />
+			</ProtectedRoute>
+		}
         />
         <Route
           path="/quotationproposal"
@@ -104,7 +114,8 @@ const App = () => {
         />
       </Routes>
 	  <ChatbotComponent></ChatbotComponent>
-      {/* <Footer /> */}
+	  </body>
+	  <Footer />
     </Elements>
   );
 };
