@@ -1,4 +1,4 @@
-/* Ensure specific targeting for both btn and btn-primaryy */
+
 .btn, .btn-primaryy {
     --bs-btn-color: #fff;
     --bs-btn-bg: #101d2d!important;  
@@ -47,8 +47,8 @@
   .navbar {
     position: fixed;
     top: 0;             
-    background-color: #f8f9fa; /* Optional: Customize the background color */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Adds a shadow under the navbar */
+    background-color: #f8f9fa; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
   }
   
   

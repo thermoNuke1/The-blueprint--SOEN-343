@@ -20,15 +20,13 @@ const AboutUs = () => {
             </div>
             <div className="timeline-panel">
               <div className="timeline-heading">
-                <h4>2009-2011</h4>
+                <h4>May 2018</h4>
                 <h4 className="subheading">Our Humble Beginnings</h4>
               </div>
               <div className="timeline-body">
                 <p className="text-muted">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt
-                  ut voluptatum eius sapiente, totam reiciendis temporibus qui
-                  quibusdam, recusandae sit vero unde, sed, incidunt et ea quo
-                  dolore laudantium consectetur!
+                We were just a group of overenthusiastic, caffeine-fueled students who thought, "Hey, we should totally start a company!" We didn't really have a business plan, 
+                but we did have a lot of ideas.
                 </p>
               </div>
             </div>
@@ -43,15 +41,13 @@ const AboutUs = () => {
             </div>
             <div className="timeline-panel">
               <div className="timeline-heading">
-                <h4>March 2011</h4>
+                <h4>March 2020</h4>
                 <h4 className="subheading">An Agency is Born</h4>
               </div>
               <div className="timeline-body">
                 <p className="text-muted">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt
-                  ut voluptatum eius sapiente, totam reiciendis temporibus qui
-                  quibusdam, recusandae sit vero unde, sed, incidunt et ea quo
-                  dolore laudantium consectetur!
+                We thought we had it all figured out... until 2020 happened. Everything went digital, and our "face-to-face" meetings became virtual. Suddenly, Zoom was our best friend, and pajama pants were our new business attire. We learned how to "mute" and "unmute" like professionals
+                . And let's not forget our new skill: making awkward small talk in the Zoom waiting room.
                 </p>
               </div>
             </div>
@@ -66,15 +62,12 @@ const AboutUs = () => {
             </div>
             <div className="timeline-panel">
               <div className="timeline-heading">
-                <h4>December 2015</h4>
+                <h4>May 2023</h4>
                 <h4 className="subheading">Transition to Full Service</h4>
               </div>
               <div className="timeline-body">
                 <p className="text-muted">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt
-                  ut voluptatum eius sapiente, totam reiciendis temporibus qui
-                  quibusdam, recusandae sit vero unde, sed, incidunt et ea quo
-                  dolore laudantium consectetur!
+                In May 2023, we completed our transition to full service, expanding our operations to offer a more robust and reliable experience for our customers. Despite the challenges posed by the pandemic, we successfully adapted to the new normal. Our team quickly embraced hybrid work setups, balancing the flexibility of remote work with the benefits of in-person collaboration. We refined our processes, enhanced our service offerings, and ensured our systems were ready for the growing demand.
                 </p>
               </div>
             </div>
@@ -89,15 +82,12 @@ const AboutUs = () => {
             </div>
             <div className="timeline-panel">
               <div className="timeline-heading">
-                <h4>July 2020</h4>
-                <h4 className="subheading">Phase Two Expansion</h4>
+                <h4>November 2024</h4>
+                <h4 className="subheading">Today</h4>
               </div>
               <div className="timeline-body">
                 <p className="text-muted">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt
-                  ut voluptatum eius sapiente, totam reiciendis temporibus qui
-                  quibusdam, recusandae sit vero unde, sed, incidunt et ea quo
-                  dolore laudantium consectetur!
+                Fast forward to November 2024, and we continue to innovate and push boundaries in our industry. We’ve solidified our position as leaders in our field, consistently offering exceptional service and delivering on our promises. With a dedicated team and a focus on excellence, we are shaping the future of our industry, constantly evolving to meet the needs of our customers. Today, we’re more committed than ever to providing the best possible experience and growing alongside our community.
                 </p>
               </div>
             </div>
