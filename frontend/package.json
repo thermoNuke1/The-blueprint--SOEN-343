@@ -15,6 +15,7 @@
   "dependencies": {
     "@fontsource/red-hat-display": "^5.1.0",
     "@fortawesome/fontawesome-free": "^6.7.0",
+    "@lottiefiles/react-lottie-player": "^3.5.4",
     "@stripe/react-stripe-js": "^2.8.1",
     "@stripe/stripe-js": "^4.9.0",
     "axios": "^1.7.7",
@@ -27,6 +28,8 @@
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.28.0",
     "react-toastify": "^10.0.6",
+    "reactstrap": "^9.2.3",
+    "remixicon": "^4.5.0",
     "stripe": "^17.3.1"
   },
   "devDependencies": {

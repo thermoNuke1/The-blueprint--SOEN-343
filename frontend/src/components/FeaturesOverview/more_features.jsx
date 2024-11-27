@@ -1,8 +1,15 @@
 import React from "react";
-
+// import './more_features.css';
+import { useNavigate } from 'react-router-dom';
+import '../../styles/whole_page.css';
 const AwesomeComponentsSection = () => {
+    const navigate = useNavigate()
+    const handlePackage = () =>{
+    navigate('/placeDelivary')
+    
+    }
   return (
-    <div>
+    <div id = "services">
         <div class="container px-4 py-5" id="hanging-icons">
     <h2 class="pb-2 border-bottom">Services</h2>
     <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
@@ -13,8 +20,8 @@ const AwesomeComponentsSection = () => {
         <div>
           <h3 class="fs-2 text-body-emphasis">Cost Calculator</h3>
           <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-          <a href="#" class="btn btn-primary">
-            Primary button
+          <a href="/quotationproposal" class="btn btn-primaryy">
+            Get a Quote
           </a>
         </div>
       </div>
@@ -25,8 +32,8 @@ const AwesomeComponentsSection = () => {
         <div>
           <h3 class="fs-2 text-body-emphasis">Send a Shipment</h3>
           <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-          <a href="#" class="btn btn-primary">
-            Primary button
+          <a onClick={handlePackage} class="btn btn-primaryy">
+            Send Packages
           </a>
         </div>
       </div>
@@ -37,8 +44,8 @@ const AwesomeComponentsSection = () => {
         <div>
           <h3 class="fs-2 text-body-emphasis">Tracking</h3>
           <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-          <a href="#" class="btn btn-primary">
-            Primary button
+          <a href="/tracking" class="btn btn-primaryy">
+            Track Your Package
           </a>
         </div>
       </div>

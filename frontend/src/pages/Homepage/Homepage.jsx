@@ -13,7 +13,7 @@ function Homepage() {
        
             <Hero></Hero>
             <Carousel></Carousel>
-            <FeaturesOverview></FeaturesOverview>
+            {/* <FeaturesOverview></FeaturesOverview> */}
             <AwesomeComponentsSection></AwesomeComponentsSection>
             <AboutUs></AboutUs>
             <MeetTeam></MeetTeam>
