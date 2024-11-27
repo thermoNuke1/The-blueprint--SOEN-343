@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import userService from '../services/user'; // Ensure this is the correct path
+import userService from '../services/user'; // Ensure correct import path
 import './Wheel.css';
 
-const Wheel = ({ username }) => {
-  const [result, setResult] = useState('');
+function Wheel() {
   const [spinning, setSpinning] = useState(false);
-  const [userPoints, setUserPoints] = useState(0); // State to track user points
+  const [result, setResult] = useState('');
+  const [userPoints, setUserPoints] = useState(0);
 
-  // Updated prizes to include point totals
+  const user = JSON.parse(localStorage.getItem('loggedappUser')) || {};
+  const username = user.username || '';
+
   const prizes = [
     { label: '25 Points', points: 25 },
     { label: '50 Points', points: 50 },
@@ -16,24 +18,38 @@ const Wheel = ({ username }) => {
     { label: 'Better Luck Next Time', points: 0 },
   ];
 
-  // Fetch initial points when the component mounts
-  const fetchUserPoints = async () => {
+  // Fetch user points when the component loads
+  useEffect(() => {
+    const fetchUserPoints = async () => {
+      try {
+        const userInfo = await userService.getUserByUsername(username);
+        setUserPoints(userInfo.points || 0);
+      } catch (error) {
+        console.error('Error fetching user points:', error.message);
+      }
+    };
+
+    if (username) {
+      fetchUserPoints();
+    }
+  }, [username]);
+
+  const handleAddPoints = async (points) => {
     try {
-      const userInfo = await userService.getUserByUsername(username);
-      setUserPoints(userInfo.points || 0); // Update the user's points
+      const response = await userService.addPoints(username, points); // Use the same addPoints method
+      console.log(`Added ${points} points to user ${username}`, response);
+      setUserPoints((prevPoints) => prevPoints + points); // Update points locally
     } catch (error) {
-      console.error('Error fetching user points:', error);
+      console.error('Error adding points:', error.message);
     }
   };
-
-  useEffect(() => {
-    fetchUserPoints();
-  }, [username]);
 
   const spin = async () => {
     if (spinning) return;
 
     setSpinning(true);
+
+    // Simulate spinning logic
     const randomPrizeIndex = Math.floor(Math.random() * prizes.length);
     const spinAngle = 360 * 5 + (360 / prizes.length) * randomPrizeIndex;
 
@@ -49,17 +65,10 @@ const Wheel = ({ username }) => {
       setResult(selectedPrize.label);
 
       if (selectedPrize.points > 0) {
-        // Add points to the user's account
-        try {
-          const response = await userService.addPoints(username, selectedPrize.points);
-          if (response.success) {
-            fetchUserPoints(); // Fetch updated points from the server
-          } else {
-            console.error('Failed to update points:', response.message);
-          }
-        } catch (error) {
-          console.error('Error adding points:', error);
-        }
+        console.log(`You won ${selectedPrize.points} points!`);
+        await handleAddPoints(selectedPrize.points); // Add points to the user account
+      } else {
+        console.log('Better Luck Next Time!');
       }
     }, 3000);
   };
@@ -71,9 +80,9 @@ const Wheel = ({ username }) => {
         {spinning ? 'Spinning...' : 'Spin'}
       </button>
       {result && <p>You won: {result}</p>}
-      <p>Your Total Points: {userPoints}</p> {/* Display user points */}
+      <p>Your Total Points: {userPoints}</p>
     </div>
   );
-};
+}
 
 export default Wheel;
