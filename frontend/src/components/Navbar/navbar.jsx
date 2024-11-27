@@ -29,8 +29,6 @@ const CustomNavBar = ({ setShowLogin, showLogin, user, setUser, scrollToSection 
     setUser(null);
   };
 
-  const isLoginPage = location.pathname === '/login';
-
   const handleSectionNavigation = (sectionId) => {
     if (location.pathname !== '/') {
 

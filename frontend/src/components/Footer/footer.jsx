@@ -1,6 +1,9 @@
 import './footer.css';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 function Footer() {
+const navigate = useNavigate();
+const location = useLocation();
 
   const handleSectionNavigation = (sectionId) => {
     if (location.pathname !== '/') {
