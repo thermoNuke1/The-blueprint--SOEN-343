@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import userService from '../services/user'; // Ensure correct import path
+import userService from '../services/user'; 
 import './Wheel.css';
 
 function Wheel() {
@@ -18,7 +18,7 @@ function Wheel() {
     { label: 'Better Luck Next Time', points: 0 },
   ];
 
-  // Fetch user points when the component loads
+  
   useEffect(() => {
     const fetchUserPoints = async () => {
       try {
@@ -36,9 +36,9 @@ function Wheel() {
 
   const handleAddPoints = async (points) => {
     try {
-      const response = await userService.addPoints(username, points); // Use the same addPoints method
+      const response = await userService.addPoints(username, points); 
       console.log(`Added ${points} points to user ${username}`, response);
-      setUserPoints((prevPoints) => prevPoints + points); // Update points locally
+      setUserPoints((prevPoints) => prevPoints + points); 
     } catch (error) {
       console.error('Error adding points:', error.message);
     }
@@ -49,7 +49,7 @@ function Wheel() {
 
     setSpinning(true);
 
-    // Simulate spinning logic
+    
     const randomPrizeIndex = Math.floor(Math.random() * prizes.length);
     const spinAngle = 360 * 5 + (360 / prizes.length) * randomPrizeIndex;
 
@@ -66,7 +66,7 @@ function Wheel() {
 
       if (selectedPrize.points > 0) {
         console.log(`You won ${selectedPrize.points} points!`);
-        await handleAddPoints(selectedPrize.points); // Add points to the user account
+        await handleAddPoints(selectedPrize.points); 
       } else {
         console.log('Better Luck Next Time!');
       }
