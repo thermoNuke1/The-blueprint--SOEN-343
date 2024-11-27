@@ -14,7 +14,7 @@ const teamsData = [
     linkedinLink: 'https://www.linkedin.com/in/mohamed-sanoko-96445a272/',
     name: 'Mohamed Sanoko',
     designation: 'CEO',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui facilis, totam maiores.'
+    description: 'Driving innovation and strategic vision to lead the company towards growth and excellence.'
   },
   {
     id: 2,
@@ -24,7 +24,7 @@ const teamsData = [
     linkedinLink: 'https://www.linkedin.com/in/sydney-campbell-666b69270/',
     name: 'Sydney Campbell',
     designation: 'Software Engineering Manager',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui facilis, totam maiores.'
+    description: 'Leading development teams to deliver high-quality software solutions efficiently.'
   },
   {
     id: 3,
@@ -34,7 +34,7 @@ const teamsData = [
     linkedinLink: 'https://www.linkedin.com',
     name: 'Carlo',
     designation: 'Lead Developer',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui facilis, totam maiores.'
+    description: 'Overseeing the architecture and development of cutting-edge applications and systems.'
   },
   {
     id: 4,
@@ -44,7 +44,7 @@ const teamsData = [
     linkedinLink: 'https://www.linkedin.com/in/jeremy-crete-9b41192b3/',
     name: 'Jeremy Crete',
     designation: 'UX Designer',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui facilis, totam maiores.'
+    description: 'Crafting intuitive user experiences that enhance product usability and engagement.'
   },
   {
     id: 5,
@@ -54,7 +54,7 @@ const teamsData = [
     linkedinLink: 'https://www.linkedin.com/in/adam-tsatas/',
     name: 'Adam Tsatas',
     designation: 'Developer',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui facilis, totam maiores.'
+    description: 'Building robust and scalable applications through innovative coding practices.'
   },
   {
     id: 6,
@@ -62,9 +62,9 @@ const teamsData = [
     fbLink: 'https://www.facebook.com',
     twitterLink: 'https://www.twitter.com',
     linkedinLink: 'https://www.linkedin.com/in/midhurshaannadarajah/',
-    name: 'Midhurshaan NadarajahView',
+    name: 'Midhurshaan Nadarajah',
     designation: 'Developer',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui facilis, totam maiores.'
+    description: 'Focusing on delivering clean, efficient, and effective software solutions.'
   },
  
 ];
