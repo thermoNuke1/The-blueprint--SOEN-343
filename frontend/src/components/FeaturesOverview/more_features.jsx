@@ -4,7 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import './more_features.css';
 import '../../styles/whole_page.css';
 
+
 const AwesomeComponentsSection = () => {
+
   const navigate = useNavigate();
 
   const handlePackage = () => {
@@ -33,7 +35,9 @@ const AwesomeComponentsSection = () => {
             <div>
               <h3 className="fs-2 text-body-emphasis">Send a Shipment</h3>
               <p>Easily send packages by entering the necessary details, and we'll take care of the rest.</p>
-              <a onClick={handlePackage} className="btn btn-primary">Send Packages</a>
+         
+                <a onClick={handlePackage} className="btn btn-primary">Send Packages</a>
+             
             </div>
           </div>
           <div className="col d-flex align-items-start">
