@@ -17,8 +17,15 @@
 // }
 import React from 'react';
 import './hero.css'; 
+import { useNavigate } from 'react-router-dom';
 
-const Hero = () => {
+const Hero = ({ scrollToServices }) => {
+  const navigate = useNavigate(); 
+
+  const handleSignUpClick = (e) => {
+    e.preventDefault(); 
+    navigate('/signup'); 
+  };
   return (
     <div className="container-fluid px-4 py-5 my-5 text-center hero-container">
       <div className="lc-block">
@@ -39,12 +46,12 @@ const Hero = () => {
 
       <div className="lc-block d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
  
-        <a className="hero-btn-left px-4 gap-3" href="#" role="button">
+        <a className="hero-btn-left px-4 gap-3" href="#services" role="button">
          Learn More
         </a>
    
-        <a className="hero-btn-right px-4" href="#" role="button">
-         Sign Up
+        <a className="hero-btn-right px-4" href="#" role="button"  onClick={handleSignUpClick}>
+         Get Started
         </a>
       </div>
       <div className="lc-block d-grid gap-2 d-sm-flex justify-content-sm-center">

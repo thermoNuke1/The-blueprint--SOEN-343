@@ -7,21 +7,19 @@ import AboutUs from '../../components/FeaturesOverview/about_us';
 import MeetTeam from '../../components/FeaturesOverview/meet_team';
 
 function Homepage() {
-    return (
-    <>
-        <div className="homepage-container">
-       
-            <Hero></Hero>
-            <Carousel></Carousel>
-            {/* <FeaturesOverview></FeaturesOverview> */}
-            <AwesomeComponentsSection></AwesomeComponentsSection>
-            <AboutUs></AboutUs>
-            <MeetTeam></MeetTeam>
-            <Carousel></Carousel>
+  
 
-        </div>
+  return (
+    <>
+      <div className="homepage-container">
+        <Hero />
+        <AwesomeComponentsSection  id="services"/>
+        <AboutUs id="about-us" />
+        <MeetTeam id="meet-team"/>
+        <Carousel />
+      </div>
     </>
-    );
+  );
 }
 
 export default Homepage;

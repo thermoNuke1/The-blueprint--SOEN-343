@@ -1,10 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Route, Routes } from "react-router-dom";
-
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import "remixicon/fonts/remixicon.css";
 import Homepage from "./pages/Homepage/Homepage.jsx";
+import "bootstrap/dist/css/bootstrap.min.css";
+//import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import "remixicon/fonts/remixicon.css";
 // import CheckoutForm from "./components/checkoutForm.jsx";
 // import { Elements} from '@stripe/react-stripe-js';
 // import { loadStripe } from '@stripe/stripe-js';
@@ -33,6 +32,23 @@ const App = () => {
 	const [errorMessage, setErrorMessage] = useState(null);
 	const [user, setUser] = useState(null);
 
+	const servicesRef = useRef(null);
+  	const aboutUsRef = useRef(null);
+ 	const meetTeamRef = useRef(null);
+
+	const scrollToSection = (section) => {
+	const sectionMap = {
+		services: servicesRef,
+		  'about-us': aboutUsRef,
+		  'meet-team': meetTeamRef,
+		};
+	
+		const ref = sectionMap[section];
+		if (ref && ref.current) {
+		  ref.current.scrollIntoView({ behavior: "smooth" });
+		}
+	};
+
 	useEffect(() => {
 		setShowLogin(true)
 		const loggedUserJSON = window.localStorage.getItem("loggedappUser");
@@ -42,6 +58,7 @@ const App = () => {
 			shipmentService.setToken(user.token);
 		}
 	}, [user, showLogin]);
+	
 
 	return (
 		<>
@@ -50,13 +67,14 @@ const App = () => {
 				showLogin={showLogin}
 				user={user}
 				setUser={setUser}
+				scrollToSection={scrollToSection}
 			/>
 			<Notification message={errorMessage} />
 			<Routes>
 				
 				<Route
 					path="/"
-					element={<Homepage />}
+					element={<Homepage scrollToSection={scrollToSection} />}
 				/>
 				<Route
 					path="/review"
@@ -106,6 +124,7 @@ const App = () => {
 					path="/chatbot-test"
 					element={<ChatbotComponent  />}
 				/>
+
 			</Routes>
 			<Footer />
 			<ChatbotComponent />
