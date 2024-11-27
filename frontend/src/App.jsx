@@ -16,14 +16,13 @@ import Login from "./components/login.jsx";
 import AccountPage from "./pages/accountPage.jsx";
 import SignUp from "./components/signup.jsx";
 import CreateParcel from "./pages/placeDelivary.jsx";
-import shipmentService from './services/shipment';
+import shipmentService from "./services/shipment";
 import QuotationProposalPage from "./pages/QuotationProposalPage.jsx";
 import PaymentPage from "./pages/PaymentPage.jsx";
 import ReviewPage from "./pages/ReviewPage.jsx";
 import ChatbotComponent from "./components/chatbot/ChatbotComponent.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import Wheel from "./components/WHeel.jsx";
-
 
 // const stripePromise = loadStripe('pk_test_51QIZoARrCeYLfUcjF4kwH421Z5YCAybTbMhfwQKW2jCH0yRAOzy3Bqdu2BM021tNJLdyfX3txaqNGSLnxXZBS0Xq00lXkPvRFa');
 
@@ -33,7 +32,7 @@ const App = () => {
 	const [user, setUser] = useState(null);
 
 	useEffect(() => {
-		setShowLogin(true)
+		setShowLogin(true);
 		const loggedUserJSON = window.localStorage.getItem("loggedappUser");
 		if (loggedUserJSON) {
 			const user = JSON.parse(loggedUserJSON);
@@ -52,7 +51,6 @@ const App = () => {
 			/>
 			<Notification message={errorMessage} />
 			<Routes>
-				
 				<Route
 					path="/"
 					element={<Homepage />}
@@ -60,23 +58,28 @@ const App = () => {
 				<Route
 					path="/review"
 					element={
-					<ProtectedRoute user={user}>
-						<ReviewPage />
-					</ProtectedRoute>
-				}
+						<ProtectedRoute user={user}>
+							<ReviewPage />
+						</ProtectedRoute>
+					}
 				/>
 				<Route
 					path="/tracking"
 					element={
-					<ProtectedRoute user={user}>
-						<Tracking />
-					</ProtectedRoute>
-				}
+						<ProtectedRoute user={user}>
+							<Tracking />
+						</ProtectedRoute>
+					}
 				/>
 
 				<Route
 					path="/signup"
-					element={<SignUp setErrorMessage={setErrorMessage} setUser={setUser}/>}
+					element={
+						<SignUp
+							setErrorMessage={setErrorMessage}
+							setUser={setUser}
+						/>
+					}
 				/>
 
 				<Route
@@ -91,21 +94,37 @@ const App = () => {
 				/>
 				<Route
 					path="/account"
-					element={<AccountPage  />}
+					element={<AccountPage />}
 				/>
-			  <Route path="/placeDelivary" element = {
-				<ProtectedRoute user={user}>
-					<CreateParcel setErrorMessage={setErrorMessage} />
-				</ProtectedRoute>
-				}/>
-			  <Route path="/quotationproposal" element = {<QuotationProposalPage setErrorMessage={setErrorMessage} />}></Route>
-			  <Route path="/payment" element = {<PaymentPage setErrorMessage={setErrorMessage} />}></Route>
+				<Route
+					path="/placeDelivary"
+					element={
+						<ProtectedRoute user={user}>
+							<CreateParcel setErrorMessage={setErrorMessage} />
+						</ProtectedRoute>
+					}
+				/>
+				<Route
+					path="/quotationproposal"
+					element={<QuotationProposalPage setErrorMessage={setErrorMessage} />}
+				></Route>
+				<Route
+					path="/payment"
+					element={<PaymentPage setErrorMessage={setErrorMessage} />}
+				></Route>
 
-			  <Route
+				<Route
 					path="/chatbot-test"
-					element={<ChatbotComponent  />}
+					element={<ChatbotComponent />}
 				/>
-			  <Route path="/WHeel" element = {<Wheel/>}></Route>
+				<Route
+					path="/WHeel"
+					element={
+						<ProtectedRoute user={user}>
+							<Wheel />
+						</ProtectedRoute>
+					}
+				/>
 			</Routes>
 			<Footer />
 			<ChatbotComponent />
