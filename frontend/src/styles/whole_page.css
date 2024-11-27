@@ -49,3 +49,8 @@
     border-color: var(--bs-btn-active-border-color);
     box-shadow: var(--bs-btn-active-shadow, inset 0 3px 5px rgba(0, 0, 0, 0.125));
 }
+#services {
+    background-color: #f4f4f4;
+    padding: 5rem 0;
+  }
+  

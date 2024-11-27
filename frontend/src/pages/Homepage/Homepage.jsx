@@ -14,6 +14,7 @@ function Homepage() {
       <div className="homepage-container">
         <Hero />
         <AwesomeComponentsSection  id="services"/>
+        <br></br>
         <AboutUs id="about-us" />
         <MeetTeam id="meet-team"/>
         <Carousel />

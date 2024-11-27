@@ -1,4 +1,4 @@
-/* AboutUs.css */
+
 .timeline {
     position: relative;
     padding: 0;
@@ -13,7 +13,7 @@
     width: 2px;
     margin-left: -1.5px;
     content: "";
-    background-color: #dcdcdc; /* Change to a variable if needed */
+    background-color: #dcdcdc; 
   }
   
   .timeline > li {
@@ -65,7 +65,14 @@
     color: white;
     border: 7px solid #dcdcdc;
     border-radius: 50%;
-    background-color: #007bff; /* Change to a primary color variable */
+    background-color:#101d2d;; 
+    overflow: hidden;
+  }
+  .timeline-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the entire circle without distortion */
+    border-radius: 50%; /* Ensures the image itself is rounded */
   }
   
   .timeline-image h4 {

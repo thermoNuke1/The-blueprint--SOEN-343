@@ -6,17 +6,15 @@ const AboutUs = () => {
     <section className="page-section" id="about">
       <div className="container">
         <div className="text-center">
-          <h2 className="section-heading text-uppercase">About</h2>
-          <h3 className="section-subheading text-muted">
-            Lorem ipsum dolor sit amet consectetur.
-          </h3>
+          <h1 className="section-heading">Our Story</h1>
+         <br></br>
         </div>
         <ul className="timeline">
           <li>
             <div className="timeline-image">
               <img
                 className="rounded-circle img-fluid"
-                src="assets/img/about/1.jpg"
+                src="https://images.pexels.com/photos/93398/pexels-photo-93398.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
                 alt="..."
               />
             </div>
@@ -39,7 +37,7 @@ const AboutUs = () => {
             <div className="timeline-image">
               <img
                 className="rounded-circle img-fluid"
-                src="assets/img/about/2.jpg"
+                src="https://images.pexels.com/photos/6868800/pexels-photo-6868800.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
                 alt="..."
               />
             </div>
@@ -62,7 +60,7 @@ const AboutUs = () => {
             <div className="timeline-image">
               <img
                 className="rounded-circle img-fluid"
-                src="assets/img/about/3.jpg"
+                src="https://images.pexels.com/photos/4226269/pexels-photo-4226269.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
                 alt="..."
               />
             </div>
@@ -85,7 +83,7 @@ const AboutUs = () => {
             <div className="timeline-image">
               <img
                 className="rounded-circle img-fluid"
-                src="assets/img/about/4.jpg"
+                src="https://images.pexels.com/photos/3799761/pexels-photo-3799761.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
                 alt="..."
               />
             </div>
