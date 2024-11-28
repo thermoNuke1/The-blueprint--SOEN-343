@@ -45,7 +45,7 @@ const App = () => {
   }, [user, showLogin]);
 
 	return (
-		<>
+		
     <Elements stripe={stripePromise}>
       <CustomNavBar
         setShowLogin={setShowLogin}
