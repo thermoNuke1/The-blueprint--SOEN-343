@@ -1,7 +1,6 @@
 .homepage-container {
     height: 100vh;
-    /* Full viewport height */
     display: flex;
     flex-direction: column;
-    /* Stack children vertically */
+    
 }

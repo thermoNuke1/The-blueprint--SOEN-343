@@ -1,22 +1,45 @@
 import './footer.css';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 function Footer() {
+const navigate = useNavigate();
+const location = useLocation();
+
+  const handleSectionNavigation = (sectionId) => {
+    if (location.pathname !== '/') {
+
+      navigate('/');
+    }
+
+   
+    setTimeout(() => {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 300); 
+  };
+  const handleHomeClick = (e) => {
+    e.preventDefault();
+    navigate("/");  
+  };
+
+
     return (
-    <footer className="d-flex flex-wrap justify-content-between align-items-center py-0 border-top bg-light mt-1">
-    <p className="col-md-4 mb-0 text-body-secondary">© 2024 Deltra, Inc</p>
-
-    <a href="/" className="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-      <svg className="bi me-2" width="60" height="60">
-        <image href="../../assets/deltra-logo.png" width="4em" height="4em" />
-      </svg>
-    </a>
-
-    <ul className="nav col-md-4 justify-content-end">
-      <li className="nav-item"><a href="/" className="nav-link px-2 text-body-secondary">Home</a></li>
-      <li className="nav-item"><a href="#" className="nav-link px-2 text-body-secondary">About</a></li>
-      <li className="nav-item"><a href="#" className="nav-link px-2 text-body-secondary">Services</a></li>
-      <li className="nav-item"><a href="#" className="nav-link px-2 text-body-secondary">Contact</a></li>
-    </ul>
+    <footer class="footer">
+    <div class="container">
+      <span class="footer-text">© 2024 Deltra, Inc</span>
+      {/* <a href="/" class="footer-logo">
+        <img src="../../assets/deltra-logo.png" alt="Deltra Logo" width="60" height="60" />
+      </a> */}
+      <ul class="footer-nav">
+        <li><a href="/" class="footer-link" onClick={handleHomeClick}>Home</a></li>
+        <li><a href="#" class="footer-link" onClick={() => handleSectionNavigation('about-us')}>About</a></li>
+        <li><a href="#" class="footer-link" onClick={() => handleSectionNavigation('services')}>Services</a></li>
+        <li><a href="#" class="footer-link" onClick={() => handleSectionNavigation('contact-form')}>Contact</a></li>
+        <li><a href="/review" class="footer-link">Feedback</a></li>
+      </ul>
+    </div>
   </footer>
     );
 }

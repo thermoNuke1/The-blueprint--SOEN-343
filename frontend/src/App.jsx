@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Route, Routes } from "react-router-dom";
 import Homepage from "./pages/Homepage/Homepage.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -20,6 +20,7 @@ import ReviewPage from "./pages/ReviewPage.jsx";
 import DriverSignUp from "./pages/driverSignup.jsx";
 import Confirmation from "./pages/confimation.jsx";import ChatbotComponent from "./components/chatbot/ChatbotComponent.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
+import './App.css';
 import Wheel from "./components/WHeel.jsx";
 
 
@@ -46,66 +47,68 @@ const App = () => {
 	return (
 		<>
     <Elements stripe={stripePromise}>
-			<CustomNavBar
-				setShowLogin={setShowLogin}
-				showLogin={showLogin}
-				user={user}
-				setUser={setUser}
-			/>
-			<Notification message={errorMessage} />
-			<Routes>
-				<Route
-					path="/"
-					element={<Homepage />}
-				/>
-				<Route
-					path="/review"
-					element={
-						<ProtectedRoute user={user}>
-							<ReviewPage />
-						</ProtectedRoute>
-					}
-				/>
-				<Route
-					path="/tracking"
-					element={
-						<ProtectedRoute user={user}>
-							<Tracking />
-						</ProtectedRoute>
-					}
-				/>
-
-				<Route
-					path="/signup"
-					element={
-						<SignUp
-							setErrorMessage={setErrorMessage}
-							setUser={setUser}
-						/>
-					}
-				/>
-
-				<Route
-					path="/login"
-					element={
-						<Login
-							setErrorMessage={setErrorMessage}
-							user={user}
-							setUser={setUser}
-						/>
-					}
-				/>
-				<Route
-					path="/account"
-					element={<AccountPage />}
-				/>
-			  <Route path="/placeDelivary" element = {
-				<ProtectedRoute user={user}>
-					<CreateParcel setErrorMessage={setErrorMessage} />
-				</ProtectedRoute>
-				}/>
-			  <Route path="/quotationproposal" element = {<QuotationProposalPage setErrorMessage={setErrorMessage} />}></Route>
-			  <Route path="/payment" element = {<PaymentPage setErrorMessage={setErrorMessage} />}></Route>
+      <CustomNavBar
+        setShowLogin={setShowLogin}
+        showLogin={showLogin}
+        user={user}
+        setUser={setUser}
+      />
+      <Notification message={errorMessage} />
+	  <body className="main-body">
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/review" element={
+			<ProtectedRoute user={user}>
+				<ReviewPage />
+			</ProtectedRoute>
+			} />
+        <Route path="/tracking" element={
+			<ProtectedRoute user={user}>
+				<Tracking />
+			</ProtectedRoute>
+			} />
+        <Route
+          path="/signup"
+          element={
+            <SignUp
+              setErrorMessage={setErrorMessage}
+              setUser={setUser}
+            />
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <Login
+              setErrorMessage={setErrorMessage}
+              user={user}
+              setUser={setUser}
+            />
+          }
+        />
+        <Route path="/account" element={<AccountPage />} />
+        <Route
+          path="/placeDelivary"
+          element={
+			<ProtectedRoute user={user}>
+				<CreateParcel setErrorMessage={setErrorMessage} />
+			</ProtectedRoute>
+		}
+        />
+        <Route
+          path="/quotationproposal"
+          element={
+            <QuotationProposalPage setErrorMessage={setErrorMessage} />
+          }
+        />
+        <Route
+          path="/payment"
+          element={<PaymentPage setErrorMessage={setErrorMessage} />}
+        />
+		<Route
+          path="/payment-success"
+          element={<Confirmation setErrorMessage={setErrorMessage} />}
+        />
         <Route
           path="/driverSignup"
           element={
@@ -115,34 +118,12 @@ const App = () => {
             />
           }
         />
-        <Route
-          path="/payment-success"
-          element={<Confirmation setErrorMessage={setErrorMessage} />}
-        />
-			  <Route
-					path="/chatbot-test"
-					element={<ChatbotComponent />}
-				/>
-				<Route
-					path="/WHeel"
-					element={
-						<ProtectedRoute user={user}>
-							<Wheel />
-						</ProtectedRoute>
-					}
-				/>
-			</Routes>
-			<Footer />
-			<ChatbotComponent />
-      
-			{/* <Tracking></Tracking>
-			<Elements stripe={stripePromise}>
-				<CheckoutForm />
-			</Elements> */}
-      </Elements>
-		</>
-  
-	);
+      </Routes>
+	  <ChatbotComponent></ChatbotComponent>
+	  </body>
+	  <Footer />
+    </Elements>
+  );
 };
 
 export default App;

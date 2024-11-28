@@ -1,20 +1,28 @@
-// import CustomNavBar from '../../components/Navbar/navbar';
+
 import Hero from '../../components/Hero/hero';
 import FeaturesOverview from '../../components/FeaturesOverview/featuresoverview';
-// import Footer from '../../components/Footer/footer';
+import AwesomeComponentsSection from '../../components/FeaturesOverview/more_features';
+import Carousel from '../../components/FeaturesOverview/carousel';
+import AboutUs from '../../components/FeaturesOverview/about_us';
+import MeetTeam from '../../components/FeaturesOverview/meet_team';
+import ContactForm from '../../components/FeaturesOverview/contact';
 
 function Homepage() {
-    return (
+  
+
+  return (
     <>
-        <div className="homepage-container">
-            {/* <CustomNavBar></CustomNavBar> */}
-            <Hero></Hero>
-            <FeaturesOverview></FeaturesOverview>
-            {/* <div className='container-fluid pl-3 pe-5'><img src="../../assets/chat-box.png" className="float-end pl-3 img-fluid" alt="Bootstrap Themes" width="75" height="25" loading="lazy"></img></div> */}
-            {/* <Footer></Footer> */}
-        </div>
+      <div className="homepage-container">
+        <Hero />
+        <AwesomeComponentsSection  id="services"/>
+        <br></br>
+        <AboutUs id="about-us" />
+        <MeetTeam id="meet-team"/>
+        <Carousel />
+        <ContactForm id = "contact-form"/>
+      </div>
     </>
-    );
+  );
 }
 
 export default Homepage;

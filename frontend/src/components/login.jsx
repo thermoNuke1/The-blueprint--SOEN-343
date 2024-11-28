@@ -66,7 +66,7 @@ const Login = ({ setErrorMessage, setUser }) => {
             onChange={({ target }) => setPassword(target.value)}
           />
         </div>
-        <div className="pt-4"><button type="submit">Login</button></div>
+        <div className="pt-4"><button type="submit" className="btn btn-primary ">Login</button></div>
         <div className="text-center mt-3">
           <p>
             Don't have an account?{" "}
