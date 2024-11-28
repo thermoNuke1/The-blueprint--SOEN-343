@@ -21,6 +21,7 @@ import DriverSignUp from "./pages/driverSignup.jsx";
 import Confirmation from "./pages/confimation.jsx";import ChatbotComponent from "./components/chatbot/ChatbotComponent.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import './App.css';
+import Wheel from "./components/WHeel.jsx";
 
 
 // Initialize Stripe
@@ -43,7 +44,8 @@ const App = () => {
     }
   }, [user, showLogin]);
 
-  return (
+	return (
+		
     <Elements stripe={stripePromise}>
       <CustomNavBar
         setShowLogin={setShowLogin}

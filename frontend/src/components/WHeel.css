@@ -1,0 +1,33 @@
+.wheel-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.wheel {
+  width: 300px; /* Increased size */
+  height: 300px; /* Increased size */
+  border-radius: 50%; /* Keeps it circular */
+  border: 5px solid black;
+  background: conic-gradient(
+    #ff9999 0% 20%,
+    #99ff99 20% 40%,
+    #9999ff 40% 60%,
+    #ffff99 60% 80%,
+    #ff99ff 80% 100%
+  );
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+p {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #007bff;
+}

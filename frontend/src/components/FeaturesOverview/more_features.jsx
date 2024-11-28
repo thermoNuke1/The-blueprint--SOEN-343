@@ -24,7 +24,7 @@ const AwesomeComponentsSection = () => {
             </div>
             <div>
               <h3 className="fs-2 text-body-emphasis">Cost Calculator</h3>
-              <p>Get an accurate shipment estimate with our cost calculator and personalized quote.</p>
+              <p>Get an accurate shipment estimate with our cost calculator and personalized quote. Quick and Easy To Use </p>
               <a href="/quotationproposal" className="btn btn-primary">Get a Quote</a>
             </div>
           </div>

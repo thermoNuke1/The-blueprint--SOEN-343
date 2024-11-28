@@ -10,6 +10,9 @@ const getTokenFrom = request => {
 
 const verifyToken = (request, response, next) => {
   const token = getTokenFrom(request)
+  console.log('Authorization Header:', request.headers.authorization) // Log the Authorization header
+  console.log('Extracted Token:', token) // Log the token extracted by getTokenFrom
+
   if (!token) {
     return response.status(401).json({ error: 'token missing' })
   }
@@ -25,5 +28,6 @@ const verifyToken = (request, response, next) => {
     return response.status(401).json({ error: 'token invalid' })
   }
 }
+
 
 module.exports = { verifyToken }

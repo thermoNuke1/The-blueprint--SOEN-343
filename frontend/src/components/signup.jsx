@@ -20,7 +20,7 @@ const SignUp = ({ setErrorMessage, setUser }) => {
 				firstname,
 				lastname,
 			});
-			setUser(user)
+			setUser(null)
 			navigate('/')
 		} catch (exception) {
 			setErrorMessage("Something went wrong");
