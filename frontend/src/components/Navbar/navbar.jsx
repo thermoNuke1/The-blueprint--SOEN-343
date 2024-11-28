@@ -18,7 +18,6 @@ const CustomNavBar = ({ setShowLogin, showLogin, user, setUser, scrollToSection 
   };
 
   const handleSignup = () => {
-    setShowLogin(false);
     navigate("/signup");
   };
 
