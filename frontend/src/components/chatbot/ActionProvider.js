@@ -160,7 +160,7 @@ class ActionProvider {
   async callGoogleGeminiAPI(userInput) {
     const apiUrl =
       "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent";
-    const apiKey = "AIzaSyBUBU7gDK0FY8IKe9kP6seV7rYYQj_-PCQ";
+    const apiKey = "";
 
     const payload = {
       contents: [
